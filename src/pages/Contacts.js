@@ -1,59 +1,57 @@
+
 import '../components/cssComponent/decorate.css';
 import React from 'react';
-import Pin from '../../img/PinNookNooch/Pin.jpg'
+import Pin from "../components/img/PinNookNooch/Pin.jpg";
+import Nook from "../components/img/PinNookNooch/Nook.jpg";
+import Nooch from "../components/img/PinNookNooch/Nooch.JPG";
+const mystyle = {
+    paddingTop:"20px",
+    color: "black",
+    fontWeight: "bold"
+  };
 function Contacts(){
   return( 
-<section ClassName="contact spad">
-<div ClassName="container">
-    <div ClassName="row">
-        <div ClassName="col-lg-6 col-md-6">
-            <div ClassName="contact__text">
-                <div ClassName="section-title">
-                    <span>Information</span>
-                    <h2>Contact Us</h2>
-                    <p>KMUTT | School of Information Technology</p>
-                </div>
-                <ul>
-                    <li>
-                        <img src={Pin}/>
-                    <h4>62130500004</h4>
+  
+    <section className="contact contactPosition">
+        <div  className="container " >
+            {/* <div className="row"> */}
+                <div className="" >
+                    <div className="contact__text">
+                        <div style={{paddingLeft:"32px"}} className="section-title">
+                            <h2>Contact Us</h2>
+                            <p>KMUTT | School of Information Technology</p>
+                        </div>
+                        <div className="grid-cols-3" style={{columnCount: "3"}}>
+                        <ul>
+                           <div> <li>
+                                <img style={{height:"280px" }} src={Pin} alt=""/>
+                                <h4 style={{paddingTop:"20px"}}>62130500004</h4>
                                 <p>Khorapin Gadpu <br />Khorapin.pingadpu@mail.kmutt.ac.th</p>
-                          </li>
-                    <li>
-                    <h4>62130500047</h4>
+                            </li></div>
+                            <div> <li>
+                            <img style={{height:"280px" }} src={Nooch} alt=""/>
+                                <h4 style={{paddingTop:"20px"}}>62130500047</h4>
                                 <p>Noochajee Phonbooncharoenchai <br />Noochajee.nn@mail.kmutt.ac.th</p>
-                             </li>
-                             <li>
-                                <h4>62130500052</h4>
+                            </li>
+                            </div>
+                            <div>
+                            <li>
+                            <img style={{height:"280px" }} src={Nook} alt=""/>
+                                <h4 style={{marginTop:"2px"}}>62130500052</h4>
                                 <p>Prapaporn Sila <br />Prapaporn.1412@mail.kmutt.ac.th</p>
                             </li>
-                </ul>
-            </div>
-        </div>
-        <div ClassName="col-lg-6 col-md-6">
-            <div ClassName="contact__form">
-                <form action="#">
-                    <div ClassName="row">
-                        <div ClassName="col-lg-6">
-                            <input type="text" placeholder="Name"/>
-                        </div>
-                        <div ClassName="col-lg-6">
-                            <input type="text" placeholder="Email"/>
-                        </div>
-                        <div ClassName="col-lg-12">
-                            <textarea placeholder="Message"></textarea>
-                            <button type="submit" ClassName="site-btn">Send Message</button>
+                            </div>
+                        </ul>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            {/* </div> */}
+          
         </div>
-    </div>
-</div>
-</section>
+        
+    </section>
 
     );
   };
     
   export default Contacts;
-  

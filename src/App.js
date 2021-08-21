@@ -7,6 +7,7 @@ import Footer from './pages/Footer';
 import Navbar from './pages/NavBar';
 import './App.css';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import SignIn from './pages/Signin';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
        <Route path="/" exact component={Home}/>
        <Route path="/Shop" component={Shop}/>
        <Route path="/Contacts" component={Contacts}/>
+       <Route path="/Signin" component={SignIn}/>
       </Switch>
       <Footer />
     </div>

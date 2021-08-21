@@ -9,7 +9,7 @@ import './components/cssComponent/elegant-icons.css'
 import './components/cssComponent/magnific-popup.css'
 import './components/cssComponent/nice-select.css'
 import './components/cssComponent/slicknav.min.css'
-
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

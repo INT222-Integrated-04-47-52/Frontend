@@ -3255,7 +3255,21 @@ ol {
 contactPosition{
 text-align : left;
 }
+.password-icon{
+	position :absolute;
+	top: 50;
+	right: 0;
+	
+	cursor:pointer;}
+.psswrd{
 
+		position:absolute;
+		top:20;
+		padding-left:90px;
+		right:5px;
+		cursor:pointer;
+		
+}
 .contact__text {
 	text-align: left;
 	margin-bottom: 40px;
