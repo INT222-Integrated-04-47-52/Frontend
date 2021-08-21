@@ -2,6 +2,7 @@ import '../../components/cssComponent/decorate.css';
 import {Link } from 'react-router-dom';
 import banner1 from '../../components/img/banner/banner-1.jpg'
 import banner2 from '../../components/img/banner/banner-2.jpg'
+import banner3 from '../../components/img/banner/banner-3.jpg'
 function Collection(){
     return( 
 <section class="banner spad">
@@ -32,7 +33,7 @@ function Collection(){
                 <div class="col-lg-7">
                     <div class="banner__item banner__item--last">
                         <div class="banner__item__pic">
-                            <img src="img/banner/banner-3.jpg" alt=""/>
+                            <img src={banner3} alt=""/>
                         </div>
                         <div class="banner__item__text">
                             <h2>Shoes Spring 2030</h2>

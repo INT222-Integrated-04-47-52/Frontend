@@ -430,7 +430,7 @@ ol {
 	position: relative;
 }
 
-.header__menu ul li.active a:after {
+.header__menu ul .active a:after {
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
@@ -494,7 +494,7 @@ ol {
 	padding: 3px 0;
 }
 
-.header__menu ul li a:after {
+.header__menu ul li :after {
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -1933,15 +1933,14 @@ ol {
 
 .footer {
 	background: #111111;
-	padding-top: 70px;
+	padding-top: 10px;
+    margin-top: 80px;
 }
 
-.footer__about {
-	margin-bottom: 30px;
-}
+
 
 .footer__about .footer__logo {
-	margin-bottom: 30px;
+	margin-bottom: 2px;
 }
 
 .footer__about .footer__logo a {
@@ -1950,7 +1949,7 @@ ol {
 
 .footer__about p {
 	color: #b7b7b7;
-	margin-bottom: 30px;
+	margin-bottom: 2px;
 }
 
 .footer__widget {
@@ -2028,7 +2027,7 @@ ol {
 .footer__copyright__text {
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	padding: 20px 0;
-	margin-top: 40px;
+	margin-top: 10px;
 }
 
 .footer__copyright__text p {

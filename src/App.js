@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Shop  from './pages/Shop';
 import Contacts from './pages/Contacts';
-
+import Footer from './pages/Footer';
 
 import Navbar from './pages/NavBar';
 import './App.css';
@@ -18,6 +18,7 @@ function App() {
        <Route path="/Shop" component={Shop}/>
        <Route path="/Contacts" component={Contacts}/>
       </Switch>
+      <Footer />
     </div>
     </Router>
   );
