@@ -85,15 +85,7 @@ p {
 img {
 	max-width: 100%;
 }
-a {
-    text-decoration: underline;
-}
-  a:link,
-  a:visited,
-  a:hover,
-  a:active {
-	  text-decoration: none;
-  }
+
 input:focus,
 select:focus,
 button:focus,
@@ -101,7 +93,8 @@ textarea:focus {
 	outline: none;
 }
 
-a:hover,a:focus {
+a:hover,
+a:focus {
 	text-decoration: none;
 	outline: none;
 	color: #ffffff;
@@ -430,7 +423,7 @@ ol {
 	position: relative;
 }
 
-.header__menu ul .active a:after {
+.header__menu ul li.active a:after {
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
@@ -494,7 +487,7 @@ ol {
 	padding: 3px 0;
 }
 
-.header__menu ul li :after {
+.header__menu ul li a:after {
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -528,9 +521,7 @@ ol {
 	left: 5px;
 	top: 8px;
 }
-.header__nav__option:hover{
-	color: rgb(32, 19, 153);
-}
+
 .header__nav__option a:last-child {
 	margin-right: 0;
 }
@@ -576,7 +567,7 @@ ol {
 	top: 0;
 	opacity: 1;
 }
-*/
+
 .hero__slider.owl-carousel .owl-nav button {
 	font-size: 36px;
 	color: #333333;
@@ -603,20 +594,27 @@ ol {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+	margin-bottom: 28px;
 	position: relative;
-	text-align: left;
+	top: 100px;
+	opacity: 0;
+	-webkit-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
 }
-
 
 .hero__text h2 {
 	color: #111111;
 	font-size: 48px;
 	font-weight: 700;
 	line-height: 58px;
-
+	margin-bottom: 30px;
 	position: relative;
 	top: 100px;
-	text-align: left;
+	opacity: 0;
+	-webkit-transition: all, 0.6s;
+	-o-transition: all, 0.6s;
+	transition: all, 0.6s;
 }
 
 .hero__text p {
@@ -624,15 +622,20 @@ ol {
 	line-height: 28px;
 	margin-bottom: 35px;
 	position: relative;
-	top: 80px;
-	text-align: left;
+	top: 100px;
+	opacity: 0;
+	-webkit-transition: all, 0.9s;
+	-o-transition: all, 0.9s;
+	transition: all, 0.9s;
 }
 
 .hero__text .primary-btn {
 	position: relative;
 	top: 100px;
-
-
+	opacity: 0;
+	-webkit-transition: all, 1.1s;
+	-o-transition: all, 1.1s;
+	transition: all, 1.1s;
 }
 
 .hero__text .primary-btn span {
@@ -1216,7 +1219,7 @@ ol {
 .shop__sidebar__accordion .card-body {
 	padding: 0;
 	padding-top: 10px;
-	padding-bottom: 2px;
+	padding-bottom: 20px;
 	border-bottom: 1px solid #e5e5e5;
 }
 
@@ -1235,7 +1238,7 @@ ol {
 .shop__sidebar__categories ul,
 .shop__sidebar__price ul,
 .shop__sidebar__brand ul {
-	height: 160px;
+	height: 225px;
 }
 
 .shop__sidebar__categories ul li,
@@ -1639,7 +1642,7 @@ ol {
 	color: #b7b7b7;
 	font-size: 20px;
 	font-weight: 400;
-	margin-left: 0px;
+	margin-left: 10px;
 	text-decoration: line-through;
 }
 
@@ -1648,7 +1651,7 @@ ol {
 }
 
 .product__details__option {
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 .product__details__option__size {
@@ -1695,7 +1698,7 @@ ol {
 .product__details__option__color span {
 	color: #111111;
 	display: inline-block;
-	margin-right: 25px;
+	margin-right: 10px;
 	position: relative;
 	top: -9px;
 }
@@ -1935,14 +1938,15 @@ ol {
 
 .footer {
 	background: #111111;
-	padding-top: 10px;
-    margin-top: 80px;
+	padding-top: 70px;
 }
 
-
+.footer__about {
+	margin-bottom: 30px;
+}
 
 .footer__about .footer__logo {
-	margin-bottom: 2px;
+	margin-bottom: 30px;
 }
 
 .footer__about .footer__logo a {
@@ -1951,7 +1955,7 @@ ol {
 
 .footer__about p {
 	color: #b7b7b7;
-	margin-bottom: 2px;
+	margin-bottom: 30px;
 }
 
 .footer__widget {
@@ -2029,7 +2033,7 @@ ol {
 .footer__copyright__text {
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	padding: 20px 0;
-	margin-top: 10px;
+	margin-top: 40px;
 }
 
 .footer__copyright__text p {
@@ -3254,20 +3258,6 @@ ol {
 /*---------------------
   Contact
 -----------------------*/
-contactPosition{
-text-align : left;
-}
-.password-icon{
-	position :absolute;
-	top: 50;
-	right: 0;
-	
-	cursor:pointer;}
-
-.contact__text {
-	text-align: left;
-	margin-bottom: 40px;
-}
 
 .contact__text .section-title {
 	text-align: left;
@@ -3786,7 +3776,6 @@ text-align : left;
 		display: inline-block;
 		margin-right: 10px;
 	}
-	
 	.blog__details__share ul li:last-child {
 		margin-right: 0;
 	}

@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d8667aa6.chunk.css",
+    "main.js": "/static/js/main.81beb4c1.chunk.js",
+    "main.js.map": "/static/js/main.81beb4c1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4dd13bde.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4dd13bde.js.map",
+    "static/css/2.6b3f17e9.chunk.css": "/static/css/2.6b3f17e9.chunk.css",
+    "static/js/2.70604c9c.chunk.js": "/static/js/2.70604c9c.chunk.js",
+    "static/js/2.70604c9c.chunk.js.map": "/static/js/2.70604c9c.chunk.js.map",
+    "static/js/3.5c3cb28e.chunk.js": "/static/js/3.5c3cb28e.chunk.js",
+    "static/js/3.5c3cb28e.chunk.js.map": "/static/js/3.5c3cb28e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.6b3f17e9.chunk.css.map": "/static/css/2.6b3f17e9.chunk.css.map",
+    "static/css/main.d8667aa6.chunk.css.map": "/static/css/main.d8667aa6.chunk.css.map",
+    "static/js/2.70604c9c.chunk.js.LICENSE.txt": "/static/js/2.70604c9c.chunk.js.LICENSE.txt",
+    "static/media/elegant-icons.css": "/static/media/ElegantIcons.a3709f85.svg",
+    "static/media/Nooch.7e02de34.JPG": "/static/media/Nooch.7e02de34.JPG",
+    "static/media/Nook.403367dd.jpg": "/static/media/Nook.403367dd.jpg",
+    "static/media/Pin.2ee2850e.jpg": "/static/media/Pin.2ee2850e.jpg",
+    "static/media/banner-1.45fe2b26.jpg": "/static/media/banner-1.45fe2b26.jpg",
+    "static/media/banner-2.09aec17e.jpg": "/static/media/banner-2.09aec17e.jpg",
+    "static/media/banner-3.902e072b.jpg": "/static/media/banner-3.902e072b.jpg",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/footer-logo.de220733.jpg": "/static/media/footer-logo.de220733.jpg",
+    "static/media/hero-1.c081bcff.jpg": "/static/media/hero-1.c081bcff.jpg",
+    "static/media/instagram-1.1802abc6.jpg": "/static/media/instagram-1.1802abc6.jpg",
+    "static/media/instagram-2.11846e87.jpg": "/static/media/instagram-2.11846e87.jpg",
+    "static/media/instagram-3.f66f2e82.jpg": "/static/media/instagram-3.f66f2e82.jpg",
+    "static/media/instagram-4.47ec0248.jpg": "/static/media/instagram-4.47ec0248.jpg",
+    "static/media/instagram-6.1c64606a.jpg": "/static/media/instagram-6.1c64606a.jpg",
+    "static/media/product-big-2.c7394ddf.png": "/static/media/product-big-2.c7394ddf.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4dd13bde.js",
+    "static/css/2.6b3f17e9.chunk.css",
+    "static/js/2.70604c9c.chunk.js",
+    "static/css/main.d8667aa6.chunk.css",
+    "static/js/main.81beb4c1.chunk.js"
+  ]
+}

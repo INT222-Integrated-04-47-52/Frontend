@@ -1,6 +1,8 @@
 import {Link } from 'react-router-dom';
+import React from 'react';
 
 function Navbar(){
+
     return( 
     <header className="header">
 
@@ -21,15 +23,17 @@ function Navbar(){
                     </ul>
 
                 </nav>
+                
             </div>
             <div className="col-lg-3 col-md-3">
                 <div className="header__nav__option">
    
-               <Link to="/Signin" style={{color: "black" }}>Sign in</Link>
-                   
+               <Link to="/Signin" className=""style={{color: "red" }}>Sign In</Link>
+             
                 </div>
               
             </div>
+            
         </div>
         <div className="canvas__open"><i className="fa fa-bars"></i></div>
     </div>

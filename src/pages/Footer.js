@@ -1,25 +1,34 @@
-
-import footerLogo from '../components/img/footer-logo.jpg'
-import {Link } from 'react-router-dom';
-function Footer(){
-    return( 
-<footer class="footer" style={{ backgroundColor: "#040506"}}>
-<div class="container">
-                <div class="footer__logo">
-                   <img style={{width: "160px"}} src={footerLogo} alt=""/>
-                </div>
-
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="footer__copyright__text">
-                <p>Copyright ©
-                     2021 INT222 Integrated Project. Proudly by Khorapin, Noochajee and Prapaporn
-                </p>
-            </div>
+import footerLogo from "../components/img/footer-logo.jpg";
+import { Link } from "react-router-dom";
+function Footer() {
+  return (
+    <footer className="footer" style={{ backgroundColor: "#040506" }}>
+      <div className="container">
+        <div className="footer__logo">
+          <img
+            style={{
+              width: "160px",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+            src={footerLogo}
+            alt=""
+          />
         </div>
-    </div>
-</div>
-</footer>
-);
-  };
+
+        <div className="row">
+          <div className="col-lg-12 text-center">
+            <div className="footer__copyright__text">
+              <p>
+                Copyright © 2021 INT222 Integrated Project. Proudly by Khorapin,
+                Noochajee and Prapaporn
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
 export default Footer;
