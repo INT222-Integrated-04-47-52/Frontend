@@ -26,9 +26,10 @@ class SignIn extends Component {
               <div class="contact__form">
                 <form action="#">
                   <div class="row">
-                    <h5 style={{ textAlign: "left" }}>Username</h5>
+                    <h5 style={{ textAlign: "left" }}>Email</h5>
+                   
                     <div class="">
-                      <input type="text" placeholder="Username" />
+                      <input type="text" placeholder="inputyour_email@mail.com" />
                     </div>
                     <h5 style={{ textAlign: "left" }}>Password</h5>
                     <div class="flex">

@@ -9,7 +9,8 @@ import './App.css';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import SignIn from './pages/Signin';
 import Tailor from './pages/ShopComponent/Tailor';
-
+import AddProduct from './pages/Admin/AddProduct';
+import AddSize from './pages/ShopComponent/AddSize';
 function App() {
   return (
     <Router>
@@ -21,6 +22,8 @@ function App() {
        <Route path="/Contacts" component={Contacts}/>
        <Route path="/SignIn" component={SignIn}/>
        <Route path="/Tailor" component={Tailor}/>
+       <Route path="/AddProduct" component={AddProduct}/>
+       <Route path="/AddSize" component={AddSize}/>
       </Switch>
       <Footer />
     </div>

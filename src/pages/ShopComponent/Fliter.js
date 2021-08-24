@@ -52,7 +52,7 @@ function Fliter() {
             </div>
             <div className="card">
               <div className="card-heading">
-                <a         onClick={() => setOpen(!open)}
+                <a onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   aria-expanded={open}>
                   Branding

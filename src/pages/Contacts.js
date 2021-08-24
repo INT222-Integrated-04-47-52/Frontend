@@ -36,7 +36,7 @@ function Contacts(){
                             </div>
                             <div>
                             <li>
-                            <img style={{height:"280px" }} src={Nook} alt=""/>
+                            <img style={{height:"280px" ,marginBottom:"5px" }} src={Nook} alt=""/>
                                 <h4 style={{marginTop:"2px"}}>62130500052</h4>
                                 <p>Prapaporn Sila <br />Prapaporn.1412@mail.kmutt.ac.th</p>
                             </li>

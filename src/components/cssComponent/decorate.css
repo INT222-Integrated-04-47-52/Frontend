@@ -104,7 +104,7 @@ textarea:focus {
 a:hover,a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	
 }
 
 ul,
@@ -158,9 +158,7 @@ ol {
 .text-white p,
 .text-white span,
 .text-white li,
-.text-white a {
-	color: #fff;
-}
+
 
 /* buttons */
 
@@ -386,7 +384,7 @@ ol {
 }
 
 .header__top__hover ul {
-	background: #ffffff;
+
 	display: inline-block;
 	padding: 2px 0;
 	position: absolute;
@@ -416,6 +414,21 @@ ol {
 
 .header__logo a {
 	display: inline-block;
+}
+.main-nav:hover{
+	color:black;
+	font-weight: bold;
+}
+
+.main-nav{
+	padding-left: 50px;
+	color:black;
+	font-weight: bold;
+}
+.main-nav-active{
+	color: red;
+	list-style: none;
+	position: relative;
 }
 
 .header__menu {
@@ -528,6 +541,8 @@ ol {
 	left: 5px;
 	top: 8px;
 }
+
+
 .header__nav__option:hover{
 	color: rgb(32, 19, 153);
 }
@@ -1498,7 +1513,7 @@ ol {
   Shop
 -----------------------*/
 
-.product__details__pic {
+/* .product__details__pic {
 	text-align: center;
 	background: #f3f2ee;
 	padding: 40px 0 60px;
@@ -1912,7 +1927,7 @@ ol {
 
 .product__details__tab__content__item p {
 	margin-bottom: 0;
-}
+} */
 
 /*---------------------
   Related
