@@ -10,6 +10,7 @@ import './components/cssComponent/magnific-popup.css'
 import './components/cssComponent/nice-select.css'
 import './components/cssComponent/slicknav.min.css'
 import './index.css';
+import "bulma/css/bulma.css";
 
 ReactDOM.render(
   <React.StrictMode>
