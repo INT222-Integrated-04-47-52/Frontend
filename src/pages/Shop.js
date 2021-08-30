@@ -1,7 +1,7 @@
 import React from 'react';
 import Categories from './ShopComponent/Categories';
 import Fliter from './ShopComponent/Fliter';
-import AddProduct from './Admin/AddProduct';
+import AddProduct from './ShopComponent/AddProduct';
 import {Link} from 'react-router-dom';
 
 function Shop(){
