@@ -2,9 +2,9 @@ import '../../components/cssComponent/decorate.css';
 import { Link } from 'react-router-dom';
 import productImage from '../../components/img/shop-details/product-big-2.png'   
 
-function AddProduct(){
+const AddProduct = ()=> {
     return( 
-    <div>
+    <form>
         <h1>เพิ่มสินค้า</h1>
     <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
         
@@ -15,7 +15,7 @@ function AddProduct(){
                 {/* <img src={productImage}/> */}
             </div>
             <label class="text-left block font-semibold" >รูปภาพสินค้า: </label>
-            <input type="file" class="w-1/2 md:w-80 mt-4 focus:outline-none"/>
+           {/*  <input type="file" class="w-1/2 md:w-80 mt-4 focus:outline-none"/> */}
         </div>
         </div>
         
@@ -70,9 +70,9 @@ function AddProduct(){
             
             <div className="">
             {/* <div className="product__details__option text-left"> */}
-            <label for="types" className="font-semibold">ประเภทสินค้า:</label>
+            <label for="types" className="font-semibold ">ประเภทสินค้า:</label>
             <div className="">
-            <select className="w-full h-10" name="types" id="types">
+            <select className="w-full h-10 border-2" name="types" id="types">
                 <option value="">ผ้าไหมพื้นเรียบ</option>
                 <option value="">ไหมลายไทย(ลายมัดหมี่)</option>
                 <option value="">ไหมสามตะกร้า</option>
@@ -83,14 +83,14 @@ function AddProduct(){
             </select>
             </div>   
             </div>
-           
+           {/* 
             <div className="product__details__option font-semibold">
                 <div className="product__details__option__color">
                     <span>Color:</span><br/>
-                     <label className="c-1" for="sp-1">
+                     <label className="c-1" >
                         <input type="radio" id="sp-1"/>
                       </label>
-                      <label className="c-2" for="sp-2">
+                      <label className="c-2" >
                          <input type="radio" id="sp-2"/>
                        </label>
                        <label className="c-3" for="sp-3">
@@ -102,15 +102,22 @@ function AddProduct(){
                          <label className="c-5" for="sp-5">
                         <input type="radio" id="sp-5"/>
                         </label>
-                        <label className="c-7" for="sp-7">
+                        <label className="c-6" for="sp-7">
                         <input type="radio" id="sp-7"/>
                         </label>
-                        <label className="c-8" for="sp-8">
+                        <label className="c-7" for="sp-8">
                         <input type="radio" id="sp-8"/>
                         </label>       
+                        <label className="c-8" for="sp-8">
+                        <input type="radio" id="sp-8"/>
+                        </label>  
+                        <label className="c-9" for="sp-8">
+                        <input type="radio" id="sp-8"/>
+                        </label>  
+
                  </div>
             </div>
-           
+           */}
             <div>
             {/* <Link to="/Shop" className="primary-btn m-4">เพิ่มสินค้า<span className="button mt-12"></span></Link> */}
             <Link to="/Shop" className="primary-btn flex justify-center">เพิ่มสินค้า</Link>
@@ -118,7 +125,7 @@ function AddProduct(){
         
         </div>
     </div>
-    </div>
+    </form>
    );
 }
 export default AddProduct;

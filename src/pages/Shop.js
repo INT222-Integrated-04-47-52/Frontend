@@ -3,6 +3,7 @@ import Categories from './ShopComponent/Categories';
 import Fliter from './ShopComponent/Fliter';
 import AddProduct from './Admin/AddProduct';
 import {Link} from 'react-router-dom';
+
 function Shop(){
   return( 
     <section class="shop spad">

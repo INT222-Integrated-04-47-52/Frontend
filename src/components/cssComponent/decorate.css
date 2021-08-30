@@ -1513,7 +1513,7 @@ ol {
   Shop
 -----------------------*/
 
-/* .product__details__pic {
+ .product__details__pic {
 	text-align: center;
 	background: #f3f2ee;
 	padding: 40px 0 60px;
@@ -1731,17 +1731,29 @@ ol {
 }
 
 .product__details__option__color label.c-2 {
-	background: #20315f;
+	background: #6c009e;
 }
 
 .product__details__option__color label.c-3 {
-	background: #f1af4d;
+	background: #0b25b4;
 }
 
 .product__details__option__color label.c-4 {
-	background: #ed1c24;
+	background: #12bbee;
 }
 
+.product__details__option__color label.c-5 {
+	background: #b7ff0f;
+}
+.product__details__option__color label.c-6 {
+	background: #f7e70d;
+}
+.product__details__option__color label.c-7 {
+	background: #fc9803;
+}
+.product__details__option__color label.c-8 {
+	background: #da1313;
+}
 .product__details__option__color label.c-9 {
 	background: #ffffff;
 }
