@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Contacts from "./pages/Contacts";
@@ -6,7 +6,6 @@ import Footer from "./pages/Footer";
 import React, { Component } from "react";
 import Navbar from "./pages/NavBar";
 import "./App.css";
-import SignIn from "./pages/Signin";
 import Tailor from "./pages/ShopComponent/Tailor";
 import AddProduct from "./pages/ShopComponent/AddProduct";
 import AddSize from "./pages/ShopComponent/AddSize";
@@ -16,6 +15,7 @@ import ProductList from "./pages/ShopComponent/ProductList";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Context from "./Context";
+import NavBar from "./pages/NavBar";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -90,7 +90,6 @@ export default class App extends Component {
     }
 
     const cart = this.state.cart;
-
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
         p.stock = p.stock - cart[p.name].amount;
@@ -128,14 +127,53 @@ export default class App extends Component {
       >
         <Router ref={this.routerRef}>
           <div className="App">
-            {/*<Navbar/>*/}
-            <nav
-              className="navbar container"
-              role="navigation"
-              aria-label="main navigation"
-            >
+     
+  
+
+           
+            <div className="flex justify-center items-center mx-auto header__menu mobile-menu ">
+            
+
+           <div className={`navbar-menu ${
+                  this.state.showMenu ? "is-active" : ""
+                }`} > 
+<NavBar /> 
+<div className="absolute justify-center items-center my-5 right-0 mr-8 mb-3 "> 
+                {this.state.user && this.state.user.accessLevel < 1 && (
+                 <NavLink to="/AddProduct"   className="main-nav "
+                  activeClassName="main-nav-active ">
+                    Add Product
+                  </NavLink>
+                )}
+                <NavLink to="/Cart" className="main-nav my-auto"
+                  activeClassName="main-nav-active">
+                  Cart
+                  <span
+                    className="tag is-primary"
+                    style={{}}
+                  >
+                    {Object.keys(this.state.cart).length}
+                  </span>
+                </NavLink>
+               
+        
+                {!this.state.user ? (
+                  <NavLink to="/LogIn" className="main-nav my-auto"
+                  activeClassName="main-nav-active">
+                    Log In
+                  </NavLink>
+                ) : (
+                  <NavLink to="/" onClick={this.logout} className="main-nav"
+                  activeClassName="main-nav-active">
+                    Logout
+                  </NavLink>
+                )}
+            
+    
+           </div>
+              </div></div>
+    
               <div className="navbar-brand">
-                <b className="navbar-item is-size-4 ">ecommerce</b>
                 <label
                   role="button"
                   class="navbar-burger burger"
@@ -144,56 +182,19 @@ export default class App extends Component {
                   data-target="navbarBasicExample"
                   onClick={(e) => {
                     e.preventDefault();
-                    this.setState({ showMenu: !this.state.showMenu });
-                  }}
-                >
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
+                    this.setState({ showMenu: !this.state.showMenu });}}>
+                 
                 </label>
               </div>
-              <div
-                className={`navbar-menu ${
-                  this.state.showMenu ? "is-active" : ""
-                }`}
-              >
-                <Link to="/products" className="navbar-item">
-                  Products
-                </Link>
-                {this.state.user && this.state.user.accessLevel < 1 && (
-                  <Link to="/add-product" className="navbar-item">
-                    Add Product
-                  </Link>
-                )}
-                <Link to="/cart" className="navbar-item">
-                  Cart
-                  <span
-                    className="tag is-primary"
-                    style={{ marginLeft: "5px" }}
-                  >
-                    {Object.keys(this.state.cart).length}
-                  </span>
-                </Link>
-                {!this.state.user ? (
-                  <Link to="/login" className="navbar-item">
-                    Login
-                  </Link>
-                ) : (
-                  <Link to="/" onClick={this.logout} className="navbar-item">
-                    Logout
-                  </Link>
-                )}
-              </div>
-            </nav>
+            
+          
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/Login" component={Login} />
+              <Route path="/LogIn" component={Login} />
               <Route path="/Cart" component={Cart} />
               <Route path="/Products" component={ProductList} />
-
               <Route path="/Shop" component={Shop} />
               <Route path="/Contacts" component={Contacts} />
-
               <Route path="/Tailor" component={Tailor} />
               <Route path="/AddProduct" component={AddProduct} />
               <Route path="/AddSize" component={AddSize} />

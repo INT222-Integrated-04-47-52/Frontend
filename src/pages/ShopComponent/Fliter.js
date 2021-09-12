@@ -1,4 +1,4 @@
-import "../../components/cssComponent/decorate.css";
+import "../../HTMLcomponents/cssComponent/decorate.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";

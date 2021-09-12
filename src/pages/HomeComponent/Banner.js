@@ -1,5 +1,5 @@
-import '../../components/cssComponent/decorate.css';
-import bannerImage from '../../components/img/hero/hero-1.jpg'
+import '../../HTMLcomponents/cssComponent/decorate.css';
+import bannerImage from '../../HTMLcomponents/img/hero/hero-1.jpg'
 import {Link } from 'react-router-dom';
 function Banner(){
     return( 

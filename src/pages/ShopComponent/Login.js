@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import withContext from "../../withContext";
+import "../../HTMLcomponents/cssComponent/decorate.css";
 
 class Login extends Component {
+  
+  togglePasswordVisibility = () => {
+    const { isPasswordShown } = this.state;
+    this.setState({ isPasswordShown: !isPasswordShown });
+  };
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      isPasswordShown: false
     };
-  }
-
+  }  
   handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
 
   login = (e) => {
@@ -25,54 +31,65 @@ class Login extends Component {
         if (!loggedIn) {
           this.setState({ error: "Invalid Credentails" });
         }
-      })
+      })     
   };
+  
 
-  render() {
+  render = () => {
+    const { isPasswordShown } = this.state;
     return !this.props.context.user ? (
-      <div>
-        <div className="hero is-primary ">
-          <div className="hero-body container">
-            <h4 className="title">Login</h4>
-          </div>
-        </div>
-        <br />
-        <br />
-        <form onSubmit={this.login}>
-          <div className="columns is-mobile is-centered">
-            <div className="column is-one-third">
-              <div className="field">
-                <label className="label">Email: </label>
-                <input
-                  className="input"
-                  type="email"
-                  name="username"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="field">
-                <label className="label">Password: </label>
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.error && (
-                <div className="has-text-danger">{this.state.error}</div>
-              )}
-              <div className="field is-clearfix">
-                <button
-                  className="button is-primary is-outlined is-pulled-right"
-                >
-                  Submit
-                </button>
+      <section class="contact spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="contact__text">
+              <div class="section-title">
+                <span>ร้านมงคลธรผ้าไหมไทย</span>
+                <h2>Mongkolthorn</h2>
+                <p>กรุณาล็อกอินเมื่อต้องการที่จะบันทึกไซส์ตัวและสั่งตัดชุด</p>
               </div>
             </div>
           </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="contact__form">
+               <form onSubmit={this.login}>
+                   <div class="row">
+                    <h5 style={{ textAlign: "left" }}>Email</h5>
+                     <div>
+                       <input 
+                          className="input text-black"
+                          type="email"
+                          name="username"
+                          placeholder="inputyour_email@mail.com"
+                         onChange={this.handleChange}
+                     /></div>
+                   </div>
+                  
+              <h5 style={{ textAlign: "left" }}>Password</h5>
+              <div class="flex">
+                <input 
+                  className="input  text-black" 
+                  type={isPasswordShown ? "text" : "password"}
+                  name="password" placeholder="*********"
+                  onChange={this.handleChange}
+                />
+                 <div className="absolute item-right right-0 mt-2 mr-5"><i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
+                      onClick={this.togglePasswordVisibility}/>
+            </div>
+              </div> {this.state.error && (
+                <div className="has-text-danger">{this.state.error}</div>
+              )}
+              <div className="field is-clearfix ">
+              <button type="submit" class="site-btn">
+                        SIGNIN
+                      </button>
+              </div>
         </form>
-      </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </section>
     ) : (
       <Redirect to="/products" />
     );

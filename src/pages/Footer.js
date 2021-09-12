@@ -1,4 +1,4 @@
-import footerLogo from "../components/img/footer-logo.jpg";
+import footerLogo from "../HTMLcomponents/img/footer-logo.jpg";
 import { Link } from "react-router-dom";
 function Footer() {
   return (

@@ -1,8 +1,8 @@
-import '../../components/cssComponent/decorate.css';
+import '../../HTMLcomponents/cssComponent/decorate.css';
 import {Link } from 'react-router-dom';
-import banner1 from '../../components/img/banner/banner-1.jpg'
-import banner2 from '../../components/img/banner/banner-2.jpg'
-import banner3 from '../../components/img/banner/banner-3.jpg'
+import banner1 from '../../HTMLcomponents/img/banner/banner-1.jpg'
+import banner2 from '../../HTMLcomponents/img/banner/banner-2.jpg'
+import banner3 from '../../HTMLcomponents/img/banner/banner-3.jpg'
 function Collection(){
     return( 
 <section class="banner spad">

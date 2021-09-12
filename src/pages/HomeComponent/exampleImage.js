@@ -1,10 +1,10 @@
-import '../../components/cssComponent/decorate.css';
-import img2 from '../../components/img/instagram/instagram-1.jpg'
-import img3 from '../../components/img/instagram/instagram-2.jpg'
-import img4 from '../../components/img/instagram/instagram-3.jpg'
-import img5 from '../../components/img/instagram/instagram-4.jpg'
-import img6 from '../../components/img/instagram/instagram-5.jpg'
-import img1 from '../../components/img/instagram/instagram-6.jpg'
+import '../../HTMLcomponents/cssComponent/decorate.css';
+import img2 from '../../HTMLcomponents/img/instagram/instagram-1.jpg'
+import img3 from '../../HTMLcomponents/img/instagram/instagram-2.jpg'
+import img4 from '../../HTMLcomponents/img/instagram/instagram-3.jpg'
+import img5 from '../../HTMLcomponents/img/instagram/instagram-4.jpg'
+import img6 from '../../HTMLcomponents/img/instagram/instagram-5.jpg'
+import img1 from '../../HTMLcomponents/img/instagram/instagram-6.jpg'
 
 
 function exampleImage(){

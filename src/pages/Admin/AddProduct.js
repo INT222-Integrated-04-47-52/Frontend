@@ -1,10 +1,68 @@
-import '../../components/cssComponent/decorate.css';
+import '../../HTMLcomponents/cssComponent/decorate.css';
 import { Link } from 'react-router-dom';
-import productImage from '../../components/img/shop-details/product-big-2.png'   
+import productImage from '../../HTMLcomponents/img/shop-details/product-big-2.png'   
+import React, { Component } from "react";
+import withContext from "../../withContext";
+import { Redirect } from "react-router-dom";
+import axios from 'axios';
 
-const AddProduct = ()=> {
-    return( 
-    <form>
+const initState = {
+    name: "",
+    price: "",
+    stock: "",
+    shortDesc: "",
+    description: ""
+  };
+  class AddProduct extends Component {
+    constructor(props) {
+      super(props);
+      this.state = initState;
+    }
+
+    save = async (e) => {
+        e.preventDefault();
+        const { name, price, stock, shortDesc, description } = this.state;
+    
+        if (name && price) {
+          const id = Math.random().toString(36).substring(2) + Date.now().toString(36);
+    
+          await axios.post(
+            'http://localhost:3001/products',
+            { id, name, price, stock, shortDesc, description },
+          )
+    
+          this.props.context.addProduct(
+            {
+              name,
+              price,
+              shortDesc,
+              description,
+              stock: stock || 0
+            },
+            () => this.setState(initState)
+          );
+          this.setState(
+            { flash: { status: 'is-success', msg: 'Product created successfully' }}
+          );
+    
+        } else {
+          this.setState(
+            { flash: { status: 'is-danger', msg: 'Please enter name and price' }}
+          );
+        }
+      };
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
+
+  
+  render() {
+    const { name, price, stock, shortDesc, description } = this.state;
+    const { user } = this.props.context;
+
+    return !(user && user.accessLevel < 1) ? (
+      <Redirect to="/" />
+    ) : (
+    <form onSubmit={this.save}>
         <h1>เพิ่มสินค้า</h1>
     <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
         
@@ -25,13 +83,21 @@ const AddProduct = ()=> {
             <div className="">
             {/* <div className="product__details__option text-left"> */}
             <span className="font-semibold" >ชื่อสินค้า: </span><br />
-            <input className="border p-2 w-full h-10" type="text" placeholder="ระบุชื่อสินค้า" />
+            <input className="border p-2 w-full h-10" type="text"  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                  required placeholder="ระบุชื่อสินค้า" />
             </div>
             
             <div className="">
             {/* <div className="product__details__option text-left"> */}
             <span className="font-semibold">รายละเอียดสินค้า: </span>
-            <textarea className="border p-2 w-full h-20" placeholder="ระบุรายละเอียดสินค้า" />
+            <textarea type="text"
+                  rows="2"
+                  style={{ resize: "none" }}
+                  name="description"
+                  value={description}
+                  onChange={this.handleChange} className="border p-2 w-full h-20" placeholder="ระบุรายละเอียดสินค้า" />
             </div>
             
             <div className="">
@@ -118,6 +184,20 @@ const AddProduct = ()=> {
                  </div>
             </div>
            */}
+            {this.state.flash && (
+                <div className={`notification ${this.state.flash.status}`}>
+                  {this.state.flash.msg}
+                </div>
+              )}  
+              <div className="field is-clearfix">
+              <button
+                className="button is-primary is-outlined is-pulled-right"
+                type="submit"
+                onClick={this.save}
+              >
+                Submit
+              </button>
+            </div>
             <div>
             {/* <Link to="/Shop" className="primary-btn m-4">เพิ่มสินค้า<span className="button mt-12"></span></Link> */}
             <Link to="/Shop" className="primary-btn flex justify-center">เพิ่มสินค้า</Link>
@@ -128,4 +208,5 @@ const AddProduct = ()=> {
     </form>
    );
 }
-export default AddProduct;
+}
+export default withContext(AddProduct);

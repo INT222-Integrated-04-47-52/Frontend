@@ -1,6 +1,6 @@
-import "../../components/cssComponent/decorate.css";
+import "../../HTMLcomponents/cssComponent/decorate.css";
 import { Link } from "react-router-dom";
-import productImage from "../../components/img/product/product-1.jpg";
+import productImage from "../../HTMLcomponents/img/product/product-1.jpg";
 import { stockData } from "../../data";
 export const Categories = () => {
   return (
