@@ -5,12 +5,9 @@ import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
-
+{/* ไม่ได้ใช้ */}
 const initState = {
     name: "",
-    price: "",
-    stock: "",
-    shortDesc: "",
     description: ""
   };
   class AddProduct extends Component {
@@ -21,23 +18,20 @@ const initState = {
 
     save = async (e) => {
         e.preventDefault();
-        const { name, price, stock, shortDesc, description } = this.state;
+        const { name, description } = this.state;
     
-        if (name && price) {
+        if (name ) {
           const id = Math.random().toString(36).substring(2) + Date.now().toString(36);
     
           await axios.post(
-            'http://localhost:3001/products',
-            { id, name, price, stock, shortDesc, description },
+            `${process.env.REACT_APP_API_URL}/products`,
+            { id, name,  description },
           )
     
           this.props.context.addProduct(
             {
               name,
-              price,
-              shortDesc,
               description,
-              stock: stock || 0
             },
             () => this.setState(initState)
           );
@@ -56,7 +50,7 @@ const initState = {
 
   
   render() {
-    const { name, price, stock, shortDesc, description } = this.state;
+    const { name,  description } = this.state;
     const { user } = this.props.context;
 
     return !(user && user.accessLevel < 1) ? (
@@ -149,7 +143,7 @@ const initState = {
             </select>
             </div>   
             </div>
-           {/* 
+           
             <div className="product__details__option font-semibold">
                 <div className="product__details__option__color">
                     <span>Color:</span><br/>
@@ -183,7 +177,7 @@ const initState = {
 
                  </div>
             </div>
-           */}
+  
             {this.state.flash && (
                 <div className={`notification ${this.state.flash.status}`}>
                   {this.state.flash.msg}

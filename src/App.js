@@ -26,16 +26,7 @@ export default class App extends Component {
     };
     this.routerRef = React.createRef();
   }
-  async componentDidMount() {
-    let user = localStorage.getItem("user");
-    let cart = localStorage.getItem("cart");
-
-    const products = await axios.get("http://localhost:3001/products");
-    user = user ? JSON.parse(user) : null;
-    cart = cart ? JSON.parse(cart) : {};
-
-    this.setState({ user, products: products.data, cart });
-  }
+  
   addToCart = (cartItem) => {
     let cart = this.state.cart;
     if (cart[cartItem.id]) {
@@ -61,18 +52,18 @@ export default class App extends Component {
     localStorage.removeItem("cart");
     this.setState({ cart });
   };
-  login = async (email, password) => {
-    const res = await axios
-      .post("http://localhost:3001/login", { email, password })
-      .catch((res) => {
+  async login(_email, _password)  {
+    const response = await axios
+      .post("http://localhost:3001/login", { email: _email, password: _password })
+      .catch((err) => {
         return { status: 401, message: "Unauthorized" };
       });
 
-    if (res.status === 200) {
-      const { email } = jwt_decode(res.data.accessToken);
+    if (response.status === 200) {
+      const {email, accessToken} = response.data
       const user = {
         email,
-        token: res.data.accessToken,
+        token: accessToken,
         accessLevel: email === "admin@example.com" ? 0 : 1,
       };
 
@@ -92,8 +83,6 @@ export default class App extends Component {
     const cart = this.state.cart;
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
-        p.stock = p.stock - cart[p.name].amount;
-
         axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
       }
       return p;
@@ -112,7 +101,20 @@ export default class App extends Component {
     products.push(product);
     this.setState({ products }, () => callback && callback());
   };
+
+  async componentDidMount() {
+    let user = localStorage.getItem("user");
+    let cart = localStorage.getItem("cart");
+
+    const products = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
+    console.log(products)
+    user = user ? JSON.parse(user) : null;
+    cart = cart ? JSON.parse(cart) : {};
+   this.setState({ user, products: products.data, cart });
+  }
+
   render() {
+    
     return (
       <Context.Provider
         value={{

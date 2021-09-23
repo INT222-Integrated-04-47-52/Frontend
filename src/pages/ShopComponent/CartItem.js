@@ -2,7 +2,6 @@ import React from "react";
 
 const CartItem = props => {
   const { cartItem, cartKey } = props;
-
   const { product, amount } = cartItem;
   return (
     <div className=" column is-half">
@@ -19,7 +18,7 @@ const CartItem = props => {
           <div className="media-content">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
-              <span className="tag is-primary">${product.gender}</span>
+              <span className="tag is-primary">${product.name}</span>
             </b>
             <div>{product.description}</div>
             <small>{`${amount} in cart`}</small>

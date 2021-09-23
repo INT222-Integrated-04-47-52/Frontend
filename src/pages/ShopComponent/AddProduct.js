@@ -4,15 +4,17 @@ import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { NavItem } from "reactstrap";
+
 
 const initState = {
+ 
   name: "",
   description: "",
-  kind: "",
-  type:"",
-  color:[],
-  gender:null,
+  genderEnter:"",
+  kindEnter: "",
+  typeEnter:null,
+  colorEnter:[],
+ 
   colors:[],
   types:[],
   kinds:[],
@@ -25,33 +27,60 @@ class AddProduct extends Component {
     this.state = initState;
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     
-    await axios.get('http://localhost:3001/genders').then(res=>
+     axios.get(`${process.env.REACT_APP_API_URL}/genders`).then(res=>
     {
       this.setState({ genders: res.data });
     });
-    await axios.get('http://localhost:3001/kinds').then(res=>
+     axios.get(`${process.env.REACT_APP_API_URL}/kinds`).then(res=>
     {
       this.setState({ kinds: res.data });
     });
-    await axios.get('http://localhost:3001/types').then(res=>
+     axios.get(`${process.env.REACT_APP_API_URL}/types`).then(res=>
     {
       this.setState({ types: res.data });
     });
-    await axios.get('http://localhost:3001/colors').then(res=>
+   axios.get(`${process.env.REACT_APP_API_URL}/colors`).then(res=>
     {
       this.setState({ colors: res.data });
     });
     
 }
 
-
   save = async (e) => {
-    e.preventDefault();
-    const { name, description, gender, 
-      kind,type, color } = this.state;
+    var colorId = this.state.colorEnter.map((g) => parseInt(g));
+    var colorObject = colorId.map((im) => this.state.colors.find((cf)=> cf.id === im))
+    console.log(colorObject);
+    
+  
+    var genderObject = this.state.genders.find(
+      (g) => g.id == this.state.genderEnter
+    ); 
+    console.log(genderObject)
 
+    var kindObject = this.state.kinds.find(
+      (k) => k.id == this.state.kindEnter
+    ); 
+    console.log(kindObject)
+
+    var typeObject = this.state.types.find(
+      (t) => t.id == this.state.typeEnter
+    ); 
+ console.log(typeObject)   
+
+       e.preventDefault();
+
+    
+
+
+    const { name, description, genderEnter, 
+      kindEnter,typeEnter, colorEnter } = this.state;
+      const gender = genderObject;
+      const kind = kindObject;
+      const type = typeObject;
+      const color = colorObject;
+     
     if (name) {
       const id =
         Math.random().toString(36).substring(2) + Date.now().toString(36);
@@ -89,12 +118,24 @@ class AddProduct extends Component {
 
   handleChange = (e) =>
   { this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value)}
-    
-  render() {
-    const { name, description, gender ,kind,type, color } = this.state;
-    const { user } = this.props.context;
+   console.log(e.target.value)
+  }
 
+    handleColor = (ce) =>{
+   let getColor = [...this.state.colorEnter, ce.target.value ]
+  
+    if(this.state.colorEnter.findIndex((x) => x.id ===ce.target.value)!==-1){
+      getColor = getColor.filter((x) => x !== ce.target.value);
+   
+    }
+     this.setState({  colorEnter: getColor } )
+
+
+    }
+  render() {
+    const { name, description, gender ,kind ,type, color } = this.state;
+    const { user } = this.props.context;
+    
     return !(user && user.accessLevel < 1) ? (
       <Redirect to="/" />
     ) : (
@@ -153,19 +194,16 @@ class AddProduct extends Component {
               <div className=" ">
                 {this.state.genders.map((g) =><div className="mx-2">
                 <input
-                key={g}
+                key={g.id}
                 type="radio"
-                id="gender"
-                name="gender"
-                value={gender}
+                id={g.id}
+                name="genderEnter"
+                checked={gender}
+                value={g.id}
                 onChange={this.handleChange}/>{g.name}
+                </div>)}
                 </div>
-                     
-                )}
-            
-           
-                </div>
-               
+   
             </div>
 
             <div className="">
@@ -174,56 +212,62 @@ class AddProduct extends Component {
               <div className="">
                 <div className=" ">
                 {this.state.kinds.map(k =><div className="mx-2">
+                
                 <input
+               key={k.id}
                 type="radio"
-                id="kind"
-                value={k.name}
-                name="kind"
-                onChange={this.handleChange}/>{k.name}</div>)}
+                id={k.id}
+                value={k.id}
+                checked={kind}
+                name="kindEnter"
+                onChange={this.handleChange}/>{k.name}
+               
+                </div>)}
                 </div>
               </div>
             </div>
-
+ 
             <div className="">
               {/* <div className="product__details__option text-left"> */}
-              <label for="type" className="font-semibold ">
+              <label htmlFor="type" className="font-semibold ">
                 ประเภทสินค้า:
               </label>
               <div className="">
-              <select  onChange={this.handleChange}
+            
+               <select   
+               onChange={this.handleChange}
                   className="w-full h-10 border-2"
-                  name="type"
-                  id="type" value={type}>
-                    {this.state.types.map(t =><option value={t.name}>{t.name}</option>)}
-                  </select> 
-               <div>{type}</div>
-              
+                  name="typeEnter" value={type}
+                  >
+                    {this.state.types.map(t =>   
+                    <option id="typeEnter"  key={t.id}
+                    name="type" value={t.id}>{t.name}</option>
+               )}   </select> 
               </div>
             </div>
-
+         
             <div className="product__details__option font-semibold">
               <div className="product__details__option__color">
                 <span>Color:</span>
                 <br />
-                <div className=" " >
+                  
                   {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
-                {this.state.colors.map(c =>
-               
-                <label className="mx-2"  style={{backgroundColor : c.codeName}}
-               >
+               <div className=" " >
+             {this.state.colors.map(c =>
+                <label className="mx-2"  style={{backgroundColor : c.codeName}}> 
                        {/*  style={{backgroundColor : c.codeName, border: "solid red"
                        }}*/}
                   
                    {/* border: this.state.colors.map(c => c.id).includes(color.id)?"solid red": "" */}
-                <input
-                type="radio" 
-                id="color" 
-                name="color"
-                value={c} onChange={this.handleChange}/></label>
-               )}
-                </div>
-                    {/*  {this.state.colors.map(color => color.id).includes(color.id)} 
-              */}
+              <input key={c.id}
+                type="checkbox"  
+                id={c.id}
+                name="colorEnter"
+                value={c.id} onChange={this.handleColor}/>
+                </label>
+                )}
+             </div> 
+          
               </div>
             </div>
 
@@ -233,16 +277,17 @@ class AddProduct extends Component {
               </div>
             )}
             <div className="field is-clearfix">
-              <Link to="/Shop">
+           {/* <Link to="/Shop">  */}
+       
                 {" "}
                 <button
                   className="primary-btn flex justify-center"
                   type="submit"
-                  onClick={this.save}
+                  onClick={this.save} 
                 >
                   Submit
                 </button>
-              </Link>
+             {/* </Link>  */}
             </div>
           </div>
         </div>

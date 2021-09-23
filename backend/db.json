@@ -1,110 +1,122 @@
 {
   "genders": [
     {
-      "id": "style1",
+      "id": 300001,
       "name": "men"
     },
     {
-      "id": "style2",
+      "id": 300002,
       "name": "women"
     }
   ],
   "kinds": [
     {
-      "id": "kind1",
+      "id": 400001,
       "name": "shirt"
     },
     {
-      "id": "kind2",
+      "id": 400002,
       "name": "pants"
     },
     {
-      "id": "kind3",
+      "id": 400003,
       "name": "skirt"
     },
     {
-      "id": "kind4",
+      "id": 400004,
       "name": "cloth"
     }
   ],
   "types": [
     {
-      "id": "type1",
+      "id": 200001,
       "name": "plain silk"
     },
     {
-      "id": "type2",
+      "id": 200002,
       "name": "thai silk"
     },
     {
-      "id": "type3",
+      "id": 200003,
       "name": "three baskets of silk"
     },
     {
-      "id": "type4",
+      "id": 200004,
       "name": "plain cotton"
     },
     {
-      "id": "type5",
+      "id": 200005,
       "name": "cotton mudmee"
     },
     {
-      "id": "type6",
+      "id": 200006,
       "name": "natural dyed cotton"
     },
     {
-      "id": "type7",
+      "id": 200007,
       "name": "mud fermented cotton"
     }
   ],
   "colors": [
     {
-      "id": "red",
-      "codeName": "#EC5959"
+      "id": 100001,
+      "codeName": "#EC5959",
+      "colorName": "red"
     },
     {
-      "id": "orange",
-      "codeName": " #ECA059"
+      "id": 100002,
+      "codeName": " #ECA059",
+      "colorName": "orange"
     },
     {
-      "id": "yellow",
-      "codeName": "#F6E96C"
+      "id": 100003,
+      "codeName": "#F6E96C",
+      "colorName": "yellow"
     },
     {
-      "id": "green",
-      "codeName": " #ABEC59"
+      "id": 100004,
+      "codeName": " #ABEC59",
+      "colorName": "green"
     },
     {
-      "id": "sky",
-      "codeName": " #59ECEC"
+      "id": 100005,
+      "codeName": " #59ECEC",
+      "colorName": "sky"
     },
     {
-      "id": "blue",
-      "codeName": "#6C8AF6"
+      "id": 100006,
+      "codeName": "#6C8AF6",
+      "colorName": "blue"
     },
     {
-      "id": "purple",
-      "codeName": "#A359EC"
+      "id": 100007,
+      "codeName": "#A359EC",
+      "colorName": "purple"
     },
     {
-      "id": "pink",
-      "codeName": "#FF97FB"
+      "id": 100008,
+      "codeName": "#FF97FB",
+      "colorName": "pink"
     },
     {
-      "id": "brown",
-      "codeName": "#94573C"
+      "id": 100009,
+      "codeName": "#94573C",
+      "colorName": "brown"
     },
     {
-      "id": "black",
-      "codeName": "#000000"
+      "id": 100010,
+      "codeName": "#000000",
+      "colorName": "black"
     },
     {
-      "id": "gray",
-      "codeName": "#989898"
+      "id": 100011,
+      "codeName": "#989898",
+      "colorName": "gray"
     },
     {
-      "id": "white",
-      "codeName": "#FFFFFF"
+      "id": 100012,
+      "codeName": "#FFFFFF",
+      "colorName": "white"
     }
   ],
   "users": [
@@ -121,170 +133,38 @@
   ],
   "products": [
     {
-      "id": "hdmdu0t80yjkfqselfc",
-      "name": "shoes",
-      "stock": 10,
-      "price": 399.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
-    },
-    {
-      "id": "3dc7fiyzlfmkfqseqam",
-      "name": "bags",
-      "stock": 20,
-      "price": 299.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
-    },
-    {
-      "id": "aoe8wvdxvrkfqsew67",
-      "name": "shirts",
-      "stock": 15,
-      "price": 149.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
-    },
-    {
-      "id": "bmfrurdkswtkfqsf15j",
-      "name": "shorts",
-      "stock": 5,
-      "price": 109.99,
-      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
-      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
-    },
-    {
-      "id": "ql2vd6f8gjlkt8mgzyc",
-      "name": "dfda",
-      "description": "dfddfd",
-      "style": "",
-      "kind": "",
-      "color": ""
-    },
-    {
-      "id": "jbucw6p1cd9ktg58khh",
-      "name": "ffsffd",
-      "description": "fffgfggf",
-      "gender": "",
-      "kind": "",
-      "type": "plain cotton",
-      "color": ""
-    },
-    {
-      "id": "a55dimwyg6rktg5uy2o",
-      "name": "dqqqasaa",
-      "description": "qqqq",
-      "gender": "",
-      "kind": "",
-      "type": "cotton mudmee",
-      "color": ""
-    },
-    {
-      "id": "tbtix87wa1aktg5zmxd",
-      "name": "fsgfgs",
-      "description": "fwreew",
-      "gender": "",
-      "kind": "",
-      "type": "cotton mudmee",
-      "color": ""
-    },
-    {
-      "id": "aeik5yrgpiktg6m9te",
-      "name": "sddfdf",
-      "description": "dddd",
-      "gender": "women",
-      "kind": "",
-      "type": [],
-      "color": ""
-    },
-    {
-      "id": "km1poyjak2ktg6n6of",
-      "name": "wwqwe",
-      "description": "dasdasd",
-      "gender": "[object Object]",
-      "kind": "",
-      "type": "thai silk",
-      "color": ""
-    },
-    {
-      "id": "dd0eqs6lr3fktg766vc",
-      "name": "mmmm",
-      "description": "....,,,mmm",
-      "gender": "[object Object]",
-      "kind": "",
-      "type": "three baskets of silk",
-      "color": ""
-    },
-    {
-      "id": "sor1cc1oigbktg83ezi",
-      "name": "jjjj",
-      "description": "ftftttt",
-      "gender": "[object Object]",
-      "kind": "[object Object]",
-      "type": "",
-      "color": []
-    },
-    {
-      "id": "fjvgmwb51c8ktg85oor",
-      "name": "dsdf",
-      "description": "df",
-      "gender": "0,[object Object]",
-      "kind": "[object Object]",
-      "type": "",
-      "color": []
-    },
-    {
-      "id": "zkg9ryjs4mkth17onl",
-      "name": "dd",
-      "description": "dasd",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "cotton mudmee",
-      "color": "[object Object]"
-    },
-    {
-      "id": "4rtm1qx26bwkth1kxws",
-      "name": "fd",
-      "description": "dfadfa",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "plain cotton",
-      "color": "[object Object]"
-    },
-    {
-      "id": "cnnq0l7hylpkth1mcus",
-      "name": "ds",
-      "description": "1234",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "three baskets of silk",
-      "color": "[object Object]"
-    },
-    {
-      "id": "hu69nrsep5mkth1op5g",
-      "name": "hello",
-      "description": "ddddddd",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "three baskets of silk",
-      "color": "[object Object]"
-    },
-    {
-      "id": "64ylxxhcbi3kth1qv3n",
-      "name": "hello",
-      "description": "dddddss",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "three baskets of silk",
-      "color": "[object Object]"
-    },
-    {
-      "id": "k5y65e7tvvkth1zw0a",
-      "name": "hello",
-      "description": "ddd",
-      "gender": "[object Object]",
-      "kind": "shirt",
-      "type": "three baskets of silk",
-      "color": "[object Object]"
+      "id": "02e6mf1dor3cktxd6isr",
+      "name": "Hello",
+      "description": "Helloooo",
+      "gender": {
+        "id": 300002,
+        "name": "women"
+      },
+      "kind": {
+        "id": 400001,
+        "name": "shirt"
+      },
+      "type": {
+        "id": 200002,
+        "name": "thai silk"
+      },
+      "color": [
+        {
+          "id": 100001,
+          "codeName": "#EC5959",
+          "colorName": "red"
+        },
+        {
+          "id": 100002,
+          "codeName": " #ECA059",
+          "colorName": "orange"
+        },
+        {
+          "id": 100003,
+          "codeName": "#F6E96C",
+          "colorName": "yellow"
+        }
+      ]
     }
   ]
 }
