@@ -1,0 +1,13 @@
+version: "3"
+services:
+   frontend:
+       container_name: frontend_con
+       build: 
+          context: .
+       image: frontend
+       ports:
+          - "3001:80"
+networks:
+    default:
+       external:
+          name: network
