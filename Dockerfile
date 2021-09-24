@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN craco install
 COPY . ./
-RUN craco run build build
+RUN craco run build
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/build /usr/share/nginx/html
