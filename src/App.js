@@ -52,7 +52,7 @@ export default class App extends Component {
     localStorage.removeItem("cart");
     this.setState({ cart });
   };
-  async login(_email, _password)  {
+  /* async login  (_email, _password) {
     const response = await axios
       .post("http://localhost:3001/login", { email: _email, password: _password })
       .catch((err) => {
@@ -66,6 +66,28 @@ export default class App extends Component {
         token: accessToken,
         accessLevel: email === "admin@example.com" ? 0 : 1,
       };
+      this.setState({ user });
+      localStorage.setItem("user", JSON.stringify(user));
+      return true;
+    } else {
+      return false;
+    }
+  };*/
+  login = async (email, password) => {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/login`,
+      { email, password },
+    ).catch((res) => {
+      return { status: 401, message: 'Unauthorized' }
+    })
+
+    if(res.status === 200) {
+      const { email } = jwt_decode(res.data.accessToken)
+      const user = {
+        email,
+        token: res.data.accessToken,
+        accessLevel: email === 'admin@example.com' ? 0 : 1
+      }
 
       this.setState({ user });
       localStorage.setItem("user", JSON.stringify(user));
@@ -73,7 +95,8 @@ export default class App extends Component {
     } else {
       return false;
     }
-  };
+  }
+ 
   checkout = () => {
     if (!this.state.user) {
       this.routerRef.current.history.push("/login");
@@ -110,7 +133,7 @@ export default class App extends Component {
     console.log(products)
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
-   this.setState({ user, products: products.data, cart });
+    this.setState({ user, products: products.data, cart });
   }
 
   render() {

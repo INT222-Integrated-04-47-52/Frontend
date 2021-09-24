@@ -91,7 +91,7 @@ class Login extends Component {
         </div>
       </section>
     ) : (
-      <Redirect to="/products" />
+      <Redirect to="/Shop" />
     );
   }
 }

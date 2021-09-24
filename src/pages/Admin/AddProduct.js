@@ -65,7 +65,7 @@ const initState = {
             {/* <div className="product__details__pic__item pl-48"> */}
             <div className="">
                 {/* <img src={productImage}/> */}
-            </div>
+            </div> 
             <label class="text-left block font-semibold" >รูปภาพสินค้า: </label>
            {/*  <input type="file" class="w-1/2 md:w-80 mt-4 focus:outline-none"/> */}
         </div>
