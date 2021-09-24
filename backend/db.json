@@ -1,121 +1,121 @@
 {
   "genders": [
     {
-      "id": 300001,
-      "name": "men"
+      "genderId": 300001,
+      "genderName": "men"
     },
     {
-      "id": 300002,
-      "name": "women"
+      "genderId": 300002,
+      "genderName": "women"
     }
   ],
   "kinds": [
     {
-      "id": 400001,
-      "name": "shirt"
+      "kindId": 400001,
+      "kindName": "shirt"
     },
     {
-      "id": 400002,
-      "name": "pants"
+      "kindId": 400002,
+      "kindName": "pants"
     },
     {
-      "id": 400003,
-      "name": "skirt"
+      "kindId": 400003,
+      "kindName": "skirt"
     },
     {
-      "id": 400004,
-      "name": "cloth"
+      "kindId": 400004,
+      "kindName": "cloth"
     }
   ],
   "types": [
     {
-      "id": 200001,
-      "name": "plain silk"
+      "typeId": 200001,
+      "typeName": "plain silk"
     },
     {
-      "id": 200002,
-      "name": "thai silk"
+      "typeId": 200002,
+      "typeName": "thai silk"
     },
     {
-      "id": 200003,
-      "name": "three baskets of silk"
+      "typeId": 200003,
+      "typeName": "three baskets of silk"
     },
     {
-      "id": 200004,
-      "name": "plain cotton"
+      "typeId": 200004,
+      "typeName": "plain cotton"
     },
     {
-      "id": 200005,
-      "name": "cotton mudmee"
+      "typeId": 200005,
+      "typeName": "cotton mudmee"
     },
     {
-      "id": 200006,
-      "name": "natural dyed cotton"
+      "typeId": 200006,
+      "typeName": "natural dyed cotton"
     },
     {
-      "id": 200007,
-      "name": "mud fermented cotton"
+      "typeId": 200007,
+      "typeName": "mud fermented cotton"
     }
   ],
   "colors": [
     {
-      "id": 100001,
-      "codeName": "#EC5959",
+      "colorId": 100001,
+      "colorCode": "#EC5959",
       "colorName": "red"
     },
     {
-      "id": 100002,
-      "codeName": " #ECA059",
+      "colorId": 100002,
+      "colorCode": " #ECA059",
       "colorName": "orange"
     },
     {
-      "id": 100003,
-      "codeName": "#F6E96C",
+      "colorId": 100003,
+      "colorCode": "#F6E96C",
       "colorName": "yellow"
     },
     {
-      "id": 100004,
-      "codeName": " #ABEC59",
+      "colorId": 100004,
+      "colorCode": " #ABEC59",
       "colorName": "green"
     },
     {
-      "id": 100005,
-      "codeName": " #59ECEC",
+      "colorId": 100005,
+      "colorCode": " #59ECEC",
       "colorName": "sky"
     },
     {
-      "id": 100006,
-      "codeName": "#6C8AF6",
+      "colorId": 100006,
+      "colorCode": "#6C8AF6",
       "colorName": "blue"
     },
     {
-      "id": 100007,
-      "codeName": "#A359EC",
+      "colorId": 100007,
+      "colorCode": "#A359EC",
       "colorName": "purple"
     },
     {
-      "id": 100008,
-      "codeName": "#FF97FB",
+      "colorId": 100008,
+      "colorCode": "#FF97FB",
       "colorName": "pink"
     },
     {
-      "id": 100009,
-      "codeName": "#94573C",
+      "colorId": 100009,
+      "colorCode": "#94573C",
       "colorName": "brown"
     },
     {
-      "id": 100010,
-      "codeName": "#000000",
+      "colorId": 100010,
+      "colorCode": "#000000",
       "colorName": "black"
     },
     {
-      "id": 100011,
-      "codeName": "#989898",
+      "colorId": 100011,
+      "colorCode": "#989898",
       "colorName": "gray"
     },
     {
-      "id": 100012,
-      "codeName": "#FFFFFF",
+      "colorId": 100012,
+      "colorCode": "#FFFFFF",
       "colorName": "white"
     }
   ],
@@ -133,35 +133,35 @@
   ],
   "products": [
     {
-      "id": "02e6mf1dor3cktxd6isr",
-      "name": "Hello",
+      "productId": "02e6mf1dor3cktxd6isr",
+      "pname": "Hello",
       "description": "Helloooo",
       "gender": {
-        "id": 300002,
-        "name": "women"
+        "genderId": 300002,
+        "genderName": "women"
       },
       "kind": {
-        "id": 400001,
-        "name": "shirt"
+        "kindId": 400001,
+        "kindName": "shirt"
       },
       "type": {
-        "id": 200002,
-        "name": "thai silk"
+        "typeId": 200002,
+        "typeName": "thai silk"
       },
       "color": [
         {
-          "id": 100001,
-          "codeName": "#EC5959",
+          "colorId": 100001,
+          "colorCode": "#EC5959",
           "colorName": "red"
         },
         {
-          "id": 100002,
-          "codeName": " #ECA059",
+          "colorId": 100002,
+          "colorCode": " #ECA059",
           "colorName": "orange"
         },
         {
-          "id": 100003,
-          "codeName": "#F6E96C",
+          "colorId": 100003,
+          "colorCode": "#F6E96C",
           "colorName": "yellow"
         }
       ]

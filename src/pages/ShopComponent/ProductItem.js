@@ -1,13 +1,44 @@
+import axios from "axios";
 import React from "react";
 import image1 from "../../HTMLcomponents/img/productImage/19219152_1314937408575879_5257165121356038144_n.jpg"
 const ProductItem = props => {
   const { product } = props;
+
+  /*var handleRemove = product => {
+    const url = `http://localhost:3001/products/${product.id}`;
+
+    axios.delete(product.id)
+      .then(res => {
+        this.setState(previousState => {
+          return {
+            products: previousState.products.filter(p => p.id !== product.id)
+          };
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+ var removeProduct = (e, product) => {
+    e.preventDefault();
+
+    if (this.props.removeClick) {
+      this.removeClick(product);
+    }
+  };
+
+  
+  // ...
+
 {/*}
 function deleter(item){
     const data = product.filter(i => i.id !== item.id)
     this.setState({data})
   }
-*/}
+*/
+
+
   return (    
   <div className=" column is-half">
   <div className="box">
@@ -19,6 +50,7 @@ function deleter(item){
         </figure>
       </div>
       <div className="media-content  flex flex-col justify-start items-start">
+        <div>{product.id}</div>
         <div className="justify-left items-start"><b style={{ textTransform: "capitalize" }}>
          Name:  {product.name}{" "} 
           
@@ -70,8 +102,8 @@ function deleter(item){
             Add to Cart
           </button>
           <button className="button is-small bg-red-600 ml-4 text-black   
-          is-pulled-right" type="button"  >
-         {/*} onClick={() => handleRemove(product.id)}
+          is-pulled-right"  type="submit" onClick={e => this.removeProduct(e, product)} >
+         {/*} onClick={() => handleRemove(product.id) onClick={() => props.onRemove(product.id)}}
          onClick={this.deleter.bind(this, product)}*/}
         
             Remove

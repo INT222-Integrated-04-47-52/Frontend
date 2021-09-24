@@ -28,7 +28,10 @@ class AddProduct extends Component {
   }
 
   componentDidMount() {
-    
+    axios.get(`${process.env.REACT_APP_API_URL}/max-productId`).then(res=>
+      {
+        this.setState({ productId: res.data });
+      });
      axios.get(`${process.env.REACT_APP_API_URL}/genders`).then(res=>
     {
       this.setState({ genders: res.data });
@@ -82,9 +85,8 @@ class AddProduct extends Component {
       const color = colorObject;
      
     if (name) {
-      const id =
-        Math.random().toString(36).substring(2) + Date.now().toString(36);
-
+      const id = product.id + 1
+/*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
       await axios.post("http://localhost:3001/products", {
         id,
         name,

@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios';
 {/* ไม่ได้ใช้ */}
 const initState = {
-    name: "",
+    pname: "",
     description: ""
   };
   class AddProduct extends Component {
@@ -18,19 +18,19 @@ const initState = {
 
     save = async (e) => {
         e.preventDefault();
-        const { name, description } = this.state;
+        const { pname, description } = this.state;
     
-        if (name ) {
+        if (pname ) {
           const id = Math.random().toString(36).substring(2) + Date.now().toString(36);
     
           await axios.post(
             `${process.env.REACT_APP_API_URL}/products`,
-            { id, name,  description },
+            { id, pname,  description },
           )
     
           this.props.context.addProduct(
             {
-              name,
+              pname,
               description,
             },
             () => this.setState(initState)
@@ -50,7 +50,7 @@ const initState = {
 
   
   render() {
-    const { name,  description } = this.state;
+    const { pname,  description } = this.state;
     const { user } = this.props.context;
 
     return !(user && user.accessLevel < 1) ? (
@@ -78,7 +78,7 @@ const initState = {
             {/* <div className="product__details__option text-left"> */}
             <span className="font-semibold" >ชื่อสินค้า: </span><br />
             <input className="border p-2 w-full h-10" type="text"  name="name"
-                  value={name}
+                  value={pname}
                   onChange={this.handleChange}
                   required placeholder="ระบุชื่อสินค้า" />
             </div>

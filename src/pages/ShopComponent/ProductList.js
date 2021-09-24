@@ -3,7 +3,8 @@ import ProductItem from "../ShopComponent//ProductItem";
 import withContext from "../../withContext";
 
 const ProductList = props => {
-  const { products } = props.context;
+  const { products} = props.context;
+
 
   return (
     <div>
@@ -19,6 +20,7 @@ const ProductList = props => {
                 product={product}
                 key={index}
                 addToCart={props.context.addToCart}
+      
               />
             ))
           ) : (
@@ -32,6 +34,7 @@ const ProductList = props => {
       </div>
     </div>
   );
+
 };
 
 export default withContext(ProductList);
