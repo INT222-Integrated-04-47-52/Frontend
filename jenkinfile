@@ -20,13 +20,13 @@ pipeline {
 
         stage('git clone') {
             steps {
-                git branch: 'master',
-                    credentialsId: 'punthanatGit',
-                    url: 'https://github.com/punthanat/frontendTest.git'
+                git branch: 'main',
+                    credentialsId: '',
+                    url: 'https://github.com/INT222-Integrated-04-47-52/Frontend.git'
             }
         }
 
-        stage('(deploy) start contianer') {
+        stage('(deploy) start contianer') {เระ
             steps {
                 sh 'docker-compose up -d'
             }
