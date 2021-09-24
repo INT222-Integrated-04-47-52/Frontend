@@ -3,12 +3,20 @@ pipeline {
 
     stages {
 
-        stage('stop and remove container, image') {
+         stage('stop and remove container, image') {
             steps {
-                sh 'docker stop frontend'
-                sh 'docker rm frontend'
-                sh 'docker image rm frontend'
-                sh 'docker-compose --version'
+                script {
+                    def imageExists = sh(script: 'docker images -q frontend', returnStdout: true) == ""
+                    println imageExists
+
+                    if( !imageExists ){
+                           sh 'docker stop frontend'
+                           sh 'docker rm frontend'
+                           sh 'docker image rm frontend'
+                    }else {
+                        echo 'Skip this stage '
+                    }
+                }
             }
         }
 
@@ -21,12 +29,12 @@ pipeline {
         stage('git clone') {
             steps {
                 git branch: 'main',
-                    credentialsId: '',
+                    credentialsId: 'MKT_Jenkins',
                     url: 'https://github.com/INT222-Integrated-04-47-52/Frontend.git'
             }
         }
 
-        stage('(deploy) start contianer') {เระ
+        stage('(deploy) start contianer') {
             steps {
                 sh 'docker-compose up -d'
             }
