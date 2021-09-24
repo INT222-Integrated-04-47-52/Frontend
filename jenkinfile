@@ -10,9 +10,9 @@ pipeline {
                     println imageExists
 
                     if( !imageExists ){
-                           sh 'docker stop frontend'
-                           sh 'docker rm frontend'
-                           sh 'docker image rm frontend'
+                           sh 'docker stop frontend_con'
+                           sh 'docker rm frontend_con'
+                           sh 'docker image rm frontend_con'
                     }else {
                         echo 'Skip this stage '
                     }
