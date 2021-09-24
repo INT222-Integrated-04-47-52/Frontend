@@ -1,9 +1,9 @@
 FROM node:14.15.4-alpine3.12 as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN craco install
 COPY . ./
-RUN npm run build
+RUN craco run build build
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/build /usr/share/nginx/html
