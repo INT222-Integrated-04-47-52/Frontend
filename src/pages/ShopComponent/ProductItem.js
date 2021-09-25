@@ -1,9 +1,42 @@
 import axios from "axios";
 import React from "react";
 import image1 from "../../HTMLcomponents/img/productImage/19219152_1314937408575879_5257165121356038144_n.jpg"
+
 const ProductItem = props => {
   const { product } = props;
+console.log(product);
 
+
+// var deleteProduct = async (pid) => {
+//   try {
+//     await fetch(
+//       `${process.env.REACT_APP_API_URL}/delete` + pid /*"http://localhost:6001/"+"delete/"+productId*/,
+//       {
+//         method: "DELETE",
+//       }
+//     );
+//     this.icecreams = this.icecreams.filter((i) => product.productId !== pid);
+//     /*  this.icecreams = this.icecreams.filter(icecream => {
+//       console.log("ending");
+ 
+   
+//     })*/
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+ /* uploadImg(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    this.image = { url: "" };
+    reader.onload = (e) => {
+      this.image.url = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    this.imageFile = file;
+    this.image.name = file.name;
+  }*/ 
   /*var handleRemove = product => {
     const url = `http://localhost:3001/products/${product.id}`;
 
@@ -36,6 +69,11 @@ function deleter(item){
     const data = product.filter(i => i.id !== item.id)
     this.setState({data})
   }
+  delete = async (pid) => {
+	pid.preventDefault();
+	axios.delete(`${process.env.REACT_APP_API_URL}/delete` + pid)
+	.then(res => console.log(res.data));
+}
 */
 
 
@@ -45,11 +83,11 @@ function deleter(item){
     <div className="media">
       <div className="media-left">
         <figure className="image w-36">
-        <img className="product__item__pic set-bg " src={product.image}  alt={product.image}/>
+        <img className="product__item__pic set-bg " src={`http://13.76.45.147:5000/image/${product.image}`}  alt={product.image}/>
         </figure>
       </div>
       <div className="media-content  flex flex-col justify-start items-start">
-        <div>{product.id}</div>
+        <div>{product.productId}</div>
         <div className="justify-left items-start"><b style={{ textTransform: "capitalize" }}>
          Name: {product.name}{" "} 
           
@@ -101,7 +139,8 @@ function deleter(item){
             Add to Cart
           </button>
           <button className="button is-small bg-red-600 ml-4 text-black   
-          is-pulled-right"  type="submit" onClick={e => this.removeProduct(e, product)} >
+          is-pulled-right"  type="submit" /*onClick= {this.deleteProduct}*/>
+            {/*{e => this.removeProduct(e, product)} */}
          {/*} onClick={() => handleRemove(product.id) onClick={() => props.onRemove(product.id)}}
          onClick={this.deleter.bind(this, product)}*/}
         

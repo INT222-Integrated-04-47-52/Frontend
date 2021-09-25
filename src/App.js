@@ -73,6 +73,7 @@ export default class App extends Component {
       return false;
     }
   };*/
+  /* 
   login = async (email, password) => {
     const res = await axios.post(
       `http://localhost:3001/login`,
@@ -96,13 +97,13 @@ export default class App extends Component {
       return false;
     }
   }
- 
+ */
   checkout = () => {
-    if (!this.state.user) {
+ /*  if (!this.state.user) {
       this.routerRef.current.history.push("/login");
       return;
     }
-
+*/  
     const cart = this.state.cart;
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
@@ -114,11 +115,11 @@ export default class App extends Component {
     this.setState({ products });
     this.clearCart();
   };
-  logout = (e) => {
+ /* logout = (e) => {
     e.preventDefault();
     this.setState({ user: null });
     localStorage.removeItem("user");
-  };
+  };*/ 
   addProduct = (product, callback) => {
     let products = this.state.products.slice();
     products.push(product);
@@ -164,12 +165,16 @@ export default class App extends Component {
                 }`} > 
 <NavBar /> 
 <div className="absolute justify-center items-center my-5 right-0 mr-8 mb-3 "> 
-                {this.state.user && this.state.user.accessLevel < 1 && (
-                 <NavLink to="/AddProduct"   className="main-nav "
+          {/*   {this.state.user && this.state.user.accessLevel < 1 && (
+                  <NavLink to="/AddProduct"   className="main-nav "
                   activeClassName="main-nav-active ">
                     Add Product
                   </NavLink>
-                )}
+          )}*/ }
+                 <NavLink to="/AddProduct" className="main-nav "
+                  activeClassName="main-nav-active ">
+                    Add Product
+                  </NavLink> 
                 <NavLink to="/Cart" className="main-nav my-auto"
                   activeClassName="main-nav-active">
                   Cart

@@ -27,9 +27,7 @@ class AddProduct extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/max-productId`).then((res) => {
-      this.setState({ productId: res.data });
-    });
+  
 
     axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
       this.setState({ genders: res.data });
@@ -47,8 +45,13 @@ class AddProduct extends Component {
 
   save = async (e) => {
     e.preventDefault();
+
+    const productId = await axios.get(
+      `${process.env.REACT_APP_API_URL}/max-productId`
+    );
+
     const hasMaxColorsId = await axios.get(
-      `${process.env.REACT_APP_API_URL}//max-productHasColorsId`
+      `${process.env.REACT_APP_API_URL}/max-productHasColorsId`
     );
     var colorIds = this.state.productHasColors.map((g) => parseInt(g));
     var colorObject = colorIds.map((im) =>
@@ -81,41 +84,74 @@ class AddProduct extends Component {
     const gender = genderObject;
     const kind = kindObject;
     const type = typeObject;
-    const color = colorObject;
+    const colors = colorObject;
 
     if (name) {
-      const id = this.state.productId.data + 1;
-      const hasColorsId = hasMaxColorsId.data + 1;
+      const id = productId.data + 1;
+      var hasColorsId = hasMaxColorsId.data + 1;
       console.log(hasColorsId);
-      const productHasColors = { hasColorsId, color };
+      const HasColor = [];
+      for (var loopColors of colors) {
+        
+        const hasColorsEach = {hasColorsId,colors:loopColors}
+        HasColor.push(hasColorsEach)
+        hasColorsId+=hasColorsId+1;
+        console.log(loopColors); 
+     }
+      // const HasColors = {hasColorsEach };
+      const productHasColors = HasColor
       console.log(productHasColors);
-      let productJson ={ id,
-        name,
-        description,
-        gender,
-        kind,
-        type,
-        productHasColors}
+      let imgName = this.state.imageName;
+      console.log(imgName);
+      let productJson ={ 
+        productId: id,
+        name: name,
+        image: imgName,
+        description:description,
+        gender:gender,
+        kind:kind,
+        type:type,
+        productHasColors: productHasColors
+      }
+   
       let file = this.state.file;
+     
       console.log(file)
       let formData = new FormData();
-      formData.append("id",id)
-      formData.append("name",name)
-      formData.append("description",description)
-      formData.append("gender", gender)
-      formData.append("kind",kind)
-      formData.append("type",type)
-      formData.append("productHasColors",productHasColors)
-      formData.append("image", file);
-      
-      axios({
+      var blob = new Blob([JSON.stringify(productJson)],{
+        type: "application/json",
+      });
+      console.log(productJson);
+       formData.append("image", file); 
+        formData.append("newProduct",blob);
+    {/* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */}
+        axios({
         url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
         method: "POST",
         data: formData
-      }).then((res)=>{
+        
+      }).then(res=>res)
+       .catch(err=>err)
+       {/* 
+      formData.append("productId",id)
+      formData.append("name",name)
+      formData.append("image","imagee")
+      formData.append("description",description)
+      formData.append("kind",kind)
+      formData.append("gender", gender)
+      formData.append("type",type)
+      formData.append("productHasColors",productHasColors)
+      */}
+      for (var value of formData.values()) {
+        console.log(value); 
+     }
+       
+     
+    
 
-      },   (err) => {}
-        );
+      {/*  for (var pair of formData.entries()) {
+       console.log(pair[0]+ ', ' + pair[1]+ pair[2]+ pair[3]+ pair[4]+ pair[5]); 
+    }*/}
     /*  const blob = await new Blob([productJson], {
         type: "application/json",
       });
@@ -138,10 +174,12 @@ class AddProduct extends Component {
         method: "POST",
         data: formData,
       });*/
-      /*http://13.76.45.147:5000/addProduct/image */
+      /* http://13.76.45.147:5000/addProduct/image */
+      const image = "image"
       this.props.context.addProduct(
-        {
+        { productId,
           name,
+          image,
           description,
           gender,
           kind,
@@ -166,9 +204,16 @@ class AddProduct extends Component {
   };
   handleFile(e) {
     let file = e.target.files[0];
-    this.setState({ file: file });
+    const reader = new FileReader();
+      reader.onload = (event) => {
+        this.setState({ imageUrl: event.target.result});
+ 
+      };
+    reader.readAsDataURL(file);
+    this.setState({ file: file ,imageName: file.name});
+
     console.log(e.target.files, "file");
-    console.log(e.target.files[0], "file");
+    console.log(e.target.files[0].name);
   }
   handleColor = (ce) => {
     let getColor = [...this.state.productHasColors, ce.target.value];
@@ -198,16 +243,18 @@ class AddProduct extends Component {
               <label class="text-left block font-semibold">
                 รูปภาพสินค้า:{" "}
               </label>
-
-              <input
+ <img class="my-5 w-48 md:w-96" alt="" src={this.state.imageUrl} />
+             <input
                 type="file"
                 class="w-1/2 md:w-80 mt-4 focus:outline-none"
-                name="file"
-                id="image"
+                name="file" 
+                id="image" multiple
                 onChange={(e) => {
                   this.handleFile(e);
                 }}
               />
+            
+           
             </div>
           </div>
 
