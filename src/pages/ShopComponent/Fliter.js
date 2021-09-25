@@ -6,6 +6,7 @@ import Collapse from "react-bootstrap/Collapse";
 function Fliter() {
   const [open, setOpen] = useState(false);
   return (
+ 
     <div className="col-lg-3">
       <div className="shop__sidebar">
         <div className="shop__sidebar__search">
@@ -20,7 +21,7 @@ function Fliter() {
           <div className="accordion" id="accordionExample">
             <div id="example-collapse-text"></div>
 
-            <div className="card">
+            <div className="">
               <div className="card-heading">
                 <a
                   onClick={() => setOpen(!open)}
@@ -50,7 +51,7 @@ function Fliter() {
                 </div>
               </Collapse>
             </div>
-            <div className="card">
+            <div className="">
               <div className="card-heading">
                 <a onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
@@ -81,6 +82,7 @@ function Fliter() {
         </div>
       </div>
     </div>
+  
   );
 }
 export default Fliter;

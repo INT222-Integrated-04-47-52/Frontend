@@ -45,26 +45,25 @@ function deleter(item){
     <div className="media">
       <div className="media-left">
         <figure className="image w-36">
-        <img className="product__item__pic set-bg " src={image1}  alt={product.name}
-          />
+        <img className="product__item__pic set-bg " src={product.image}  alt={product.image}/>
         </figure>
       </div>
       <div className="media-content  flex flex-col justify-start items-start">
         <div>{product.id}</div>
         <div className="justify-left items-start"><b style={{ textTransform: "capitalize" }}>
-         Name:  {product.name}{" "} 
+         Name: {product.name}{" "} 
           
         </b></div>
         <div>Description:  {product.description}</div>
-        <div>Gender: {product.gender.name}</div>
-        <div>Kind: {product.kind.name}</div>   
-        <div>Type: {product.type.name}</div>
+        <div>Gender: {product.gender.genderName}</div>
+        <div>Kind: {product.kind.kindName}</div>   
+        <div>Type: {product.type.typeName}</div>
         <div className="product__details__option font-semibold">
          <div className="product__details__option__color">
-        <div className="flex flex-row justify-left ">
-          {product.color.map(c =>
-         <div key={c.id}>
-         <label className="mx-2"  style={{backgroundColor : c.codeName}}> </label>
+       <div className="flex flex-row justify-left ">
+          {product.productHasColors.map(c =>
+         <div key={c.colors.colorId}>
+         <label className="mx-2"  style={{backgroundColor : c.colors.colorCode}}> </label>
           </div>
        )}
        </div>

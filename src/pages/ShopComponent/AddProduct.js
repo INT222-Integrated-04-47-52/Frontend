@@ -5,20 +5,19 @@ import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-
 const initState = {
- 
+  file:null,
   name: "",
   description: "",
-  genderEnter:"",
+  genderEnter: "",
   kindEnter: "",
-  typeEnter:null,
-  colorEnter:[],
- 
-  colors:[],
-  types:[],
-  kinds:[],
-  genders:[]
+  typeEnter: null,
+  productHasColors: [],
+  productId: null,
+  colors: [],
+  types: [],
+  kinds: [],
+  genders: [],
 };
 
 class AddProduct extends Component {
@@ -28,75 +27,118 @@ class AddProduct extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/max-productId`).then(res=>
-      {
-        this.setState({ productId: res.data });
-      });
-     axios.get(`${process.env.REACT_APP_API_URL}/genders`).then(res=>
-    {
+    axios.get(`${process.env.REACT_APP_API_URL}/max-productId`).then((res) => {
+      this.setState({ productId: res.data });
+    });
+
+    axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
       this.setState({ genders: res.data });
     });
-     axios.get(`${process.env.REACT_APP_API_URL}/kinds`).then(res=>
-    {
+    axios.get(`${process.env.REACT_APP_API_URL}/allKinds`).then((res) => {
       this.setState({ kinds: res.data });
     });
-     axios.get(`${process.env.REACT_APP_API_URL}/types`).then(res=>
-    {
+    axios.get(`${process.env.REACT_APP_API_URL}/allTypes`).then((res) => {
       this.setState({ types: res.data });
     });
-   axios.get(`${process.env.REACT_APP_API_URL}/colors`).then(res=>
-    {
+    axios.get(`${process.env.REACT_APP_API_URL}/allColors`).then((res) => {
       this.setState({ colors: res.data });
     });
-    
-}
+  }
 
   save = async (e) => {
-    var colorId = this.state.colorEnter.map((g) => parseInt(g));
-    var colorObject = colorId.map((im) => this.state.colors.find((cf)=> cf.id === im))
+    e.preventDefault();
+    const hasMaxColorsId = await axios.get(
+      `${process.env.REACT_APP_API_URL}//max-productHasColorsId`
+    );
+    var colorIds = this.state.productHasColors.map((g) => parseInt(g));
+    var colorObject = colorIds.map((im) =>
+      this.state.colors.find((cf) => cf.colorId === im)
+    );
     console.log(colorObject);
-    
-  
+
     var genderObject = this.state.genders.find(
-      (g) => g.id == this.state.genderEnter
-    ); 
-    console.log(genderObject)
+      (g) => g.genderId == this.state.genderEnter
+    );
+    console.log(genderObject);
 
     var kindObject = this.state.kinds.find(
-      (k) => k.id == this.state.kindEnter
-    ); 
-    console.log(kindObject)
+      (k) => k.kindId == this.state.kindEnter
+    );
+    console.log(kindObject);
 
     var typeObject = this.state.types.find(
-      (t) => t.id == this.state.typeEnter
-    ); 
- console.log(typeObject)   
+      (t) => t.typeId == this.state.typeEnter
+    );
+    console.log(typeObject);
 
-       e.preventDefault();
+    e.preventDefault();
+    console.log(this.state.genders);
 
-    
+    /*, genderEnter, 
+      kindEnter,typeEnter, productHasColors */
 
+    const { name, description } = this.state;
+    const gender = genderObject;
+    const kind = kindObject;
+    const type = typeObject;
+    const color = colorObject;
 
-    const { name, description, genderEnter, 
-      kindEnter,typeEnter, colorEnter } = this.state;
-      const gender = genderObject;
-      const kind = kindObject;
-      const type = typeObject;
-      const color = colorObject;
-     
     if (name) {
-      const id = product.id + 1
-/*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
-      await axios.post("http://localhost:3001/products", {
-        id,
+      const id = this.state.productId.data + 1;
+      const hasColorsId = hasMaxColorsId.data + 1;
+      console.log(hasColorsId);
+      const productHasColors = { hasColorsId, color };
+      console.log(productHasColors);
+      let productJson ={ id,
         name,
         description,
         gender,
         kind,
         type,
-        color
-      });
+        productHasColors}
+      let file = this.state.file;
+      console.log(file)
+      let formData = new FormData();
+      formData.append("id",id)
+      formData.append("name",name)
+      formData.append("description",description)
+      formData.append("gender", gender)
+      formData.append("kind",kind)
+      formData.append("type",type)
+      formData.append("productHasColors",productHasColors)
+      formData.append("image", file);
+      
+      axios({
+        url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
+        method: "POST",
+        data: formData
+      }).then((res)=>{
 
+      },   (err) => {}
+        );
+    /*  const blob = await new Blob([productJson], {
+        type: "application/json",
+      });
+      let formData = new formData();
+      formData.append("image", file, file.name);
+      await formData.append("newProduct", blob);
+      await axios
+        .post(`${process.env.REACT_APP_API_URL}/addProduct/image`, {
+          data: formData,
+        })
+        .then(
+        (res) => { },
+          (err) => { }
+        ); */
+       
+ /*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
+
+    /*   await axios({
+        url: `${process.env.REACT_APP_API_URL}/allProducts`,
+        method: "POST",
+        data: formData,
+      });*/
+      /*http://13.76.45.147:5000/addProduct/image */
       this.props.context.addProduct(
         {
           name,
@@ -104,7 +146,7 @@ class AddProduct extends Component {
           gender,
           kind,
           type,
-          color
+          productHasColors,
         },
         () => this.setState(initState)
       );
@@ -118,26 +160,31 @@ class AddProduct extends Component {
     }
   };
 
-  handleChange = (e) =>
-  { this.setState({ [e.target.name]: e.target.value });
-   console.log(e.target.value)
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.value);
+  };
+  handleFile(e) {
+    let file = e.target.files[0];
+    this.setState({ file: file });
+    console.log(e.target.files, "file");
+    console.log(e.target.files[0], "file");
   }
+  handleColor = (ce) => {
+    let getColor = [...this.state.productHasColors, ce.target.value];
 
-    handleColor = (ce) =>{
-   let getColor = [...this.state.colorEnter, ce.target.value ]
-  
-    if(this.state.colorEnter.findIndex((x) => x.id ===ce.target.value)!==-1){
+    if (
+      this.state.productHasColors.findIndex((x) => x.id === ce.target.value) !==
+      -1
+    ) {
       getColor = getColor.filter((x) => x !== ce.target.value);
-   
     }
-     this.setState({  colorEnter: getColor } )
-
-
-    }
+    this.setState({ productHasColors: getColor });
+  };
   render() {
-    const { name, description, gender ,kind ,type, color } = this.state;
+    const { name, description, gender, kind, type, color } = this.state;
     const { user } = this.props.context;
-    
+
     return !(user && user.accessLevel < 1) ? (
       <Redirect to="/" />
     ) : (
@@ -151,11 +198,18 @@ class AddProduct extends Component {
               <label class="text-left block font-semibold">
                 รูปภาพสินค้า:{" "}
               </label>
-  
-             <input type="file" class="w-1/2 md:w-80 mt-4 focus:outline-none" id="image" onChange={this.handleChange} multiple />
+
+              <input
+                type="file"
+                class="w-1/2 md:w-80 mt-4 focus:outline-none"
+                name="file"
+                id="image"
+                onChange={(e) => {
+                  this.handleFile(e);
+                }}
+              />
             </div>
           </div>
-        
 
           {/* <div className="product__details__text  pl-72 font-semibold"> */}
           <div className="text-left space-y-4">
@@ -163,7 +217,7 @@ class AddProduct extends Component {
               {/* <div className="product__details__option text-left"> */}
               <span className="font-semibold">ชื่อสินค้า: </span>
               <br />
-            
+
               <input
                 className="border p-2 w-full h-10"
                 type="text"
@@ -194,18 +248,21 @@ class AddProduct extends Component {
               {/* <div className="product__details__option text-left"> */}
               <span className="font-semibold">สไตล์: </span>
               <div className=" ">
-                {this.state.genders.map((g) =><div className="mx-2">
-                <input
-                key={g.id}
-                type="radio"
-                id={g.id}
-                name="genderEnter"
-                checked={gender}
-                value={g.id}
-                onChange={this.handleChange}/>{g.name}
-                </div>)}
-                </div>
-   
+                {this.state.genders.map((g) => (
+                  <div className="mx-2">
+                    <input
+                      key={g.genderId}
+                      type="radio"
+                      id={g.genderId}
+                      name="genderEnter"
+                      checked={gender}
+                      value={g.genderId}
+                      onChange={this.handleChange}
+                    />
+                    {g.genderName}
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="">
@@ -213,63 +270,77 @@ class AddProduct extends Component {
               <span className="font-semibold">ชนิดสินค้า: </span>
               <div className="">
                 <div className=" ">
-                {this.state.kinds.map(k =><div className="mx-2">
-                
-                <input
-               key={k.id}
-                type="radio"
-                id={k.id}
-                value={k.id}
-                checked={kind}
-                name="kindEnter"
-                onChange={this.handleChange}/>{k.name}
-               
-                </div>)}
+                  {this.state.kinds.map((k) => (
+                    <div className="mx-2">
+                      <input
+                        key={k.kindId}
+                        type="radio"
+                        id={k.kindId}
+                        value={k.kindId}
+                        checked={kind}
+                        name="kindEnter"
+                        onChange={this.handleChange}
+                      />
+                      {k.kindName}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
- 
+
             <div className="">
               {/* <div className="product__details__option text-left"> */}
               <label htmlFor="type" className="font-semibold ">
                 ประเภทสินค้า:
               </label>
               <div className="">
-            
-               <select   
-               onChange={this.handleChange}
+                <select
+                  onChange={this.handleChange}
                   className="w-full h-10 border-2"
-                  name="typeEnter" value={type}
-                  >
-                    {this.state.types.map(t =>   
-                    <option id="typeEnter"  key={t.id}
-                    name="type" value={t.id}>{t.name}</option>
-               )}   </select> 
+                  name="typeEnter"
+                  value={type}
+                >
+                  {this.state.types.map((t) => (
+                    <option
+                      id="typeEnter"
+                      key={t.typeId}
+                      name="type"
+                      value={t.typeId}
+                    >
+                      {t.typeName}
+                    </option>
+                  ))}{" "}
+                </select>
               </div>
             </div>
-         
+
             <div className="product__details__option font-semibold">
               <div className="product__details__option__color">
                 <span>Color:</span>
                 <br />
-                  
-                  {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
-               <div className=" " >
-             {this.state.colors.map(c =>
-                <label className="mx-2"  style={{backgroundColor : c.codeName}}> 
-                       {/*  style={{backgroundColor : c.codeName, border: "solid red"
+
+                {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
+                <div className=" ">
+                  {this.state.colors.map((c) => (
+                    <label
+                      className="mx-2"
+                      style={{ backgroundColor: c.colorCode }}
+                    >
+                      {/*  style={{backgroundColor : c.codeName, border: "solid red"
                        }}*/}
-                  
-                   {/* border: this.state.colors.map(c => c.id).includes(color.id)?"solid red": "" */}
-              <input key={c.id}
-                type="checkbox"  
-                id={c.id}
-                name="colorEnter"
-                value={c.id} onChange={this.handleColor}/>
-                </label>
-                )}
-             </div> 
-          
+
+                      {/* border: this.state.colors.map(c => c.id).includes(color.id)?"solid red": "" */}
+                      <input
+                        key={c.colorId}
+                        type="checkbox"
+                        id={c.colorId}
+                        name="productHasColors"
+                        value={c.colorId}
+                        onChange={this.handleColor}
+                      />
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -279,17 +350,15 @@ class AddProduct extends Component {
               </div>
             )}
             <div className="field is-clearfix">
-           {/* <Link to="/Shop">  */}
-       
-                {" "}
-                <button
-                  className="primary-btn flex justify-center"
-                  type="submit"
-                  onClick={this.save} 
-                >
-                  Submit
-                </button>
-             {/* </Link>  */}
+              {/* <Link to="/Shop">  */}{" "}
+              <button
+                className="primary-btn flex justify-center"
+                type="submit"
+                onClick={this.save}
+              >
+                Submit
+              </button>
+              {/* </Link>  */}
             </div>
           </div>
         </div>
