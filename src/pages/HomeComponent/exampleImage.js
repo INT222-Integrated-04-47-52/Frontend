@@ -7,7 +7,7 @@ import img6 from '../../HTMLcomponents/img/instagram/instagram-5.jpg'
 import img1 from '../../HTMLcomponents/img/instagram/instagram-6.jpg'
 
 
-function exampleImage(){
+function ExampleImage(){
     return( 
 <section className="instagram spad">
         <div className="container">
@@ -36,5 +36,5 @@ function exampleImage(){
     </section>
         );
     }
-    export default exampleImage;
+    export default ExampleImage;
     

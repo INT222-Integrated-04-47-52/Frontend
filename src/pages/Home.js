@@ -7,7 +7,7 @@ function Home(){
   return( 
 <div><Banner/>
 <Collection/>
-<ExampleImage />
+<ExampleImage/>
 </div>
 
     );
