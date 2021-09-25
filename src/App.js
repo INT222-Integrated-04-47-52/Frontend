@@ -186,8 +186,8 @@ export default class App extends Component {
                   </span>
                 </NavLink>
                
-        
-                {!this.state.user ? (
+             
+                {/* {!this.state.user ? (
                   <NavLink to="/LogIn" className="main-nav my-auto"
                   activeClassName="main-nav-active">
                     Log In
@@ -197,7 +197,7 @@ export default class App extends Component {
                   activeClassName="main-nav-active">
                     Logout
                   </NavLink>
-                )}
+                )} */}
             
     
            </div>

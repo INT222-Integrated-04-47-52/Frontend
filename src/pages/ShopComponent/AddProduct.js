@@ -1,5 +1,5 @@
 import "../../HTMLcomponents/cssComponent/decorate.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";

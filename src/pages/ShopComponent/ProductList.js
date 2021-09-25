@@ -1,20 +1,21 @@
 import React from "react";
 import ProductItem from "../ShopComponent//ProductItem";
 import withContext from "../../withContext";
-import axios from "axios";
+// import axios from "axios";
+// const  onPostDeleteHandler = (e,id) = >{
+//   e.stopPropagation();
+//   if(window.confirm('R U Sure?')){
+//     axios.delete(`${process.env.REACT_APP_API_URL}/delete/${id}`)
 
+//   }.then(response=> {
+//     this.getPosts();
+//   })
+
+// }
 const ProductList = props => {
   const { products} = props.context;
- {/*const  onPostDeleteHandler = (e,id) = >{
-    e.stopPropagation();
-    if(window.confirm('R U Sure?')){
-      axios.delete(`${process.env.REACT_APP_API_URL}/delete/${id}`)
 
-    }.them(response=> {
-      this.getPosts();
-    })
 
-  }*/}
 
   return (
     <div>

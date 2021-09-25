@@ -8,8 +8,8 @@ const Cart = props => {
   const cartKeys = Object.keys(cart || {});
   return (
     <div>
-      <div className="hero is-primary">
-        <div className="hero-body container">
+      <div className="hero is-primary bg-black">
+        <div className="hero-body container ">
           <h4 className="title">My Cart</h4>
         </div>
       </div>
