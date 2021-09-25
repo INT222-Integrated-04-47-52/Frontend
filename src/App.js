@@ -75,7 +75,7 @@ export default class App extends Component {
   };*/
   login = async (email, password) => {
     const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/login`,
+      `http://localhost:3001/login`,
       { email, password },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
@@ -129,7 +129,7 @@ export default class App extends Component {
     let user = localStorage.getItem("user");
     let cart = localStorage.getItem("cart");
 
-    const products = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
+    const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
     console.log(products)
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
