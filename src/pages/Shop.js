@@ -1,5 +1,5 @@
 import React from 'react';
-import Fliter from './ShopComponent/Fliter';
+import Fliter from './ShopComponent/FIlter';
 import ProductList from './ShopComponent/ProductList';
 
 function Shop(){

@@ -14,9 +14,6 @@ import withContext from "../../withContext";
 // }
 const ProductList = props => {
   const { products} = props.context;
-
-
-
   return (
     <div>
       <div className="hero is-primary">

@@ -1,5 +1,5 @@
 import footerLogo from "../HTMLcomponents/img/footer-logo.jpg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="footer" style={{ backgroundColor: "#040506" }}>

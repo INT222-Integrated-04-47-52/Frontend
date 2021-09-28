@@ -4,11 +4,11 @@ import React from 'react';
 import Pin from "../HTMLcomponents/img/PinNookNooch/Pin.jpg";
 import Nook from "../HTMLcomponents/img/PinNookNooch/Nook.jpg";
 import Nooch from "../HTMLcomponents/img/PinNookNooch/Nooch.JPG";
-const mystyle = {
-    paddingTop:"20px",
-    color: "black",
-    fontWeight: "bold"
-  };
+// const mystyle = {
+//     paddingTop:"20px",
+//     color: "black",
+//     fontWeight: "bold"
+//   };
 function Contacts(){
   return( 
   

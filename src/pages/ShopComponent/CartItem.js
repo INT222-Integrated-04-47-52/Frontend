@@ -5,7 +5,7 @@ const CartItem = props => {
   const { product, amount } = cartItem;
   return (
     <div className=" column is-half">
-      <div className="box h-32">
+      <div className="box h-48">
         <div className="media">
           <div className="media-left">
             <figure className="image is-64x64">
@@ -17,7 +17,7 @@ const CartItem = props => {
         */}
             </figure>
           </div>
-          <div className="media-content">
+          <div className="media-content ">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
               <span className="tag is-primary bg-black"> <small className="bg-black">{`${amount} in cart`}</small></span>
@@ -25,7 +25,7 @@ const CartItem = props => {
             <div>{product.description}</div>
             <div className="product__details__option font-semibold">
          <div className="product__details__option__color">
-       <div className="flex flex-row justify-left ">
+         <div className="flex flex-row justify-left ">
           {product.productHasColors.map(c =>
          <div key={c.colors.colorId}>
          <label className="mx-2"  style={{backgroundColor : c.colors.colorCode}}> </label>

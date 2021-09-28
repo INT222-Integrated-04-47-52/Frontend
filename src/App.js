@@ -4,7 +4,7 @@ import Shop from "./pages/Shop";
 import Contacts from "./pages/Contacts";
 import Footer from "./pages/Footer";
 import React, { Component } from "react";
-import Navbar from "./pages/NavBar";
+// import Navbar from "./pages/NavBar";
 import "./App.css";
 import Tailor from "./pages/ShopComponent/Tailor";
 import AddProduct from "./pages/ShopComponent/AddProduct";
@@ -13,7 +13,7 @@ import Cart from "./pages/ShopComponent/Cart";
 import Login from "./pages/ShopComponent/Login";
 import ProductList from "./pages/ShopComponent/ProductList";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 import Context from "./Context";
 import NavBar from "./pages/NavBar";
 export default class App extends Component {

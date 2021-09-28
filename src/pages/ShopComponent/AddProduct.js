@@ -60,17 +60,17 @@ class AddProduct extends Component {
     console.log(colorObject);
 
     var genderObject = this.state.genders.find(
-      (g) => g.genderId == this.state.genderEnter
+      (g) => g.genderId === this.state.genderEnter
     );
     console.log(genderObject);
 
     var kindObject = this.state.kinds.find(
-      (k) => k.kindId == this.state.kindEnter
+      (k) => k.kindId === this.state.kindEnter
     );
     console.log(kindObject);
 
     var typeObject = this.state.types.find(
-      (t) => t.typeId == this.state.typeEnter
+      (t) => t.typeId === this.state.typeEnter
     );
     console.log(typeObject);
 
@@ -124,7 +124,7 @@ class AddProduct extends Component {
       console.log(productJson);
        formData.append("image", file); 
         formData.append("newProduct",blob);
-    {/* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */}
+    /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
         axios({
         url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
         method: "POST",
@@ -132,7 +132,7 @@ class AddProduct extends Component {
         
       }).then(res=>res)
        .catch(err=>err)
-       {/* 
+       /* 
       formData.append("productId",id)
       formData.append("name",name)
       formData.append("image","imagee")
@@ -141,7 +141,7 @@ class AddProduct extends Component {
       formData.append("gender", gender)
       formData.append("type",type)
       formData.append("productHasColors",productHasColors)
-      */}
+      */
       for (var value of formData.values()) {
         console.log(value); 
      }
@@ -149,9 +149,9 @@ class AddProduct extends Component {
      
     
 
-      {/*  for (var pair of formData.entries()) {
+      /*  for (var pair of formData.entries()) {
        console.log(pair[0]+ ', ' + pair[1]+ pair[2]+ pair[3]+ pair[4]+ pair[5]); 
-    }*/}
+    }*/
     /*  const blob = await new Blob([productJson], {
         type: "application/json",
       });
@@ -227,7 +227,7 @@ class AddProduct extends Component {
     this.setState({ productHasColors: getColor });
   };
   render() {
-    const { name, description, gender, kind, type, color } = this.state;
+    const { name, description, gender, kind, type } = this.state;
     const { user } = this.props.context;
 
     return !(user && user.accessLevel < 1) ? (

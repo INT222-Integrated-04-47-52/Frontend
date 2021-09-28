@@ -23,12 +23,12 @@ function Fliter() {
 
             <div className="">
               <div className="card-heading">
-                <a
+                <div
                   onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   aria-expanded={open}>
                   Categories
-                </a>
+                </div>
               </div>
               <Collapse in={open}>
                 <div className="card-body">
@@ -53,11 +53,11 @@ function Fliter() {
             </div>
             <div className="">
               <div className="card-heading">
-                <a onClick={() => setOpen(!open)}
+                <div onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   aria-expanded={open}>
                   Branding
-                </a>
+                </div>
               </div>
               <div
                
