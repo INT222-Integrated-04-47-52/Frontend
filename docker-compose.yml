@@ -6,7 +6,7 @@ services:
           context: .
        image: frontend
        ports:
-          - "3001:80"
+          - "4005:80"
 networks:
     default:
        external:
