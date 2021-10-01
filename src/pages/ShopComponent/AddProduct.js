@@ -27,18 +27,19 @@ class AddProduct extends Component {
   }
 
   componentDidMount() {
-  
+  //http://13.76.45.147:5000/
+  //`${process.env.REACT_APP_API_URL}/allKinds`
 
-    axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
+    axios.get(`http://13.76.45.147:5000/allGenders`).then((res) => {
       this.setState({ genders: res.data });
     });
-    axios.get(`${process.env.REACT_APP_API_URL}/allKinds`).then((res) => {
+    axios.get(`http://13.76.45.147:5000/allKinds`).then((res) => {
       this.setState({ kinds: res.data });
     });
-    axios.get(`${process.env.REACT_APP_API_URL}/allTypes`).then((res) => {
+    axios.get(`http://13.76.45.147:5000/allTypes`).then((res) => {
       this.setState({ types: res.data });
     });
-    axios.get(`${process.env.REACT_APP_API_URL}/allColors`).then((res) => {
+    axios.get(`http://13.76.45.147:5000/allColors`).then((res) => {
       this.setState({ colors: res.data });
     });
   }
@@ -47,11 +48,11 @@ class AddProduct extends Component {
     e.preventDefault();
 
     const productId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/max-productId`
+      `http://13.76.45.147:5000/max-productId`
     );
 
     const hasMaxColorsId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/max-productHasColorsId`
+      `http://13.76.45.147:5000/max-productHasColorsId`
     );
     var colorIds = this.state.productHasColors.map((g) => parseInt(g));
     var colorObject = colorIds.map((im) =>
@@ -125,8 +126,9 @@ class AddProduct extends Component {
        formData.append("image", file); 
         formData.append("newProduct",blob);
     /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
-        axios({
-        url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
+    // {`http://13.76.45.147:5000/image/${product.image}`}
+        axios({ 
+        url: `http://13.76.45.147:5000/addProduct/image`,
         method: "POST",
         data: formData
         
@@ -230,9 +232,11 @@ class AddProduct extends Component {
     const { name, description, gender, kind, type } = this.state;
     const { user } = this.props.context;
 
-    return !(user && user.accessLevel < 1) ? (
-      <Redirect to="/" />
-    ) : (
+    return (
+   /*!(user && user.accessLevel < 1) ? (*/
+    //   <Redirect to="/" />
+    // ) : (
+      <div>
       <form onSubmit={this.save}>
         <h1>เพิ่มสินค้า</h1>
         <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
@@ -410,7 +414,8 @@ class AddProduct extends Component {
           </div>
         </div>
       </form>
-    );
+      </div>
+    )
   }
 }
 export default withContext(AddProduct);

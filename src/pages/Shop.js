@@ -1,5 +1,5 @@
 import React from 'react';
-import Fliter from './ShopComponent/FIlter';
+import Filter from './ShopComponent/Filter';
 import ProductList from './ShopComponent/ProductList';
 
 function Shop(){
@@ -7,8 +7,8 @@ function Shop(){
     <section class="shop spad">
         <div class="container">
             <div class="row">
-            <Fliter />
-     
+      
+            <Filter />
             <ProductList/>
           </div>
          </div> 

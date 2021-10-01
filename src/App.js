@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Contacts from "./pages/Contacts";
@@ -130,7 +130,7 @@ export default class App extends Component {
     let user = localStorage.getItem("user");
     let cart = localStorage.getItem("cart");
 
-    const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
+    const products = await axios.get(`http://13.76.45.147:5000/allProducts`);
     console.log(products)
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
@@ -153,10 +153,6 @@ export default class App extends Component {
       >
         <Router ref={this.routerRef}>
           <div className="App">
-     
-  
-
-           
             <div className="flex justify-center items-center mx-auto header__menu mobile-menu ">
             
 
@@ -186,7 +182,10 @@ export default class App extends Component {
                   </span>
                 </NavLink>
                
-             
+                <NavLink to="/LogIn" className="main-nav my-auto"
+                  >
+                    Log In
+                  </NavLink>
                 {/* {!this.state.user ? (
                   <NavLink to="/LogIn" className="main-nav my-auto"
                   activeClassName="main-nav-active">

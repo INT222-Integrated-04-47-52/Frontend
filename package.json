@@ -1,5 +1,6 @@
 {
   "name": "int222-project",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

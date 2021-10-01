@@ -18,7 +18,9 @@ class Login extends Component {
     };
   }  
   handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
-
+   myFunction() {
+    alert("Hello! I am an alert box!");
+  }
   login = (e) => {
     e.preventDefault();
 
@@ -80,7 +82,7 @@ class Login extends Component {
                 <div className="has-text-danger">{this.state.error}</div>
               )}
               <div className="field is-clearfix ">
-              <button type="submit" class="site-btn">
+              <button type="submit" class="site-btn" onclick="myFunction()">
                         SIGNIN
                       </button>
               </div>

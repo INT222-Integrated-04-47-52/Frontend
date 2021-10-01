@@ -1,5 +1,5 @@
 import React from "react";
-import ProductItem from "../ShopComponent//ProductItem";
+import ProductItem from "./ProductItem";
 import withContext from "../../withContext";
 // import axios from "axios";
 // const  onPostDeleteHandler = (e,id) = >{
