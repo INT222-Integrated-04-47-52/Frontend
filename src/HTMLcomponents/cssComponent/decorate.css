@@ -118,7 +118,7 @@ ol {
 -----------------------*/
 
 .section-title {
-	margin-bottom: 45px;
+
 	text-align: center;
 }
 
@@ -1165,7 +1165,7 @@ ol {
 }
 
 .shop__sidebar__search {
-	margin-bottom: 45px;
+	margin-bottom: 10px;
 }
 
 .shop__sidebar__search form {
@@ -1176,7 +1176,7 @@ ol {
 	width: 100%;
 	font-size: 15px;
 	color: #b7b7b7;
-	padding-left: 20px;
+	padding-left: 40px;
 	border: 1px solid #e5e5e5;
 	height: 42px;
 }
@@ -3293,12 +3293,11 @@ text-align : left;
 
 .contact__text {
 	text-align: left;
-	margin-bottom: 40px;
 }
 
 .contact__text .section-title {
 	text-align: left;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .contact__text .section-title h2 {
@@ -3825,7 +3824,7 @@ text-align : left;
 		text-align: center;
 	}
 	.contact__text {
-		margin-bottom: 40px;
+		margin-bottom: 2px;
 	}
 	.hero__social {
 		margin-top: 180px;

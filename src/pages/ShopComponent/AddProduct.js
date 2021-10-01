@@ -45,7 +45,7 @@ class AddProduct extends Component {
   }
 
   save = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const productId = await axios.get(
       `http://13.76.45.147:5000/max-productId`
@@ -115,6 +115,17 @@ class AddProduct extends Component {
       const productHasColors = HasColor
       console.log(productHasColors);
       let imgName = this.state.imageName;
+      console.log(imgName);
+      console.log("gender")
+      console.log(genderObject)
+      console.log(gender)
+      console.log("kind")
+      console.log(kindObject)
+      console.log(kind)
+      console.log("type")
+      console.log(typeObject)
+      console.log(type)
+
       let productJson ={ 
         productId: id,
         name: name,
@@ -208,7 +219,7 @@ class AddProduct extends Component {
       });
     } else {
       this.setState({
-        flash: { status: "is-danger", msg: "Please enter information" },
+        flash: { status: "is-danger", msg: "Please enter name" },
       });
     }
   };
