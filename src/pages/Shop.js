@@ -14,7 +14,7 @@ function Shop(){
                         </div>
                         </div>
                    
-       <div className="shop__sidebar__search ">
+       <div className="shop__sidebar__search " style={{paddingLeft:"46px"}}>
           <form action="#">
             <input type="text" placeholder="Search..."  onChange={(e) => console.log(e.target.value)} />
             <button type="submit">
