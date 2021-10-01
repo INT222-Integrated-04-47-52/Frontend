@@ -9,8 +9,8 @@ const initState = {
   file:null,
   name: "",
   description: "",
-  genderEnter: "",
-  kindEnter: "",
+  genderEnter: null,
+  kindEnter: null,
   typeEnter: null,
   productHasColors: [],
   productId: null,
@@ -61,27 +61,39 @@ class AddProduct extends Component {
     console.log(colorObject);
 
     var genderObject = this.state.genders.find(
-      (g) => g.genderId === this.state.genderEnter
+      (g) => g.genderId === parseInt(this.state.genderEnter)
+    
     );
+   console.log(this.state.genders[0].genderId)
+    console.log("genders")
+    console.log(this.state.genders)
+    console.log("genderEnter")
+    console.log(this.state.genderEnter)
+    console.log("genderObjectSet;")
+ console.log(typeof(this.state.genderEnter))
+    console.log(typeof(this.state.genders[0].genderId))
     console.log(genderObject);
 
     var kindObject = this.state.kinds.find(
-      (k) => k.kindId === this.state.kindEnter
+      (k) => k.kindId === parseInt(this.state.kindEnter)
     );
+   
+    console.log("kindObjectSet;")
     console.log(kindObject);
 
     var typeObject = this.state.types.find(
-      (t) => t.typeId === this.state.typeEnter
+      (t) => t.typeId === parseInt(this.state.typeEnter)
     );
+    console.log("typeObjectSet;")
     console.log(typeObject);
 
-    e.preventDefault();
+    // e.preventDefault();
     console.log(this.state.genders);
 
     /*, genderEnter, 
       kindEnter,typeEnter, productHasColors */
 
-    const { name, description } = this.state;
+    const { name, description, } = this.state;
     const gender = genderObject;
     const kind = kindObject;
     const type = typeObject;
@@ -104,6 +116,16 @@ class AddProduct extends Component {
       console.log(productHasColors);
       let imgName = this.state.imageName;
       console.log(imgName);
+      console.log("gender")
+      console.log(genderObject)
+      console.log(gender)
+      console.log("kind")
+      console.log(kindObject)
+      console.log(kind)
+      console.log("type")
+      console.log(typeObject)
+      console.log(type)
+
       let productJson ={ 
         productId: id,
         name: name,
@@ -116,7 +138,7 @@ class AddProduct extends Component {
       }
    
       let file = this.state.file;
-     
+     console.log(productJson)
       console.log(file)
       let formData = new FormData();
       var blob = new Blob([JSON.stringify(productJson)],{
@@ -135,6 +157,7 @@ class AddProduct extends Component {
         
       }).then(res=>res)
        .catch(err=>err)
+       console.log(formData)
        /* 
       formData.append("productId",id)
       formData.append("name",name)
