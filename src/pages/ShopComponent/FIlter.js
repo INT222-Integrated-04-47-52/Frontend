@@ -2,7 +2,6 @@ import "../../HTMLcomponents/cssComponent/decorate.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
-
 function Fliter() {
   const [open, setOpen] = useState(false);
   return (
@@ -27,7 +26,7 @@ function Fliter() {
                   onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   aria-expanded={open}>
-                  Categories
+                  Categories 
                 </div>
               </div>
               <Collapse in={open}>
@@ -56,7 +55,7 @@ function Fliter() {
                 <div onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   aria-expanded={open}>
-                  Branding
+                  Branding 
                 </div>
               </div>
               <div
