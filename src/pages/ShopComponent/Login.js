@@ -17,6 +17,7 @@ class Login extends Component {
       isPasswordShown: false
     };
   }  
+
   handleChange = e => this.setState({ [e.target.name]: e.target.value, error: "" });
    myFunction() {
     alert("Hello! I am an alert box!");
@@ -82,7 +83,7 @@ class Login extends Component {
                 <div className="has-text-danger">{this.state.error}</div>
               )}
               <div className="field is-clearfix ">
-              <button type="submit" class="site-btn" onclick="myFunction()">
+              <button type="submit" class="site-btn" onClick={()=>{ alert('ยังไม่พร้อมใช้งาน'); }}>
                         SIGNIN
                       </button>
               </div>

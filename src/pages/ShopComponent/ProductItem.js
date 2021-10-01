@@ -4,7 +4,7 @@ import React from "react";
 export default function ProductItem(props){
   const { product } = props;
   console.log(product);
-
+  
   return (
     <div className=" column is-half">
       <div className="box">
