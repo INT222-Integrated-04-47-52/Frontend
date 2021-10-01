@@ -173,7 +173,7 @@ export default class App extends Component {
                   </NavLink> 
                 <NavLink to="/Cart" className="main-nav my-auto"
                   activeClassName="main-nav-active">
-                  Cart
+                  Closet
                   <span
                     className="tag is-primary"
                     style={{}}

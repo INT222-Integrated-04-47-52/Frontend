@@ -10,7 +10,7 @@ const Cart = props => {
     <div>
       <div className="hero is-primary bg-black">
         <div className="hero-body container ">
-          <h4 className="title">My Cart</h4>
+          <h4 className="title">Closet</h4>
         </div>
       </div>
       <br />
