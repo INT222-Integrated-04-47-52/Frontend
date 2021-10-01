@@ -109,8 +109,8 @@ class AddProduct extends Component {
         name: name,
         image: imgName,
         description:description,
-        gender:gender,
         kind:kind,
+        gender:gender,
         type:type,
         productHasColors: productHasColors
       }
@@ -127,6 +127,7 @@ class AddProduct extends Component {
         formData.append("newProduct",blob);
     /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
     // {`http://13.76.45.147:5000/image/${product.image}`}
+    //http://13.76.45.147:5000/
         axios({ 
         url: `http://13.76.45.147:5000/addProduct/image`,
         method: "POST",
