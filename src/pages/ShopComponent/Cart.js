@@ -8,11 +8,12 @@ const Cart = props => {
   const cartKeys = Object.keys(cart || {});
   return (
     <div>
-      <div className="hero is-primary bg-black">
-        <div className="hero-body container ">
-          <h4 className="title">Closet</h4>
-        </div>
-      </div>
+       <div className="contact__text -mt-24">
+                        <div style={{paddingLeft:"32px",paddingTop:"40px"}} className="section-title">
+                            <h2 className="pt-24 pl-24 m-1.5">Closet</h2>
+                            <p className="pl-24 m-1.5">ตู้เสื้อผ้าสินค้า</p>
+                        </div>
+                        </div>
       <br />
       <div className="container">
         {cartKeys.length ? (
