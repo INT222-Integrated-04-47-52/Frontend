@@ -260,9 +260,17 @@ class AddProduct extends Component {
    /*!(user && user.accessLevel < 1) ? (*/
     //   <Redirect to="/" />
     // ) : (
-      <div>
+      <div className="mx-5">
       <form onSubmit={this.save}>
-        <h1>เพิ่มสินค้า</h1>
+      {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
+                            <h1 className="font-bold mt-4 ml-28">Add Product</h1>
+                           </div> */}
+ <div className="contact__text -mt-24">
+                        <div style={{paddingLeft:"32px",paddingTop:"40px"}} className="section-title">
+                            <h2 className="pt-24 pl-24 m-1.5">Add Product</h2>
+                            <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
+                        </div>
+                        </div>
         <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="">
             <div className="m-4 h-full">
@@ -375,8 +383,7 @@ class AddProduct extends Component {
                   name="typeEnter"
                   value={type}
                 > <option value="" disabled selected hidden className="text-gray-500">Please Choose...</option>
-              
-                  {this.state.types.map((t) => (
+                {this.state.types.map((t) => (
                     <option
                       id="typeEnter"
                       key={t.typeId}
@@ -428,7 +435,7 @@ class AddProduct extends Component {
             <div className="field is-clearfix">
               {/* <Link to="/Shop">  */}{" "}
               <button
-                className="primary-btn flex justify-center"
+                className="primary-btn flex my-4 mx-auto justify-center"
                 type="submit"
                 onClick={this.save}
               >

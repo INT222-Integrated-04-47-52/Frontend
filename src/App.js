@@ -21,10 +21,7 @@ export default class App extends Component {
     this.state = {
       user: null,
       cart: {},
-      products: [],
-      hamburger: null,
-      navMenu: null,
-      navLink:null
+      products: []
     };
     this.routerRef = React.createRef();
   }
@@ -156,6 +153,7 @@ export default class App extends Component {
     cart = cart ? JSON.parse(cart) : {};
     this.setState({ user, products: products.data, cart });
   }
+  
 
   render() {
     return (
@@ -168,31 +166,48 @@ export default class App extends Component {
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
-        }}
-      >
+        }}>
         <Router ref={this.routerRef}>
           <div className="App">
-            <header className=" pl-12 header">
-              <div className="flex mx-auto justify-center ">
-                <div className="mx-auto flex mt-5 navbar">
-                  <div className="">
-                    <div className="">
-                      <b>
-                        {" "}
-                        <NavLink to="/" style={{ color: "black" }}>
-                          {" "}
-                          MONGKOLTHORN{" "}
+          <nav
+            className="navbar container "
+            role="navigation"
+            aria-label="main navigation"
+          >  
+                <div className="navbar-brand">
+                  
+                        <NavLink className="my-3" to="/" style={{ color: "black" }}>
+                    
+                          MONGKOLTHORN
                         </NavLink>
-                      </b>
-                    </div>
-                  </div>
-
-                  <div className="nav-menu">
-                    <div className=" flex mx-auto px-8">
+                        <label
+                role="button"
+                class="navbar-burger burger"
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navbarBasicExample"
+                onClick={e => {
+                  e.preventDefault();
+                  this.setState({ showMenu: !this.state.showMenu });
+                }}
+              >
+                      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                      </a>
+                      </label>
+                     </div>
+         
+                        <div className={`navbar-menu ${
+                  this.state.showMenu ? "is-active absolute right-0 top-0 z-20" : ""
+                }`} >
+                  <div className="nav-menu ">
+                    <div className=" md:flex md:mx-auto md:px-8 md:pt-3">
                       <div className="nav-item">
                         <NavLink
                           exact
-                          className="main-nav px-8"
+                          className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active "
                           to="/"
                         >
@@ -202,7 +217,7 @@ export default class App extends Component {
                       <div className="nav-item">
                         <NavLink
                           to="/Shop"
-                          className=" main-nav px-8"
+                          className=" main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active "
                         >
                           Shop
@@ -211,7 +226,7 @@ export default class App extends Component {
                       <div className="nav-item">
                         <NavLink
                           to="/Contacts"
-                          className="main-nav px-8 "
+                          className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active"
                         >
                           Contacts
@@ -223,10 +238,10 @@ export default class App extends Component {
                     Add Product
                   </NavLink>
           )}*/}{" "}
-                      <div className="nav-item">
+                      <div className="nav-item ">
                         <NavLink
                           to="/AddProduct"
-                          className="main-nav px-8 "
+                          className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active "
                         >
                           Add Product
@@ -235,25 +250,23 @@ export default class App extends Component {
                       <div className="nav-item">
                         <NavLink
                           to="/Cart"
-                          className="main-nav px-8 "
+                          className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active"
                         >
                           Closet
-                          <span className="tag is-primary pl-2" style={{}}>
+                          <span className="tag is-primary md:pl-2" style={{}}>
                             {Object.keys(this.state.cart).length}
                           </span>
                         </NavLink>
                       </div>
                       <div className="nav-item">
-                        <NavLink to="/LogIn" className="main-nav  ">
+                        <NavLink to="/LogIn" className="main-nav navbar-item ">
                           Log In
                         </NavLink>
-                      </div>{" "}
-                      <div className="hamburger">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
+
                       </div>
+                      </div>
+                   
                       {/* {!this.state.user ? (
                   <NavLink to="/LogIn" className="main-nav my-auto"
                   activeClassName="main-nav-active">
@@ -267,12 +280,12 @@ export default class App extends Component {
                 )} */}
                     </div>
                   </div>
-                </div>
-              </div>
+               
               {/* <div className={`navbar-menu ${
                   this.state.showMenu ? "is-active" : ""
                 }`} >  */}
-            </header>
+           </nav>
+
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/LogIn" component={Login} />
