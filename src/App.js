@@ -4,7 +4,6 @@ import Shop from "./pages/Shop";
 import Contacts from "./pages/Contacts";
 import Footer from "./pages/Footer";
 import React, { Component } from "react";
-// import Navbar from "./pages/NavBar";
 import "./App.css";
 import Tailor from "./pages/ShopComponent/Tailor";
 import AddProduct from "./pages/ShopComponent/AddProduct";
@@ -23,10 +22,13 @@ export default class App extends Component {
       user: null,
       cart: {},
       products: [],
+      hamburger: null,
+      navMenu: null,
+      navLink:null
     };
     this.routerRef = React.createRef();
   }
-  
+
   addToCart = (cartItem) => {
     let cart = this.state.cart;
     if (cart[cartItem.id]) {
@@ -99,11 +101,11 @@ export default class App extends Component {
   }
  */
   checkout = () => {
- /*  if (!this.state.user) {
+    /*  if (!this.state.user) {
       this.routerRef.current.history.push("/login");
       return;
     }
-*/  
+*/
     const cart = this.state.cart;
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
@@ -115,11 +117,29 @@ export default class App extends Component {
     this.setState({ products });
     this.clearCart();
   };
- /* logout = (e) => {
+  //    mobileMenu() {
+  //   const hamburger = document.querySelector(".hamburger");
+  // const navMenu = document.querySelector(".nav-menu");
+  // const navLink = document.querySelectorAll(".nav-link");
+  
+  // hamburger.addEventListener("click", mobileMenu);
+  // navLink.forEach(n => n.addEventListener("click", closeMenu));
+  
+
+  //     this.state.hamburger.classList.toggle("active");
+  //     this.state.navMenu.classList.toggle("active");
+  // }
+  
+  // closeMenu() {
+  //     this.state.hamburger.classList.remove("active");
+  //     this.state.navMenu.classList.remove("active");
+  // }
+
+  /* logout = (e) => {
     e.preventDefault();
     this.setState({ user: null });
     localStorage.removeItem("user");
-  };*/ 
+  };*/
   addProduct = (product, callback) => {
     let products = this.state.products.slice();
     products.push(product);
@@ -131,14 +151,13 @@ export default class App extends Component {
     let cart = localStorage.getItem("cart");
 
     const products = await axios.get(`http://13.76.45.147:5000/allProducts`);
-    console.log(products)
+    console.log(products);
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
     this.setState({ user, products: products.data, cart });
   }
 
   render() {
-    
     return (
       <Context.Provider
         value={{
@@ -153,40 +172,89 @@ export default class App extends Component {
       >
         <Router ref={this.routerRef}>
           <div className="App">
-            <div className="flex justify-center items-center mx-auto header__menu mobile-menu ">
-            
+            <header className=" pl-12 header">
+              <div className="flex mx-auto justify-center ">
+                <div className="mx-auto flex mt-5 navbar">
+                  <div className="">
+                    <div className="">
+                      <b>
+                        {" "}
+                        <NavLink to="/" style={{ color: "black" }}>
+                          {" "}
+                          MONGKOLTHORN{" "}
+                        </NavLink>
+                      </b>
+                    </div>
+                  </div>
 
-           <div className={`navbar-menu ${
-                  this.state.showMenu ? "is-active" : ""
-                }`} > 
-<NavBar /> 
-<div className="absolute justify-center items-center my-5 right-0 mr-8 mb-3 "> 
-          {/*   {this.state.user && this.state.user.accessLevel < 1 && (
+                  <div className="nav-menu">
+                    <div className=" flex mx-auto px-8">
+                      <div className="nav-item">
+                        <NavLink
+                          exact
+                          className="main-nav px-8"
+                          activeClassName="main-nav-active "
+                          to="/"
+                        >
+                          Home
+                        </NavLink>
+                      </div>
+                      <div className="nav-item">
+                        <NavLink
+                          to="/Shop"
+                          className=" main-nav px-8"
+                          activeClassName="main-nav-active "
+                        >
+                          Shop
+                        </NavLink>
+                      </div>
+                      <div className="nav-item">
+                        <NavLink
+                          to="/Contacts"
+                          className="main-nav px-8 "
+                          activeClassName="main-nav-active"
+                        >
+                          Contacts
+                        </NavLink>
+                      </div>
+                      {/*   {this.state.user && this.state.user.accessLevel < 1 && (
                   <NavLink to="/AddProduct"   className="main-nav "
                   activeClassName="main-nav-active ">
                     Add Product
                   </NavLink>
-          )}*/ }
-                 <NavLink to="/AddProduct" className="main-nav "
-                  activeClassName="main-nav-active ">
-                    Add Product
-                  </NavLink> 
-                <NavLink to="/Cart" className="main-nav my-auto"
-                  activeClassName="main-nav-active">
-                  Closet
-                  <span
-                    className="tag is-primary"
-                    style={{}}
-                  >
-                    {Object.keys(this.state.cart).length}
-                  </span>
-                </NavLink>
-               
-                <NavLink to="/LogIn" className="main-nav my-auto"
-                  >
-                    Log In
-                  </NavLink>
-                {/* {!this.state.user ? (
+          )}*/}{" "}
+                      <div className="nav-item">
+                        <NavLink
+                          to="/AddProduct"
+                          className="main-nav px-8 "
+                          activeClassName="main-nav-active "
+                        >
+                          Add Product
+                        </NavLink>{" "}
+                      </div>
+                      <div className="nav-item">
+                        <NavLink
+                          to="/Cart"
+                          className="main-nav px-8 "
+                          activeClassName="main-nav-active"
+                        >
+                          Closet
+                          <span className="tag is-primary pl-2" style={{}}>
+                            {Object.keys(this.state.cart).length}
+                          </span>
+                        </NavLink>
+                      </div>
+                      <div className="nav-item">
+                        <NavLink to="/LogIn" className="main-nav  ">
+                          Log In
+                        </NavLink>
+                      </div>{" "}
+                      <div className="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                      </div>
+                      {/* {!this.state.user ? (
                   <NavLink to="/LogIn" className="main-nav my-auto"
                   activeClassName="main-nav-active">
                     Log In
@@ -197,26 +265,14 @@ export default class App extends Component {
                     Logout
                   </NavLink>
                 )} */}
-            
-    
-           </div>
-              </div></div>
-    
-              <div className="navbar-brand">
-                <label
-                  role="button"
-                  class="navbar-burger burger"
-                  aria-label="menu"
-                  aria-expanded="false"
-                  data-target="navbarBasicExample"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    this.setState({ showMenu: !this.state.showMenu });}}>
-                 
-                </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-            
-          
+              {/* <div className={`navbar-menu ${
+                  this.state.showMenu ? "is-active" : ""
+                }`} >  */}
+            </header>
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/LogIn" component={Login} />

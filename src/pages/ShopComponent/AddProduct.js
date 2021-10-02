@@ -369,12 +369,13 @@ class AddProduct extends Component {
                 ประเภทสินค้า:
               </label>
               <div className="">
-                <select
+               <select
                   onChange={this.handleChange}
                   className="w-full h-10 border-2"
                   name="typeEnter"
                   value={type}
-                >
+                > <option value="" disabled selected hidden className="text-gray-500">Please Choose...</option>
+              
                   {this.state.types.map((t) => (
                     <option
                       id="typeEnter"

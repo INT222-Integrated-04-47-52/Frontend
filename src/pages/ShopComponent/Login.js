@@ -40,7 +40,8 @@ class Login extends Component {
 
   render = () => {
     const { isPasswordShown } = this.state;
-    return !this.props.context.user ? (
+    return (
+    /* !this.props.context.user ? (*/
       <section class="contact spad">
       <div class="container">
         <div class="row">
@@ -92,10 +93,10 @@ class Login extends Component {
         </div>
         </div>
         </div>
-      </section>
-    ) : (
+      </section>)
+   /* ) : (
       <Redirect to="/Shop" />
-    );
+  ); */ 
   }
 }
 
