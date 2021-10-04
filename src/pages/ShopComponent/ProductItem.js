@@ -12,7 +12,7 @@ export default function ProductItem(props){
           <div className="media-left">
             <figure className="image w-36">
               <img
-                className="product__item__pic set-bg "
+                className="product__item__pic set-bg"
                 src={`http://13.76.45.147:5000/image/${product.image}`}
                 alt={product.image}
               />

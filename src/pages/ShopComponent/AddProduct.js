@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-
+import {useHistory} from "react-router-dom";
 const initState = {
   file:null,
   name: "",
@@ -93,13 +93,21 @@ class AddProduct extends Component {
     /*, genderEnter, 
       kindEnter,typeEnter, productHasColors */
 
-    const { name, description, } = this.state;
+    const { name, description,file } = this.state;
     const gender = genderObject;
     const kind = kindObject;
     const type = typeObject;
     const colors = colorObject;
-
-    if (name) {
+{/*   productId: id,
+        name: name,
+        image: imgName,
+        description:description,
+        kind:kind,
+        gender:gender,
+        type:type,
+        productHasColors: productHasColors */}
+        {/*name=="" ||description==""||kind==""||gender==""||type=="" */}
+    if (name&&description&&kind&&gender&&type&&file) {
       const id = productId.data + 1;
       var hasColorsId = hasMaxColorsId.data + 1;
       console.log(hasColorsId);
@@ -155,7 +163,7 @@ class AddProduct extends Component {
         method: "POST",
         data: formData
         
-      }).then(res=>res)
+      }).then(res=>this.props.history.replace("/Shop"))
        .catch(err=>err)
        console.log(formData)
        /* 
@@ -201,11 +209,28 @@ class AddProduct extends Component {
         data: formData,
       });*/
       /* http://13.76.45.147:5000/addProduct/image */
-      const image = "image"
-      this.props.context.addProduct(
-        { productId,
+      {/*
+       productId: id,
+        name: name,
+        image: imgName,
+        description:description,
+        kind:kind,
+        gender:gender,
+        type:type,
+        productHasColors: productHasColors */}
+        {/*productId,
           name,
           image,
+          description,
+          gender,
+          kind,
+          type,
+          productHasColors, */}
+    
+      this.props.context.addProduct(
+        { id,
+          name,
+          imgName,
           description,
           gender,
           kind,
@@ -215,11 +240,13 @@ class AddProduct extends Component {
         () => this.setState(initState)
       );
       this.setState({
+      
         flash: { status: "is-success", msg: "Product created successfully" },
+        
       });
     } else {
       this.setState({
-        flash: { status: "is-danger", msg: "Please enter name" },
+        flash: { status: "is-danger", msg: "Please enter all required information" },
       });
     }
   };
