@@ -176,9 +176,9 @@ export default class App extends Component {
           >  
                 <div className="navbar-brand">
                   
-                        <NavLink className="my-3" to="/" style={{ color: "black" }}>
+                        <NavLink className="my-3 font-semibold text-lg" to="/" style={{ color: "black" }}>
                     
-                          MONGKOLTHORN
+                          MONGKOLTORN
                         </NavLink>
                         <label
                 role="button"

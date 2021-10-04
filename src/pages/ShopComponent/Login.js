@@ -49,7 +49,7 @@ class Login extends Component {
             <div class="contact__text">
               <div class="section-title">
                 <span>ร้านมงคลธรผ้าไหมไทย</span>
-                <h2>Mongkolthorn</h2>
+                <h2>Mongkoltorn</h2>
                 <p>กรุณาล็อกอินเมื่อต้องการที่จะบันทึกไซส์ตัวและสั่งตัดชุด</p>
               </div>
             </div>
