@@ -20,7 +20,7 @@ const CartItem = props => {
           <div className="media-content ">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
-              <span className="tag is-primary bg-black"> <small className="bg-black">{`${amount} in cart`}</small></span>
+              <span className="tag is-primary bg-black"> <small className="bg-black">{`${amount} in closet`}</small></span>
             </b>
             <div>{product.description}</div>
             <div className="product__details__option font-semibold">

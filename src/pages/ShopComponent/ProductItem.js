@@ -71,7 +71,7 @@ export default function ProductItem(props){
                   })
                 }
               >
-                Add to Cart
+                Add to Closet
               </button>
               <button
                 className="button is-small bg-red-600 ml-4 text-black   
