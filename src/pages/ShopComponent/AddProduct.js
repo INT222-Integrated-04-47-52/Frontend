@@ -355,7 +355,7 @@ class AddProduct extends Component {
                 <div className=" ">
                   {this.state.kinds.map((k) => (
                     <div className="mx-2">
-                      <input
+                      <input 
                         key={k.kindId}
                         type="radio"
                         id={k.kindId}
@@ -403,25 +403,30 @@ class AddProduct extends Component {
                 <br />
 
                 {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
-                <div className=" ">
+                <div className="grid grid-cols-1 md:grid-cols-6">
                   {this.state.colors.map((c) => (
-                    <label
-                      className="mx-2"
-                      style={{ backgroundColor: c.colorCode }}
-                    >
-                      {/*  style={{backgroundColor : c.codeName, border: "solid red"
-                       }}*/}
-
-                      {/* border: this.state.colors.map(c => c.id).includes(color.id)?"solid red": "" */}
-                      <input
+                    <div className="mx-2 my-1">  <input className="absolute mr-12 px-2 mt-2 -ml-1"
                         key={c.colorId}
                         type="checkbox"
                         id={c.colorId}
                         name="productHasColors"
                         value={c.colorId}
                         onChange={this.handleColor}
-                      />
-                    </label>
+                      /> 
+               <label
+                      className="absolute   mx-10 ml-4 "
+                      style={{ backgroundColor: c.colorCode 
+                      }}
+                    >
+                       
+                  
+                      {/*  style={{backgroundColor : c.codeName, border: "solid red"
+                       }}*/}
+
+                      {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
+                      </label> </div>
+              
+               
                   ))}
                 </div>
               </div>

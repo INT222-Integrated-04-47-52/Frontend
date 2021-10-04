@@ -1993,7 +1993,7 @@ ol {
 }
 
 .footer__widget {
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
 .footer__widget h6 {
@@ -2002,7 +2002,7 @@ ol {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	margin-bottom: 20px;
+
 }
 
 .footer__widget ul li {

@@ -2,12 +2,12 @@ import footerLogo from "../HTMLcomponents/img/footer-logo.jpg";
 // import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <footer className="footer" style={{ backgroundColor: "#040506" }}>
+    <footer className="mt-10" style={{ backgroundColor: "#040506" }}>
       <div className="container">
         <div className="footer__logo">
           <img
             style={{
-              width: "160px",
+              width: "130px",
               display: "block",
               marginLeft: "auto",
               marginRight: "auto",
