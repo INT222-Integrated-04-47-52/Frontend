@@ -18,13 +18,13 @@ export default function ProductItem(props){
               />
             </figure>
           </div>
-          <div className="media-content  flex flex-col justify-start items-start">
-            <div className="justify-left items-start">
+          <div className="media-content text-left flex flex-col justify-start items-start">
+            <div className="justify-left items-start ">
               <b style={{ textTransform: "capitalize" }}>
-                Name: {product.name}{" "}
+                Name: {product.name}
               </b>
             </div>
-            <div>Description: {product.description}</div>
+            <div className="text-left">Description: {product.description}</div>
             <div>Gender: {product.gender.genderName}</div>
             <div>Kind: {product.kind.kindName}</div>
             <div>Type: {product.type.typeName}</div>
@@ -74,7 +74,7 @@ export default function ProductItem(props){
                 Add to Closet
               </button>
               <button
-                className="button is-small bg-red-600 ml-4 text-black   
+                className="button is-small bg-red-600 ml-4 text-white   
           is-pulled-right"
                 type="submit"  onClick={props.postDeleted}
               >
