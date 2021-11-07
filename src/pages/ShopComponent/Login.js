@@ -38,10 +38,10 @@ class Login extends Component {
   };
   
 
-  render = () => {
+  render(){
     const { isPasswordShown } = this.state;
-    return (
-    /* !this.props.context.user ? (*/
+    return  !this.props.context.user ? (
+      
       <section class="contact spad">
       <div class="container">
         <div class="row">
@@ -84,7 +84,7 @@ class Login extends Component {
                 <div className="has-text-danger">{this.state.error}</div>
               )}
               <div className="field is-clearfix ">
-              <button type="submit" class="site-btn" onClick={()=>{ alert('ยังไม่พร้อมใช้งาน'); }}>
+              <button type="submit" class="site-btn" >
                         SIGNIN
                       </button>
               </div>
@@ -93,10 +93,11 @@ class Login extends Component {
         </div>
         </div>
         </div>
-      </section>)
-   /* ) : (
+      </section>
+    
+      ) : (
       <Redirect to="/Shop" />
-  ); */ 
+  ); 
   }
 }
 
