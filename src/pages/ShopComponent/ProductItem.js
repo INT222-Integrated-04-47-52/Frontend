@@ -68,13 +68,24 @@ export default function ProductItem(props){
               </button>
               <button
                 className="button is-small bg-red-600 ml-4 text-gray-400   
-          is-pulled-right"
+          is-pulled-right" style={{backgroundColor:"red", color:"white"}}
                 type="submit"  onClick={props.postDeleted}
               >
                 {" "}
                 Remove
               </button>
+              <button
+                className="button is-small bg-green-600 ml-4 text-gray-400   
+          is-pulled-right" style={{backgroundColor:"green",color:"white"}}
+                type="submit"  onClick={props.postDeleted}
+              >
+                {" "}
+                Edit
+              </button>
+       
             </div>
+            
+
           ) :(<div></div>)
          }  
           </div>
