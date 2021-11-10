@@ -10,7 +10,7 @@ const CartItem = props => {
           <div className="media-left">
             <figure className="image is-64x64">
               <img className="h-5/6"
-                 src={`http://13.76.45.147:5000/image/${product.image}`}
+                 src={`${process.env.REACT_APP_API_URL}/image/${product.image}`}
                 alt={product.image}
               />
               {/*   <img className="product__item__pic set-bg "  alt={product.image}/>

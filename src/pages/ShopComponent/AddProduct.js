@@ -30,16 +30,16 @@ class AddProduct extends Component {
   //http://13.76.45.147:5000/
   //`${process.env.REACT_APP_API_URL}/allKinds`
 
-    axios.get(`http://13.76.45.147:5000/allGenders`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
       this.setState({ genders: res.data });
     });
-    axios.get(`http://13.76.45.147:5000/allKinds`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/allKinds`).then((res) => {
       this.setState({ kinds: res.data });
     });
-    axios.get(`http://13.76.45.147:5000/allTypes`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/allTypes`).then((res) => {
       this.setState({ types: res.data });
     });
-    axios.get(`http://13.76.45.147:5000/allColors`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/allColors`).then((res) => {
       this.setState({ colors: res.data });
     });
   }
@@ -48,11 +48,11 @@ class AddProduct extends Component {
     e.preventDefault();
 
     const productId = await axios.get(
-      `http://13.76.45.147:5000/max-productId`
+      `${process.env.REACT_APP_API_URL}/max-productId`
     );
 
     const hasMaxColorsId = await axios.get(
-      `http://13.76.45.147:5000/max-productHasColorsId`
+      `${process.env.REACT_APP_API_URL}/max-productHasColorsId`
     );
     var colorIds = this.state.productHasColors.map((g) => parseInt(g));
     var colorObject = colorIds.map((im) =>
@@ -159,7 +159,7 @@ class AddProduct extends Component {
     // {`http://13.76.45.147:5000/image/${product.image}`}
     //http://13.76.45.147:5000/
         axios({ 
-        url: `http://13.76.45.147:5000/addProduct/image`,
+        url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
         method: "POST",
         data: formData
         
