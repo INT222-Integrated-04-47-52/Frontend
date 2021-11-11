@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from "react";
+
+
 export default function ProductItem(props){
   const { product } = props;
   const [user, setUser] = useState(null);
@@ -77,7 +79,7 @@ export default function ProductItem(props){
               <button
                 className="button is-small bg-green-600 ml-4 text-gray-400   
           is-pulled-right" style={{backgroundColor:"green",color:"white"}}
-                type="submit"  onClick={props.postDeleted}
+                type="submit"  onClick={props.postEdit}
               >
                 {" "}
                 Edit
