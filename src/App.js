@@ -14,6 +14,7 @@ import ProductList from "./pages/ShopComponent/ProductList";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Context from "./Context";
+import UserList from "./pages/Admin/UserList";
 // import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware, compose } from 'redux';
@@ -236,14 +237,23 @@ export default class App extends Component {
                     Add Product
                   </NavLink>
           )}{" "}
+              
+             
                       
                       </div>
+                      <div className="nav-item">
+                      {this.state.user  && this.state.user.accessLevel < 1 && (
+                  <NavLink to="/Admin" className="main-nav md:px-8 navbar-item"
+                  activeClassName="main-nav-active ">
+                    Admin
+                  </NavLink>
+          )}{" "}</div>
+
                       <div className="nav-item">
                         <NavLink
                           to="/Cart"
                           className="main-nav md:px-8 navbar-item"
-                          activeClassName="main-nav-active"
-                        >
+                          activeClassName="main-nav-active">
                           Closet
                           <span className="tag is-primary md:pl-2" style={{}}>
                             {Object.keys(this.state.cart).length}
@@ -289,6 +299,11 @@ export default class App extends Component {
               {this.state.user  && ( 
               <Route path="/AddProduct" component={AddProduct} />
              )}{" "}
+             
+                {this.state.user  && this.state.user.accessLevel < 1 && ( 
+              <Route path="/Admin" component={UserList} />
+             )}{" "}
+
    <Route path="/AddProduct" component={Login} />
             
               <Route path="/AddSize" component={AddSize} />
