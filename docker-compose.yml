@@ -4,7 +4,7 @@ services:
        container_name: frontend_con
        networks:
           network:
-             ipv4_address: 172.20.0.2
+             ipv4_address: 172.27.0.3
        build: 
           context: .
        image: frontend
