@@ -2,12 +2,18 @@ version: "3"
 services:
    frontend:
        container_name: frontend_con
+       networks:
+          network:
+             ipv4_address: 172.27.0.3
        build: 
           context: .
        image: frontend
        ports:
           - "4005:80"
+          
 networks:
     default:
        external:
           name: network
+    network:
+       external: true
