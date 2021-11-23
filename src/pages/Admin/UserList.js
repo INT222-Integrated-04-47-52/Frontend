@@ -7,20 +7,36 @@ export default class PersonList extends React.Component {
   state = {
     persons: []
   }
-
+  nextPath(path) {
+    this.props.history.push(path);
+  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.value);
+  };
   componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
+    axios.get(`${process.env.REACT_APP_API_URL}/allAccounts`)
       .then(res => {
         const persons = res.data;
         this.setState({ persons });
       })
+      
   }
 
   render() {
     return (
       <div className="container">
-        <div>
-          
+        <div className="mt-16">
+        <button
+                  className="button is-small bg-blue-600 ml-4 text-gray-400   
+          is-pulled-right"
+                  style={{ backgroundColor: "blue", color: "white" }}
+                  type="submit"
+                  onClick={() => this.nextPath('/AddUser') }
+                >
+                  {" "}
+                  Add user
+                </button>
         </div>
       <div className="column columns is-multiline">
         {this.state.persons && this.state.persons.length ? (
@@ -30,6 +46,7 @@ export default class PersonList extends React.Component {
               <UserItem
                 person={person}
                 key={index}
+               
               />
             ))
         ) : (

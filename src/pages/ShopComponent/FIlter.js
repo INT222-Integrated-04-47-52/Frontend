@@ -4,18 +4,12 @@ import { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
 function Fliter() {
   const [open, setOpen] = useState(false);
+
+
   return (
  
     <div className="col-lg-3">
       <div className="shop__sidebar">
-        <div className="shop__sidebar__search">
-          {/* <form action="#">
-            <input type="text" placeholder="Search..."  onChange={(e) => console.log(e.target.value)} />
-            <button type="submit">
-              <span className="icon_search"></span>
-            </button>
-          </form> */}
-        </div>
         <div className="shop__sidebar__accordion">
           <div className="accordion" id="accordionExample">
             <div id="example-collapse-text"></div>

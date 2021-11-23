@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
+import {  BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Contacts from "./pages/Contacts";
@@ -15,6 +15,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Context from "./Context";
 import UserList from "./pages/Admin/UserList";
+import AddUser from "./pages/Admin/AddUser";
+import EditProduct from "./pages/ShopComponent/EditProduct";
 // import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware, compose } from 'redux';
@@ -82,31 +84,59 @@ export default class App extends Component {
       return false;
     }
   };*/
+  // http://localhost:5001/allAccounts
+  // login = async (email, password) => {
+  //   const res = await axios.post(
+  //     `http://localhost:3001/allAccounts`,
+  //     { email, password },
+  //   ).catch((res) => {
+  //     return { status: 401, message: 'Unauthorized' }
+  //   })
+    
+  //   if(res.status === 200) {
+  //     const { email } = jwt_decode(res.data.accessToken)
+  //     const user = {
+  //       email,
+  //       token: res.data.accessToken,
+  //       accessLevel: email === 'admin@example.com' ? 0 : 1
+  //     }
 
+  //     this.setState({ user });
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
   login = async (email, password) => {
-    const res = await axios.post(
-      `http://localhost:3001/login`,
+
+    const res = await axios.get(
+      `http://localhost:5001/login/900001`,
       { email, password },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })
-    
+    console.log(email);
     if(res.status === 200) {
-      const { email } = jwt_decode(res.data.accessToken)
+      const { email } = res.data.accountId.email
       const user = {
-        email,
-        token: res.data.accessToken,
+        ...res.data.accountId,
         accessLevel: email === 'admin@example.com' ? 0 : 1
+       
       }
 
       this.setState({ user });
+      const userLocal = localStorage.getItem("user");
+     console.log("dddd"+userLocal)
+      console.log(user);
+      console.log(user);
+      console.log(user.accessLevel);
       localStorage.setItem("user", JSON.stringify(user));
       return true;
     } else {
       return false;
     }
   }
-
   checkout = () => {
      if (!this.state.user) {
       this.routerRef.current.history.push("/login");
@@ -115,7 +145,7 @@ export default class App extends Component {
     const cart = this.state.cart;
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
-        axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
+        axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
       }
       return p;
     });
@@ -242,7 +272,7 @@ export default class App extends Component {
                       
                       </div>
                       <div className="nav-item">
-                      {this.state.user  && this.state.user.accessLevel < 1 && (
+                      {this.state.user  && (
                   <NavLink to="/Admin" className="main-nav md:px-8 navbar-item"
                   activeClassName="main-nav-active ">
                     Admin
@@ -299,14 +329,17 @@ export default class App extends Component {
               {this.state.user  && ( 
               <Route path="/AddProduct" component={AddProduct} />
              )}{" "}
-             
-                {this.state.user  && this.state.user.accessLevel < 1 && ( 
+            
+     {this.state.user &&  ( 
               <Route path="/Admin" component={UserList} />
              )}{" "}
-
+ {this.state.user &&  ( 
+              <Route path="/AddUser" component={AddUser} />
+             )}{" "}
    <Route path="/AddProduct" component={Login} />
             
               <Route path="/AddSize" component={AddSize} />
+              <Route path="/EditProduct" component={EditProduct} />
             </Switch>
             <Footer />
           </div>

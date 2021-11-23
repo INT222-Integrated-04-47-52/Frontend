@@ -77,7 +77,8 @@ class Login extends Component {
                   name="password" placeholder="*********"
                   onChange={this.handleChange}
                 />
-                 <div className="absolute item-right right-0 mt-2 mr-5"><i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
+                 <div className="absolute item-right right-0 mt-2 mr-5">
+                   <i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
                       onClick={this.togglePasswordVisibility}/>
             </div>
               </div> {this.state.error && (
