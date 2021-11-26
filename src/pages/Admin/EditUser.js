@@ -63,7 +63,7 @@ class EditUser extends Component {
     if (this.state.accountId) {
       const id = this.state.accountId;
       // const id = accountId.data;
-    console.log("role",role)
+    console.log("role"+role)
       let accountJson = {
         accountId: id,
         fname: fname,
@@ -81,7 +81,7 @@ console.log(this.state.roleEnter)
       });
       console.log(accountJson);
 
-      formData.append("editAccount", blob);
+      formData.append("requestAccount", blob);
       let user = localStorage.getItem("user");
       user= JSON.parse(user);
       axios({
@@ -118,7 +118,8 @@ console.log(this.state.roleEnter)
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.name);
+    console.log("etargetr")
+    console.log(e.target.value);
     console.log(this.state.role)
   };
   
@@ -213,8 +214,8 @@ console.log(this.state.roleEnter)
                   <select
                     onChange={this.handleChange}
                     className="w-full h-10 border-2"
-                    name="role"
-                    value={role}
+                    name="roleEnter"
+                    value={this.state.roleEnter}
                   >
                       {/* <option
                             id="role"
@@ -225,10 +226,13 @@ console.log(this.state.roleEnter)
                           >
                             {r.role}
                           </option> */}
-                       <option name="role" value="ADMIN"  defaultValue={this.state.roleEnter}>ADMIN</option>
-                     <option name="role" value="USER"     defaultValue={this.state.roleEnter}>USER</option>
+                          {console.log("dd")}
+                        {console.log(this.state.roleEnter)}
+
+                      <option  id="roleEnter" name="role" value="ADMIN"  defaultValue={this.state.roleEnter}>ADMIN</option>
+                     <option  id="roleEnter" name="role" value="USER"     >USER</option>
                  
-                 
+                  
                   </select>
                 </div>
                     </div>

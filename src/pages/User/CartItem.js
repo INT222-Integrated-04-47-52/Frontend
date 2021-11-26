@@ -437,16 +437,16 @@ class CartItem extends Component {
                           <div className="mx-2 my-1">
                          <input
                               className="absolute mr-12 px-2 mt-2 -ml-1"
-                              key={c.colorId}
-                              type="checkbox"
-                              id={c.colorId}
+                              key={c.colors.colorId}
+                              type="radio"
+                              id={c.colors.colorId}
                               name="productHasColors"
-                              value={c.colorId}
-                              checked={
-                                this.state.productHasColors.indexOf(
-                                  c.colorId
-                                ) !== -1
-                              }
+                              value={c.colors.colorId}
+                              // checked={
+                              //   this.state.productHasColors.indexOf(
+                              //     c.colorId
+                              //   ) !== -1
+                              // }
                               onChange={this.handleColor}
                             />
                             <label
