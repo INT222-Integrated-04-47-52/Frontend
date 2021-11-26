@@ -9,7 +9,8 @@ const initState = {
   lname:"",
   phone:"",
   email:"",
-  password:""
+  password:"",
+  role:""
 };
 
 class AddUser extends Component {
@@ -40,9 +41,9 @@ class AddUser extends Component {
     );
 
 
-    const {fname,lname,phone,email,password } = this.state;
+    const {fname,lname,phone,email,password,role } = this.state;
 
-   if (fname&&lname&&phone&&email&&password
+   if (fname&&lname&&phone&&email&&password&&role
     //  fname
      ) {
       // const id = userId.data + 1;
@@ -65,7 +66,8 @@ const id = userId.data + 1;
         lname: lname,
         phone: phone,
         email:email,
-        password:password
+        password:password,
+        role:role
       }
    
    
@@ -76,7 +78,7 @@ const id = userId.data + 1;
         type: "application/json",
       });
       // console.log(userJson);
-        formData.append("newAccount",blob);
+        formData.append("requestAccount",blob);
     /* url: `${process.env.REACT_APP_API_URL}/addUser/image`, */
     // {`http://13.76.45.147:5000/image/${user.image}`}
     //http://13.76.45.147:5000/
@@ -126,7 +128,7 @@ console.log(formData)
   };
 
   render() {
-    const { fname,lname,phone,email,password} = this.state;
+    const { fname,lname,phone,email,password,role} = this.state;
     const { user } = this.props.context;
 
     return (
@@ -202,7 +204,32 @@ console.log(formData)
               />
               </div>
             </div>
+            <div className="">
+            <span className="font-semibold">role: </span>
+                  <select
+                    onChange={this.handleChange}
+                    className="w-full h-10 border-2"
+                    name="role"
+                    value={role}
+                  >
+                      {/* <option
+                            id="role"
+                            key={r.role}
+                            name="role"
+                            value={r.role}
+                            defaultValue={this.state.role}
+                          >
+                            {r.role}
+                          </option> */}
+                          {console.log("dd")}
+                        {console.log(role)}
 
+                      <option  id="role" name="role" value="ADMIN" >ADMIN</option>
+                     <option  id="role" name="role" value="USER" >USER</option>
+                 
+                  
+                  </select>
+                </div>
             <div className="">
               {/* <div className="user__details__option text-left"> */}
               <span className="font-semibold">อีเมลล์: </span>

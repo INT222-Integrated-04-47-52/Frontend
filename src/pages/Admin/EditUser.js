@@ -209,7 +209,7 @@ console.log(this.state.roleEnter)
                         required
                         placeholder="ระบุชื่ออีเมลล์"
                       />
-                         <span className="font-semibold">อีเมลล์: </span>
+                         <span className="font-semibold">Role: </span>
                          <div className="">
                   <select
                     onChange={this.handleChange}

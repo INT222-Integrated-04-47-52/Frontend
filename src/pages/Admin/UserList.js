@@ -29,18 +29,7 @@ export default class PersonList extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="mt-16">
-        <button
-                  className="button is-small bg-blue-600 ml-4 text-gray-400   
-          is-pulled-right"
-                  style={{ backgroundColor: "blue", color: "white" }}
-                  type="submit"
-                  onClick={() => this.nextPath('/AddUser') }
-                >
-                  {" "}
-                  Add user
-                </button>
-        </div>
+       
         <div className="contact__text -mt-24">
                 <div
                  
@@ -48,8 +37,11 @@ export default class PersonList extends React.Component {
                 >
                   <h2 className="pt-24  m-1.5">Edit Product</h2>
                   <p className=" m-1.5">แก้ไขข้อมูลผู้ใช้</p>
+                
                 </div>
+                
               </div>
+           
         <div class="text-gray-900 bg-gray-100 text-left">
     
   
@@ -89,7 +81,16 @@ export default class PersonList extends React.Component {
          
             </tbody>
         </table>
-
+        <div className="flex justify justify-center ">
+        <button
+                 className=" mr-3 text-sm bg-blue-700 hover:bg-blue-900 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                  style={{ }}
+                  type="submit"
+                  onClick={() => this.nextPath('/AddUser') }
+                >
+                  {" "}
+                  Add user
+                </button></div>
 </div>
 
 
