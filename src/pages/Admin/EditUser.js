@@ -1,10 +1,10 @@
 import "../../HTMLcomponents/cssComponent/decorate.css";
 // import { Link } from "react-router-dom";
-import React, { Component } from "react";
+import React, { Component,useState, useCallback  } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import Drawer from 'react-drag-drawer';
 
 const initState = {
   accountId: null,
@@ -13,7 +13,9 @@ const initState = {
   phone: "",
   email: "",
   position: [],
+  roleEnter: ""
 };
+
 
 class EditUser extends Component {
   constructor(props) {
@@ -31,6 +33,7 @@ class EditUser extends Component {
       lname: this.props.person.lname,
       phone: this.props.person.phone,
       email: this.props.person.email,
+      roleEnter: this.props.person.role,
     });
     console.log("accountThatClick");
     console.log(this.props.person.accountId);
@@ -38,32 +41,40 @@ class EditUser extends Component {
     console.log(this.props.person.lname);
     console.log(this.props.person.phone);
     console.log(this.props.person.email);
+    console.log(this.props.person.role);
+    console.log("role")
+   
   }
 
   save = async (e) => {
     e.preventDefault();
-
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
     const accId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/account/${this.state.accountId}`
+      `${process.env.REACT_APP_API_URL}/admin/account/${this.state.accountId}`  
+      ,{ headers: {"Authorization" : `${user.token}`} }
     );
     console.log(accId);
 
 
-    const { fname,lname,phone,email } = this.state;
+    const { fname,lname,phone,email,role } = this.state;
 
 
     if (this.state.accountId) {
       const id = this.state.accountId;
       // const id = accountId.data;
-
+    console.log("role",role)
       let accountJson = {
         accountId: id,
         fname: fname,
         lname: lname,
         phone: phone,
         email: email,
-        password: "f"
+        role: this.state.roleEnter
       };
+      console.log("accountJson");
+      console.log(accountJson);
+console.log(this.state.roleEnter)
       let formData = new FormData();
       var blob = new Blob([JSON.stringify(accountJson)], {
         type: "application/json",
@@ -71,10 +82,14 @@ class EditUser extends Component {
       console.log(accountJson);
 
       formData.append("editAccount", blob);
+      let user = localStorage.getItem("user");
+      user= JSON.parse(user);
       axios({
-        url: `${process.env.REACT_APP_API_URL}/editAccount`,
+        url: `${process.env.REACT_APP_API_URL}/admin/editAccount`,
+        headers: {"Authorization" : `${user.token}`} ,
         method: "PUT",
         data: formData,
+
       })
         .then((res) => {
           if (res.data.status === 200) {
@@ -99,19 +114,25 @@ class EditUser extends Component {
     }
   };
 
+
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     console.log(e.target.name);
+    console.log(this.state.role)
   };
-
+  
+  
   render() {
-    const { fname, lname, phone, email } = this.state;
+    const { fname, lname, phone, email,role } = this.state;
     const { person } = this.props.context;
 
     return (
       /*!(user && user.accessLevel < 1) ? (*/
       //   <Redirect to="/" />
       // ) : (
+  
+      
       <div
         className="bg-black bg-opacity-50 "
         style={{
@@ -132,7 +153,7 @@ class EditUser extends Component {
               {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
                            </div> */}
-              <div className="contact__text -mt-24">
+              <div className="contact__text">
                 <div
                   style={{ paddingLeft: "32px", paddingTop: "40px" }}
                   className="section-title"
@@ -187,6 +208,29 @@ class EditUser extends Component {
                         required
                         placeholder="ระบุชื่ออีเมลล์"
                       />
+                         <span className="font-semibold">อีเมลล์: </span>
+                         <div className="">
+                  <select
+                    onChange={this.handleChange}
+                    className="w-full h-10 border-2"
+                    name="role"
+                    value={role}
+                  >
+                      {/* <option
+                            id="role"
+                            key={r.role}
+                            name="role"
+                            value={r.role}
+                            defaultValue={this.state.role}
+                          >
+                            {r.role}
+                          </option> */}
+                       <option name="role" value="ADMIN"  defaultValue={this.state.roleEnter}>ADMIN</option>
+                     <option name="role" value="USER"     defaultValue={this.state.roleEnter}>USER</option>
+                 
+                 
+                  </select>
+                </div>
                     </div>
                     <br></br>
                   </div>
@@ -213,6 +257,7 @@ class EditUser extends Component {
           </div>
         </div>
       </div>
+
     );
   }
 }

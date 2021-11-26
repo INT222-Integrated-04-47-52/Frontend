@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EditUser from "./EditUser";
+
 export default function UserItem(props) {
   const { person } = props;
   const [user, setUser] = useState(null);
@@ -9,11 +10,13 @@ export default function UserItem(props) {
   useEffect(() => {
     // Update the document title using the browser API
     const userLocal = localStorage.getItem("user");
+    
     setUser(userLocal);
     console.log(user);
     console.log(person);
     axios
-      .get(`${process.env.REACT_APP_API_URL}/login/${person.accountId}`)
+      .get(`${process.env.REACT_APP_API_URL}/login/${person.accountId}`
+    )
       .then((response) => {
         setUser(response.data);
     }); 
@@ -23,8 +26,11 @@ export default function UserItem(props) {
     console.log(event.target.value);
   }
   function deleteUser() {
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/delete/account/${person.accountId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/admin/delete/account/${person.accountId}`
+      ,{ headers: {"Authorization" : `${user.token}`}})
       .then(() => {
         
         setUser(null);
@@ -37,73 +43,29 @@ export default function UserItem(props) {
 
   return (
     <>
-     { isInput && <EditUser  person={person} close={() => setIsIn(false)}/>}
-    <div className=" column is-half">
-      <div className="box">
-         <div className="media">
-          <div className="media-content text-left flex flex-col justify-start items-start">
-            <div className=" justify-left text-left items-start ">
-              <b>Name:{" "}</b>
-           {person.fname} {" "}{person.lname}
-                <br>
-                </br>
-               
-                <b>Phone:{" "}</b>
-                {person.phone}
-                <br>
-                </br>
+ 
+     { isInput && 
+     <EditUser  person={person} close={() => setIsIn(false)}/>}
+  <tr class=" border-t border-l border-r hover:bg-orange-100 bg-white block md:table-row">
+                  <td class="p-3 px-5 block md:table-cell"> <span class="inline-block w-1/3 md:hidden font-bold">Name</span>{person.fname} {" "}{person.lname}</td>
+                    <td class="p-3 px-5 block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Email</span>  {person.email}</td>
+                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Phone</span>{person.phone}</td>
+                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Role</span>{person.role}</td>
+                    {/* <td class="p-3 px-5">
+                        <select value="user.role" class="bg-transparent">
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                    </td> */}
+                    <td class="p-3 px-5 flex justify-end">
+                    <button type="submit"     onClick={()=> setIsIn(true)}  class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                      <button   type="submit" onClick={()=> setIsIn(false)} disabled={!isInput} class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Submit</button>
 
-                <b>Mail:{" "}</b>
-                {person.email}
-                <br>
-                </br>
-
-
-         
-           
-           </div>
-            
-              <div className="is-clearfix flex bl-12 justify-left mt-2">
-                <button
-                  className="button is-small bg-red-600 ml-4 text-gray-400   
-          is-pulled-right"
-                  style={{ backgroundColor: "red", color: "white" }}
-                  type="submit"
-                  onClick={deleteUser}
-                >
-                  {" "}
-                  Delete
-                </button>
-               
-                 <button
-                  className="button is-small bg-green-600 ml-4 text-gray-400   
-          is-pulled-right"
-                  style={{ backgroundColor: "green", color: "white" }}
-                  type="submit"
-                 onClick={()=> setIsIn(true)}
-                >
-                  {" "}
-                  Edit
-                </button> 
-                <button
-                  className="button is-small bg-green-600 ml-4 text-gray-400   
-          is-pulled-right"
-                  style={{ backgroundColor: "green", color: "white" }}
-                  type="submit"
-                  onClick={()=> setIsIn(false)} disabled={!isInput}
-                >
-                  {" "}
-                  Submit
-                </button> 
-              </div>
-           
-            
-            
-          </div> 
-        </div> 
-      </div>
-    </div>
-    
+             
+                    <button type="submit"    onClick={deleteUser} class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button></td>
+                    </tr>
+                     
+                  
     </>
   );
 }

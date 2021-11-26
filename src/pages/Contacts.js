@@ -11,15 +11,16 @@ import Nooch from "../HTMLcomponents/img/PinNookNooch/Nooch.JPG";
 function Contacts() {
   return (
     <section className=" ">
-      <div className=" ">
+      <div className=" container">
         {/* <div className="row"> */}
         <div className="">
           <div className="contact__text">
-            <div style={{ paddingLeft: "32px" }} className="section-title">
+            <div    style={{  paddingTop: "68px" }} className="section-title">
               <h2>Contact Us</h2>
               <p>KMUTT | School of Information Technology</p>
             </div>
           </div>
+          
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-10">
             <div className="grid justify-items-center">
               <img style={{ height: "280px" }} src={Pin} alt="" />

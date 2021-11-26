@@ -23,7 +23,7 @@ const initState = {
   updatedAt: null,
 };
 
-class EditProduct extends Component {
+class CartItem extends Component {
   constructor(props) {
     super(props);
     this.state = initState;
@@ -299,8 +299,8 @@ class EditProduct extends Component {
                   style={{ paddingTop: "40px" }}
                   className="section-title"
                 >
-                  <h2 className="pt-24 pl-24 m-1.5">Edit Product</h2>
-                  <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
+                  <h2 className="pt-24 pl-24 m-1.5">Closet</h2>
+                  <p className="pl-24 m-1.5">ระบุข้อมูลเพื่อสั่งซื้อสินค้า</p>
                 </div>
               </div>
               <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
@@ -320,16 +320,7 @@ class EditProduct extends Component {
                       รูปภาพสินค้า:{" "}
                     </label>
 
-                    <input
-                      type="file"
-                      class="w-1/2 md:w-80 mt-4 focus:outline-none"
-                      name="file"
-                      id="image"
-                      multiple
-                      onChange={(e) => {
-                        this.handleFile(e);
-                      }}
-                    />
+                 
                   </div>
                 </div>
 
@@ -339,39 +330,25 @@ class EditProduct extends Component {
                     {/* <div className="product__details__option text-left"> */}
                     <span className="font-semibold">ชื่อสินค้า: </span>
                     <br />
-
-                    <input
-                      className="border p-2 w-full h-10"
-                      type="text"
-                      name="name"
-                      value={name}
-                      onChange={this.handleChange}
-                      required
-                      placeholder="ระบุชื่อสินค้า"
-                    />
+                    {name}
+                    
                   </div>
 
                   <div className="">
                     {/* <div className="product__details__option text-left"> */}
                     <span className="font-semibold">รายละเอียดสินค้า: </span>
-                    <textarea
-                      type="text"
-                      rows="2"
-                      style={{ resize: "none" }}
-                      name="description"
-                      value={description}
-                      onChange={this.handleChange}
-                      className="border p-2 w-full h-20"
-                      placeholder="ระบุรายละเอียดสินค้า"
-                    />
+                    <br></br>
+                   {description}
                   </div>
 
                   <div className="">
                     {/* <div className="product__details__option text-left"> */}
                     <span className="font-semibold">สไตล์: </span>
-                    <div className=" ">
+                 {this.props.product.gender.genderName}
+                    {/* <div className=" ">
                       {this.state.genders.map((g) => (
                         <div className="mx-2">
+                          {this.props.gender}
                           <input
                             key={g.genderId}
                             type="radio"
@@ -384,7 +361,7 @@ class EditProduct extends Component {
                           {g.genderName}
                         </div>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="">
@@ -392,7 +369,8 @@ class EditProduct extends Component {
                     <span className="font-semibold">ชนิดสินค้า: </span>
                     <div className="">
                       <div className=" ">
-                        {this.state.kinds.map((k) => (
+                      {this.props.product.kind.kindName}
+                        {/* {this.state.kinds.map((k) => (
                           <div className="mx-2">
                             <input
                               key={k.kindId}
@@ -405,7 +383,7 @@ class EditProduct extends Component {
                             />
                             {k.kindName}
                           </div>
-                        ))}
+                        ))} */}
                       </div>
                     </div>
                   </div>
@@ -416,7 +394,8 @@ class EditProduct extends Component {
                       ประเภทสินค้า:
                     </label>
                     <div className="">
-                      <select
+                    {this.props.product.type.typeName}
+                      {/* <select
                         onChange={this.handleChange}
                         className="w-full h-10 border-2"
                         name="typeEnter"
@@ -430,8 +409,8 @@ class EditProduct extends Component {
                           className="text-gray-500"
                         >
                           Please Choose...
-                        </option>
-                        {this.state.types.map((t) => (
+                        </option> */}
+                        {/* {this.state.types.map((t) => (
                           <option
                             id="typeEnter"
                             key={t.typeId}
@@ -442,7 +421,7 @@ class EditProduct extends Component {
                             {t.typeName}
                           </option>
                         ))}{" "}
-                      </select>
+                      </select> */}
                     </div>
                   </div>
 
@@ -453,10 +432,10 @@ class EditProduct extends Component {
 
                       {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
                       <div className="grid grid-cols-1 md:grid-cols-6">
-                        {this.state.colors.map((c) => (
+                      {/* {console.log(this.props.product.productHasColors)} */}
+                        {this.props.product.productHasColors.map((c) => (
                           <div className="mx-2 my-1">
-                            {" "}
-                            <input
+                         <input
                               className="absolute mr-12 px-2 mt-2 -ml-1"
                               key={c.colorId}
                               type="checkbox"
@@ -472,7 +451,7 @@ class EditProduct extends Component {
                             />
                             <label
                               className="absolute   mx-10 ml-4 "
-                              style={{ backgroundColor: c.colorCode }}
+                              style={{ backgroundColor: c.colors.colorCode }}
                             >
                               {/*  style={{backgroundColor : c.codeName, border: "solid red"
                        }}*/}
@@ -510,4 +489,4 @@ class EditProduct extends Component {
     );
   }
 }
-export default withContext(EditProduct);
+export default withContext(CartItem);

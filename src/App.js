@@ -8,15 +8,15 @@ import "./App.css";
 import Tailor from "./pages/ShopComponent/Tailor";
 import AddProduct from "./pages/ShopComponent/AddProduct";
 import AddSize from "./pages/ShopComponent/AddSize";
-import Cart from "./pages/ShopComponent/Cart";
+import Cart from "./pages/User/CartList";
 import Login from "./pages/ShopComponent/Login";
 import ProductList from "./pages/ShopComponent/ProductList";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import Context from "./Context";
 import UserList from "./pages/Admin/UserList";
 import AddUser from "./pages/Admin/AddUser";
 import EditProduct from "./pages/ShopComponent/EditProduct";
+import Account from "./pages/HomeComponent/Account";
 // import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware, compose } from 'redux';
@@ -29,7 +29,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: {},
       cart: {},
       products: []
     };
@@ -38,31 +38,31 @@ export default class App extends Component {
 /*Cookies */
 // const createStoreWithMiddleware = compose(applyMiddleware(reduxThunk))(createStore);
 // const store = createStoreWithMiddleware(reducers);
-  addToCart = (cartItem) => {
-    let cart = this.state.cart;
-    if (cart[cartItem.id]) {
-      cart[cartItem.id].amount += cartItem.amount;
-    } else {
-      cart[cartItem.id] = cartItem;
-    }
-    if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
-      cart[cartItem.id].amount = cart[cartItem.id].product.stock;
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    this.setState({ cart });
-  };
-  removeFromCart = (cartItemId) => {
-    let cart = this.state.cart;
-    delete cart[cartItemId];
-    localStorage.setItem("cart", JSON.stringify(cart));
-    this.setState({ cart });
-  };
+  // addToCart = (cartItem) => {
+  //   let cart = this.state.cart;
+  //   if (cart[cartItem.id]) {
+  //     cart[cartItem.id].amount += cartItem.amount;
+  //   } else {
+  //     cart[cartItem.id] = cartItem;
+  //   }
+  //   if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
+  //     cart[cartItem.id].amount = cart[cartItem.id].product.stock;
+  //   }
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  //   this.setState({ cart });
+  // };
+  // removeFromCart = (cartItemId) => {
+  //   let cart = this.state.cart;
+  //   delete cart[cartItemId];
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  //   this.setState({ cart });
+  // };
 
-  clearCart = () => {
-    let cart = {};
-    localStorage.removeItem("cart");
-    this.setState({ cart });
-  };
+  // clearCart = () => {
+  //   let cart = {};
+  //   localStorage.removeItem("cart");
+  //   this.setState({ cart });
+  // };
   /* async login  (_email, _password) {
     const response = await axios
       .post("http://localhost:3001/login", { email: _email, password: _password })
@@ -108,55 +108,123 @@ export default class App extends Component {
   //     return false;
   //   }
   // }
-  login = async (email, password) => {
+  async componentDidMount() {
+    let user = localStorage.getItem("user");
+    // let cart = localStorage.getItem("cart");
 
-    const res = await axios.get(
-      `http://localhost:5001/login/900001`,
-      { email, password },
+    const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
+    console.log(products);
+    user = user ? JSON.parse(user) : null;
+    // cart = cart ? JSON.parse(cart) : {};
+    this.setState({ user, products: products.data
+      // , cart 
+    });
+  }
+  // login = async (email, password) => {
+  //   const res = await axios.post(
+  //     'http://localhost:5001/login',
+  //     { email, password },
+  //   ).catch((res) => {
+  //     return { status: 401, message: 'Unauthorized' }
+  //   })
+  
+  //   if(res.status === 200) {
+  //     const { email } = res.data
+  //     const user = {
+  //       email,
+  //       token: res.data.accessToken,
+  //       accessLevel: email === 'admin@example.com' ? 0 : 1
+  //     }
+  
+  //     this.setState({ user });
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+  
+  login = async (email, password) => {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/login`,
+      { email,  password }
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })
-    console.log(email);
-    if(res.status === 200) {
-      const { email } = res.data.accountId.email
-      const user = {
-        ...res.data.accountId,
-        accessLevel: email === 'admin@example.com' ? 0 : 1
-       
-      }
+    console.log("account")
+console.log(res.data.account.email)
 
+    console.log(email)
+    if(res.status === 200) {
+      const  email  = res.data.account.email
+      const user = {
+        email,
+        token: "Bearer " + res.data.token,
+        accessLevel: res.data.account.role === 'ADMIN' ? 0 : 1,
+      
+      }
+      console.log("res.data")
+      console.log(res.data)
       this.setState({ user });
-      const userLocal = localStorage.getItem("user");
-     console.log("dddd"+userLocal)
-      console.log(user);
-      console.log(user);
-      console.log(user.accessLevel);
       localStorage.setItem("user", JSON.stringify(user));
+      console.log("user")
+      console.log(user);
       return true;
     } else {
       return false;
     }
   }
-  checkout = () => {
-     if (!this.state.user) {
-      this.routerRef.current.history.push("/login");
-      return;
-    }
-    const cart = this.state.cart;
-    const products = this.state.products.map((p) => {
-      if (cart[p.name]) {
-        axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
-      }
-      return p;
-    });
+  // login = async (email, password) => {
 
-    this.setState({ products });
-    this.clearCart();
-  };
+  //   const res = await axios.post(
+  //     `http://localhost:5001/login`,
+  //     { email, password },
+  //   ).catch((res) => {
+  //     return { status: 401, message: 'Unauthorized' }
+  //   })
+  //   console.log(email);
+  //   if(res.status === 200) {
+  //     const { email } = jwt_decode(res.data.accessToken)
+  //     const user = {
+  //       email,
+  //       token:res.data.accessToken
+  //       accessLevel: email === 'adminpin@email.com' ? 0 : 1
+       
+  //     }
+
+  //     this.setState({ user });
+  //     const userLocal = localStorage.getItem("user");
+  //    console.log("dddd"+userLocal)
+  //     console.log(user);
+  //     console.log(user);
+  //     console.log(user.accessLevel);
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+  // checkout = () => {
+  //    if (!this.state.user) {
+  //     this.routerRef.current.history.push("/login");
+  //     return;
+  //   }
+  //   const cart = this.state.cart;
+  //   const products = this.state.products.map((p) => {
+  //     if (cart[p.name]) {
+  //       axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
+  //     }
+  //     return p;
+  //   });
+
+  //   this.setState({ products });
+  //   this.clearCart();
+  // };
    logout = (e) => {
     e.preventDefault();
     this.setState({ user: null });
     localStorage.removeItem("user");
+   window.location.reload(false);
   };
   addProduct = (product, callback) => {
     let products = this.state.products.slice();
@@ -164,16 +232,7 @@ export default class App extends Component {
     this.setState({ products }, () => callback && callback());
   };
 
-  async componentDidMount() {
-    let user = localStorage.getItem("user");
-    let cart = localStorage.getItem("cart");
 
-    const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
-    console.log(products);
-    user = user ? JSON.parse(user) : null;
-    cart = cart ? JSON.parse(cart) : {};
-    this.setState({ user, products: products.data, cart });
-  }
   
 
   render() {
@@ -181,12 +240,12 @@ export default class App extends Component {
       <Context.Provider
         value={{
           ...this.state,
-          removeFromCart: this.removeFromCart,
-          addToCart: this.addToCart,
+          // removeFromCart: this.removeFromCart,
+          // addToCart: this.addToCart,
           login: this.login,
           addProduct: this.addProduct,
-          clearCart: this.clearCart,
-          checkout: this.checkout,
+          // clearCart: this.clearCart,
+          // checkout: this.checkout,
         }}>
         <Router ref={this.routerRef}>
           <div className="App">
@@ -261,7 +320,7 @@ export default class App extends Component {
                     Add Product
                   </NavLink>
           )}{" "} */}
-                      {this.state.user  && (
+                      {this.state.user  && this.state.user.accessLevel < 1 &&(
                   <NavLink to="/AddProduct"     className="main-nav md:px-8 navbar-item"
                   activeClassName="main-nav-active ">
                     Add Product
@@ -272,7 +331,7 @@ export default class App extends Component {
                       
                       </div>
                       <div className="nav-item">
-                      {this.state.user  && (
+                      {this.state.user  && this.state.user.accessLevel < 1 &&(
                   <NavLink to="/Admin" className="main-nav md:px-8 navbar-item"
                   activeClassName="main-nav-active ">
                     Admin
@@ -280,16 +339,25 @@ export default class App extends Component {
           )}{" "}</div>
 
                       <div className="nav-item">
+                      {this.state.user  &&(
                         <NavLink
                           to="/Cart"
                           className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active">
                           Closet
-                          <span className="tag is-primary md:pl-2" style={{}}>
+                          {/* <span className="tag is-primary md:pl-2" style={{}}>
                             {Object.keys(this.state.cart).length}
-                          </span>
-                        </NavLink>
+                          </span> */}
+                        </NavLink>          )}{" "}
                       </div>
+                      <div className="nav-item">
+                      {this.state.user  && (
+                  <NavLink to="/Account" className="main-nav md:px-8 navbar-item"
+                  activeClassName="main-nav-active ">
+                    Account
+                  </NavLink>
+          )}{" "}</div>
+
                       <div className="nav-item">
                       {!this.state.user ? (
                   <NavLink to="/LogIn" className="main-nav md:px-8 navbar-item"
@@ -326,20 +394,29 @@ export default class App extends Component {
               <Route path="/Shop" component={Shop} />
               <Route path="/Contacts" component={Contacts} />
               <Route path="/Tailor" component={Tailor} />
-              {this.state.user  && ( 
+              {this.state.user  && this.state.user.accessLevel < 1 && ( 
               <Route path="/AddProduct" component={AddProduct} />
              )}{" "}
+              {this.state.user && ( 
+              <Route path="/Account" component={Account} />
+             )}{" "}
             
-     {this.state.user &&  ( 
+     {this.state.user && this.state.user.accessLevel < 1 && ( 
               <Route path="/Admin" component={UserList} />
              )}{" "}
- {this.state.user &&  ( 
+
+ {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/AddUser" component={AddUser} />
              )}{" "}
+              {this.state.user && this.state.user.accessLevel < 1 &&  ( 
    <Route path="/AddProduct" component={Login} />
-            
+   )}{" "}
+      {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/AddSize" component={AddSize} />
+              )}{" "}
+              {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/EditProduct" component={EditProduct} />
+              )}{" "}
             </Switch>
             <Footer />
           </div>

@@ -1,11 +1,12 @@
 import React from 'react';
-import UserItem from './UserItem';
+import UserItem from '../Admin/UserItem';
 import axios from "axios";
 
 
-export default class PersonList extends React.Component {
+export default class Account extends React.Component {
   state = {
-    persons: []
+    persons: [],
+    userAccount:null
   }
   nextPath(path) {
     this.props.history.push(path);
@@ -15,81 +16,39 @@ export default class PersonList extends React.Component {
     console.log(e.target.value);
   };
   componentDidMount() {
-    let user = localStorage.getItem("user");
-    user= JSON.parse(user);
-    axios.get(`${process.env.REACT_APP_API_URL}/admin/allAccounts`
-    ,{ headers: {"Authorization" : `${user.token}`}})
+   
+    this.state.userAccount = localStorage.getItem("user");
+    // user= JSON.parse(user);
+    axios.get(`${process.env.REACT_APP_API_URL}/user/account/`
+    )
       .then(res => {
         const persons = res.data;
         this.setState({ persons });
       })
       
+      console.log( this.state.userAccount)
   }
 
   render() {
     return (
       <div className="container">
-        <div className="mt-16">
-        <button
-                  className="button is-small bg-blue-600 ml-4 text-gray-400   
-          is-pulled-right"
-                  style={{ backgroundColor: "blue", color: "white" }}
-                  type="submit"
-                  onClick={() => this.nextPath('/AddUser') }
-                >
-                  {" "}
-                  Add user
-                </button>
-        </div>
+    
         <div className="contact__text -mt-24">
                 <div
                  
                   className="section-title "
                 >
-                  <h2 className="pt-24  m-1.5">Edit Product</h2>
+                  <h2 className="pt-24  m-1.5">Account</h2>
                   <p className=" m-1.5">แก้ไขข้อมูลผู้ใช้</p>
                 </div>
               </div>
         <div class="text-gray-900 bg-gray-100 text-left">
     
-  
-        <table class="min-w-full border-collapse block md:table text-md bg-white shadow-md rounded mb-4">
-       
-        <thead class="block md:table-header-group">
-                <tr class="border-b block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-                    <th class="text-left p-3 px-5 block md:table-cell">Name</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Email</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Phone</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Role</th>
-                    <th></th>
-                </tr>
-                </thead>
-              
-       
-              	<tbody class="block md:table-row-group">
-        {this.state.persons && this.state.persons.length ? (
-          this.state.persons
-          
-            .map((person, index) => (
-              <UserItem
-                person={person}
-                key={index}
-               
-              />
-            ))
-        ) : (
           <div className="column">
             <span className="title has-text-grey-light">
-              No products found!
+           
             </span>
           </div>
-        )}
-      
-      
-         
-            </tbody>
-        </table>
-
 </div>
 
 

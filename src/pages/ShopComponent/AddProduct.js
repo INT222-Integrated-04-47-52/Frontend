@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const initState = {
-  file:null,
+  file: null,
   name: "",
   description: "",
   genderEnter: null,
@@ -27,32 +27,54 @@ class AddProduct extends Component {
   }
 
   componentDidMount() {
-  //http://13.76.45.147:5000/
-  //`${process.env.REACT_APP_API_URL}/allKinds`
-
-    axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
-      this.setState({ genders: res.data });
-    });
-    axios.get(`${process.env.REACT_APP_API_URL}/allKinds`).then((res) => {
-      this.setState({ kinds: res.data });
-    });
-    axios.get(`${process.env.REACT_APP_API_URL}/allTypes`).then((res) => {
-      this.setState({ types: res.data });
-    });
-    axios.get(`${process.env.REACT_APP_API_URL}/allColors`).then((res) => {
-      this.setState({ colors: res.data });
-    });
+    //http://13.76.45.147:5000/
+    //`${process.env.REACT_APP_API_URL}/allKinds`
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
+    console.log(user)
+    console.log()
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/allGenders`, {
+        headers: { Authorization: `${user.token}` },
+      })
+      .then((res) => {
+        this.setState({ genders: res.data });
+      });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/allKinds`, {
+        headers: { Authorization: `${user.token}` },
+      })
+      .then((res) => {
+        this.setState({ kinds: res.data });
+      });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/allTypes`, {
+        headers: { Authorization: `${user.token}` },
+      })
+      .then((res) => {
+        this.setState({ types: res.data });
+      });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/allColors`, {
+        headers: { Authorization: `${user.token}` },
+      })
+      .then((res) => {
+        this.setState({ colors: res.data });
+      });
   }
 
   save = async (e) => {
     e.preventDefault();
-
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
     const productId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/max-productId`
+      `${process.env.REACT_APP_API_URL}/admin/max-productId`
+      ,{ headers: {"Authorization" : `${user.token}`} }
     );
 
     const hasMaxColorsId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/max-productHasColorsId`
+      `${process.env.REACT_APP_API_URL}/admin/max-productHasColorsId`
+      ,{ headers: {"Authorization" : `${user.token}`} }
     );
     var colorIds = this.state.productHasColors.map((g) => parseInt(g));
     var colorObject = colorIds.map((im) =>
@@ -62,29 +84,28 @@ class AddProduct extends Component {
 
     var genderObject = this.state.genders.find(
       (g) => g.genderId === parseInt(this.state.genderEnter)
-    
     );
-   console.log(this.state.genders[0].genderId)
-    console.log("genders")
-    console.log(this.state.genders)
-    console.log("genderEnter")
-    console.log(this.state.genderEnter)
-    console.log("genderObjectSet;")
- console.log(typeof(this.state.genderEnter))
-    console.log(typeof(this.state.genders[0].genderId))
+    console.log(this.state.genders[0].genderId);
+    console.log("genders");
+    console.log(this.state.genders);
+    console.log("genderEnter");
+    console.log(this.state.genderEnter);
+    console.log("genderObjectSet;");
+    console.log(typeof this.state.genderEnter);
+    console.log(typeof this.state.genders[0].genderId);
     console.log(genderObject);
 
     var kindObject = this.state.kinds.find(
       (k) => k.kindId === parseInt(this.state.kindEnter)
     );
-   
-    console.log("kindObjectSet;")
+
+    console.log("kindObjectSet;");
     console.log(kindObject);
 
     var typeObject = this.state.types.find(
       (t) => t.typeId === parseInt(this.state.typeEnter)
     );
-    console.log("typeObjectSet;")
+    console.log("typeObjectSet;");
     console.log(typeObject);
 
     // e.preventDefault();
@@ -93,80 +114,86 @@ class AddProduct extends Component {
     /*, genderEnter, 
       kindEnter,typeEnter, productHasColors */
 
-    const { name, description,file } = this.state;
+    const { name, description, file } = this.state;
     const gender = genderObject;
     const kind = kindObject;
     const type = typeObject;
     const colors = colorObject;
-{/*   productId: id,
+    {
+      /*   productId: id,
         name: name,
         image: imgName,
         description:description,
         kind:kind,
         gender:gender,
         type:type,
-        productHasColors: productHasColors */}
-        {/*name=="" ||description==""||kind==""||gender==""||type=="" */}
-    if (name&&description&&kind&&gender&&type&&file) {
+        productHasColors: productHasColors */
+    }
+    {
+      /*name=="" ||description==""||kind==""||gender==""||type=="" */
+    }
+    if (name && description && kind && gender && type && file) {
       const id = productId.data + 1;
       var hasColorsId = hasMaxColorsId.data + 1;
       console.log(hasColorsId);
       const HasColor = [];
       for (var loopColors of colors) {
-        
-        const hasColorsEach = {hasColorsId,colors:loopColors}
-        HasColor.push(hasColorsEach)
-        hasColorsId+=hasColorsId+1;
-        console.log(loopColors); 
-     }
+        const hasColorsEach = { hasColorsId, colors: loopColors };
+        HasColor.push(hasColorsEach);
+        hasColorsId += hasColorsId + 1;
+        console.log(loopColors);
+      }
       // const HasColors = {hasColorsEach };
-      const productHasColors = HasColor
+      const productHasColors = HasColor;
       console.log(productHasColors);
       let imgName = this.state.imageName;
       console.log(imgName);
-      console.log("gender")
-      console.log(genderObject)
-      console.log(gender)
-      console.log("kind")
-      console.log(kindObject)
-      console.log(kind)
-      console.log("type")
-      console.log(typeObject)
-      console.log(type)
+      console.log("gender");
+      console.log(genderObject);
+      console.log(gender);
+      console.log("kind");
+      console.log(kindObject);
+      console.log(kind);
+      console.log("type");
+      console.log(typeObject);
+      console.log(type);
 
-      let productJson ={ 
+      let productJson = {
         productId: id,
         name: name,
         image: imgName,
-        description:description,
-        kind:kind,
-        gender:gender,
-        type:type,
-        productHasColors: productHasColors
-      }
-   
+        description: description,
+        kind: kind,
+        gender: gender,
+        type: type,
+        productHasColors: productHasColors,
+      };
+
       let file = this.state.file;
-     console.log(productJson)
-      console.log(file)
+      console.log(productJson);
+      console.log(file);
       let formData = new FormData();
-      var blob = new Blob([JSON.stringify(productJson)],{
+      var blob = new Blob([JSON.stringify(productJson)], {
         type: "application/json",
       });
       console.log(productJson);
-       formData.append("image", file); 
-        formData.append("newProduct",blob);
-    /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
-    // {`http://13.76.45.147:5000/image/${product.image}`}
-    //http://13.76.45.147:5000/
-        axios({ 
-        url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
+      formData.append("image", file);
+      formData.append("newProduct", blob);
+      /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
+      // {`http://13.76.45.147:5000/image/${product.image}`}
+      //http://13.76.45.147:5000/
+      let user = localStorage.getItem("user");
+      user= JSON.parse(user);
+      axios({
+        url: `${process.env.REACT_APP_API_URL}/admin/addProduct/image`,
         method: "POST",
-        data: formData
-        
-      }).then(res=>this.props.history.replace("/Shop"))
-       .catch(err=>err)
-       console.log(formData)
-       /* 
+        data: formData,
+        headers: {"Authorization" : `${user.token}`} 
+      })
+        .then((res) => this.props.history.replace("/Shop"))
+        .catch((err) => err);
+      console.log(formData);
+      /* 
       formData.append("productId",id)
       formData.append("name",name)
       formData.append("image","imagee")
@@ -177,16 +204,13 @@ class AddProduct extends Component {
       formData.append("productHasColors",productHasColors)
       */
       for (var value of formData.values()) {
-        console.log(value); 
-     }
-       
-     
-    
+        console.log(value);
+      }
 
       /*  for (var pair of formData.entries()) {
        console.log(pair[0]+ ', ' + pair[1]+ pair[2]+ pair[3]+ pair[4]+ pair[5]); 
     }*/
-    /*  const blob = await new Blob([productJson], {
+      /*  const blob = await new Blob([productJson], {
         type: "application/json",
       });
       let formData = new formData();
@@ -200,16 +224,17 @@ class AddProduct extends Component {
         (res) => { },
           (err) => { }
         ); */
-       
- /*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
 
-    /*   await axios({
+      /*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
+
+      /*   await axios({
         url: `${process.env.REACT_APP_API_URL}/allProducts`,
         method: "POST",
         data: formData,
       });*/
       /* http://13.76.45.147:5000/addProduct/image */
-      {/*
+      {
+        /*
        productId: id,
         name: name,
         image: imgName,
@@ -217,18 +242,22 @@ class AddProduct extends Component {
         kind:kind,
         gender:gender,
         type:type,
-        productHasColors: productHasColors */}
-        {/*productId,
+        productHasColors: productHasColors */
+      }
+      {
+        /*productId,
           name,
           image,
           description,
           gender,
           kind,
           type,
-          productHasColors, */}
-    
+          productHasColors, */
+      }
+
       this.props.context.addProduct(
-        { id,
+        {
+          id,
           name,
           imgName,
           description,
@@ -240,13 +269,14 @@ class AddProduct extends Component {
         () => this.setState(initState)
       );
       this.setState({
-      
         flash: { status: "is-success", msg: "Product created successfully" },
-        
       });
     } else {
       this.setState({
-        flash: { status: "is-danger", msg: "Please enter all required information" },
+        flash: {
+          status: "is-danger",
+          msg: "Please enter all required information",
+        },
       });
     }
   };
@@ -258,12 +288,11 @@ class AddProduct extends Component {
   handleFile(e) {
     let file = e.target.files[0];
     const reader = new FileReader();
-      reader.onload = (event) => {
-        this.setState({ imageUrl: event.target.result});
- 
-      };
+    reader.onload = (event) => {
+      this.setState({ imageUrl: event.target.result });
+    };
     reader.readAsDataURL(file);
-    this.setState({ file: file ,imageName: file.name});
+    this.setState({ file: file, imageName: file.name });
 
     console.log(e.target.files, "file");
     console.log(e.target.files[0].name);
@@ -284,202 +313,217 @@ class AddProduct extends Component {
     const { user } = this.props.context;
 
     return (
-   /*!(user && user.accessLevel < 1) ? (*/
-    //   <Redirect to="/" />
-    // ) : (
-      <div className="mx-5">
-      <form onSubmit={this.save}>
-      {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
+      /*!(user && user.accessLevel < 1) ? (*/
+      //   <Redirect to="/" />
+      // ) : (
+      <div className="mx-5 container">
+        <form onSubmit={this.save}>
+          {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
                            </div> */}
- <div className="contact__text -mt-24">
-                        <div style={{paddingLeft:"32px",paddingTop:"40px"}} className="section-title">
-                            <h2 className="pt-24 pl-24 m-1.5">Add Product</h2>
-                            <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
-                        </div>
-                        </div>
-        <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
-          <div className="">
-            <div className="m-4 h-full">
-              {/* <div className="product__details__pic__item pl-48"> */}
-              <div className="">{/* <img src={productImage}/> */}</div>
-              <label class="text-left block font-semibold">
-                รูปภาพสินค้า:{" "}
-              </label>
- <img class="my-5 w-48 md:w-96" alt="" src={this.state.imageUrl} />
-             <input
-                type="file"
-                class="w-1/2 md:w-80 mt-4 focus:outline-none"
-                name="file" 
-                id="image" multiple
-                onChange={(e) => {
-                  this.handleFile(e);
-                }}
-              />
-            
-           
+          <div className="contact__text -mt-8">
+            <div
+          
+              className="section-title"
+            >
+              <h2 className="pt-24 pl-24 m-1.5">Add Product</h2>
+              <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
             </div>
           </div>
-
-          {/* <div className="product__details__text  pl-72 font-semibold"> */}
-          <div className="text-left space-y-4">
+          <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
             <div className="">
-              {/* <div className="product__details__option text-left"> */}
-              <span className="font-semibold">ชื่อสินค้า: </span>
-              <br />
-
-              <input
-                className="border p-2 w-full h-10"
-                type="text"
-                name="name"
-                value={name}
-                onChange={this.handleChange}
-                required
-                placeholder="ระบุชื่อสินค้า"
-              />
-            </div>
-
-            <div className="">
-              {/* <div className="product__details__option text-left"> */}
-              <span className="font-semibold">รายละเอียดสินค้า: </span>
-              <textarea
-                type="text"
-                rows="2"
-                style={{ resize: "none" }}
-                name="description"
-                value={description}
-                onChange={this.handleChange}
-                className="border p-2 w-full h-20"
-                placeholder="ระบุรายละเอียดสินค้า"
-              />
-            </div>
-
-            <div className="">
-              {/* <div className="product__details__option text-left"> */}
-              <span className="font-semibold">สไตล์: </span>
-              <div className=" ">
-                {this.state.genders.map((g) => (
-                  <div className="mx-2">
-                    <input
-                      key={g.genderId}
-                      type="radio"
-                      id={g.genderId}
-                      name="genderEnter"
-                      checked={gender}
-                      value={g.genderId}
-                      onChange={this.handleChange}
-                    />
-                    {g.genderName}
-                  </div>
-                ))}
+              <div className="m-4 h-full">
+                {/* <div className="product__details__pic__item pl-48"> */}
+                <div className="">{/* <img src={productImage}/> */}</div>
+                <label class="text-left block font-semibold">
+                  รูปภาพสินค้า:{" "}
+                </label>
+                <img
+                  class="my-5 w-48 md:w-96"
+                  alt=""
+                  src={this.state.imageUrl}
+                />
+                <input
+                  type="file"
+                  class="w-1/2 md:w-80 mt-4 focus:outline-none"
+                  name="file"
+                  id="image"
+                  multiple
+                  onChange={(e) => {
+                    this.handleFile(e);
+                  }}
+                />
               </div>
             </div>
 
-            <div className="">
-              {/* <div className="product__details__option text-left"> */}
-              <span className="font-semibold">ชนิดสินค้า: </span>
+            {/* <div className="product__details__text  pl-72 font-semibold"> */}
+            <div className="text-left space-y-4">
               <div className="">
+                {/* <div className="product__details__option text-left"> */}
+                <span className="font-semibold">ชื่อสินค้า: </span>
+                <br />
+
+                <input
+                  className="border p-2 w-full h-10"
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                  required
+                  placeholder="ระบุชื่อสินค้า"
+                />
+              </div>
+
+              <div className="">
+                {/* <div className="product__details__option text-left"> */}
+                <span className="font-semibold">รายละเอียดสินค้า: </span>
+                <textarea
+                  type="text"
+                  rows="2"
+                  style={{ resize: "none" }}
+                  name="description"
+                  value={description}
+                  onChange={this.handleChange}
+                  className="border p-2 w-full h-20"
+                  placeholder="ระบุรายละเอียดสินค้า"
+                />
+              </div>
+
+              <div className="">
+                {/* <div className="product__details__option text-left"> */}
+                <span className="font-semibold">สไตล์: </span>
                 <div className=" ">
-                  {this.state.kinds.map((k) => (
+                  {this.state.genders.map((g) => (
                     <div className="mx-2">
-                      <input 
-                        key={k.kindId}
+                      <input
+                        key={g.genderId}
                         type="radio"
-                        id={k.kindId}
-                        value={k.kindId}
-                        checked={kind}
-                        name="kindEnter"
+                        id={g.genderId}
+                        name="genderEnter"
+                        checked={gender}
+                        value={g.genderId}
                         onChange={this.handleChange}
                       />
-                      {k.kindName}
+                      {g.genderName}
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
 
-            <div className="">
-              {/* <div className="product__details__option text-left"> */}
-              <label htmlFor="type" className="font-semibold ">
-                ประเภทสินค้า:
-              </label>
               <div className="">
-               <select
-                  onChange={this.handleChange}
-                  className="w-full h-10 border-2"
-                  name="typeEnter"
-                  value={type}
-                > <option value="" disabled selected hidden className="text-gray-500">Please Choose...</option>
-                {this.state.types.map((t) => (
-                    <option
-                      id="typeEnter"
-                      key={t.typeId}
-                      name="type"
-                      value={t.typeId}
-                    >
-                      {t.typeName}
-                    </option>
-                  ))}{" "}
-                </select>
-              </div>
-            </div>
-
-            <div className="product__details__option font-semibold">
-              <div className="product__details__option__color">
-                <span>Color:</span>
-                <br />
-
-                {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
-                <div className="grid grid-cols-1 md:grid-cols-6">
-                  {this.state.colors.map((c) => (
-                    <div className="mx-2 my-1">  <input className="absolute mr-12 px-2 mt-2 -ml-1"
-                        key={c.colorId}
-                        type="checkbox"
-                        id={c.colorId}
-                        name="productHasColors"
-                        value={c.colorId}
-                        onChange={this.handleColor}
-                      /> 
-               <label
-                      className="absolute   mx-10 ml-4 "
-                      style={{ backgroundColor: c.colorCode 
-                      }}
-                    >
-                       
-                  
-                      {/*  style={{backgroundColor : c.codeName, border: "solid red"
-                       }}*/}
-
-                      {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
-                      </label> </div>
-              
-               
-                  ))}
+                {/* <div className="product__details__option text-left"> */}
+                <span className="font-semibold">ชนิดสินค้า: </span>
+                <div className="">
+                  <div className=" ">
+                    {this.state.kinds.map((k) => (
+                      <div className="mx-2">
+                        <input
+                          key={k.kindId}
+                          type="radio"
+                          id={k.kindId}
+                          value={k.kindId}
+                          checked={kind}
+                          name="kindEnter"
+                          onChange={this.handleChange}
+                        />
+                        {k.kindName}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {this.state.flash && (
-              <div className={`notification ${this.state.flash.status}`}>
-                {this.state.flash.msg}
+              <div className="">
+                {/* <div className="product__details__option text-left"> */}
+                <label htmlFor="type" className="font-semibold ">
+                  ประเภทสินค้า:
+                </label>
+                <div className="">
+                  <select
+                    onChange={this.handleChange}
+                    className="w-full h-10 border-2"
+                    name="typeEnter"
+                    value={type}
+                  >
+                    {" "}
+                    <option
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                      className="text-gray-500"
+                    >
+                      Please Choose...
+                    </option>
+                    {this.state.types.map((t) => (
+                      <option
+                        id="typeEnter"
+                        key={t.typeId}
+                        name="type"
+                        value={t.typeId}
+                      >
+                        {t.typeName}
+                      </option>
+                    ))}{" "}
+                  </select>
+                </div>
               </div>
-            )}
-            <div className="field is-clearfix">
-              {/* <Link to="/Shop">  */}{" "}
-              <button
-                className="primary-btn flex my-4 mx-auto justify-center"
-                type="submit"
-                onClick={this.save}
-              >
-                Submit
-              </button>
-              {/* </Link>  */}
+
+              <div className="product__details__option font-semibold">
+                <div className="product__details__option__color">
+                  <span>Color:</span>
+                  <br />
+
+                  {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
+                  <div className="grid grid-cols-1 md:grid-cols-6">
+                    {this.state.colors.map((c) => (
+                      <div className="mx-2 my-1">
+                        {" "}
+                        <input
+                          className="absolute mr-12 px-2 mt-2 -ml-1"
+                          key={c.colorId}
+                          type="checkbox"
+                          id={c.colorId}
+                          name="productHasColors"
+                          value={c.colorId}
+                          onChange={this.handleColor}
+                        />
+                        <label
+                          className="absolute   mx-10 ml-4 "
+                          style={{ backgroundColor: c.colorCode }}
+                        >
+                          {/*  style={{backgroundColor : c.codeName, border: "solid red"
+                       }}*/}
+
+                          {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
+                        </label>{" "}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {this.state.flash && (
+                <div className={`notification ${this.state.flash.status}`}>
+                  {this.state.flash.msg}
+                </div>
+              )}
+              <div className="field is-clearfix">
+                {/* <Link to="/Shop">  */}{" "}
+                <button
+                  className="primary-btn flex my-4 mx-auto justify-center"
+                  type="submit"
+                  onClick={this.save}
+                >
+                  Submit
+                </button>
+                {/* </Link>  */}
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
       </div>
-    )
+    );
   }
 }
 export default withContext(AddProduct);
@@ -550,22 +594,20 @@ export default withContext(AddProduct);
 
 //     let genderObject = genders.find(
 //       (g) => g.genderId === parseInt(productData.genderEnter)
-    
+
 //     );
-  
+
 //     let kindObject = kinds.find(
 //       (k) => k.kindId === parseInt(productData.kindEnter)
 //     );
-  
 
 //     let typeObject = types.find(
 //       (t) => t.typeId === parseInt(productData.typeEnter)
 //     );
 
 //     // e.preventDefault();
- 
 
-//     /*, genderEnter, 
+//     /*, genderEnter,
 //       kindEnter,typeEnter, productHasColors */
 
 //     // const { name, description,file }
@@ -587,19 +629,18 @@ export default withContext(AddProduct);
 //       var hasColorsId = hasMaxColorsId.data + 1;
 //       const HasColor = [];
 //       for (var loopColors of colors) {
-        
+
 //         const hasColorsEach = {hasColorsId,colors:loopColors}
 //         HasColor.push(hasColorsEach)
 //         hasColorsId+=hasColorsId+1;
-     
+
 //      }
 //       // const HasColors = {hasColorsEach };
 //       const productHasColors = HasColor
-    
-//       let imgNamez = file.imageName;
-  
 
-//       let productJson ={ 
+//       let imgNamez = file.imageName;
+
+//       let productJson ={
 //         productId: id,
 //         name: productData.name,
 //         image: imgNamez,
@@ -609,31 +650,28 @@ export default withContext(AddProduct);
 //         type:type,
 //         productHasColors: productHasColors
 //       }
-   
-
-
 
 //       let file = file;
-   
+
 //       let formData = new FormData();
 //       var blob = new Blob([JSON.stringify(productJson)],{
 //         type: "application/json",
 //       });
-   
-//        formData.append("image", file); 
+
+//        formData.append("image", file);
 //         formData.append("newProduct",blob);
 //     /* url: `${process.env.REACT_APP_API_URL}/addProduct/image`, */
 //     // {`http://13.76.45.147:5000/image/${product.image}`}
 //     //http://13.76.45.147:5000/
-//         axios({ 
+//         axios({
 //         url: `${process.env.REACT_APP_API_URL}/addProduct/image`,
 //         method: "POST",
 //         data: formData
-        
+
 //       }).then(res=>props.history.replace("/Shop"))
 //        .catch(err=>err)
-   
-//        /* 
+
+//        /*
 //       formData.append("productId",id)
 //       formData.append("name",name)
 //       formData.append("image","imagee")
@@ -644,12 +682,11 @@ export default withContext(AddProduct);
 //       formData.append("productHasColors",productHasColors)
 //       */
 //     //   for (var value of formData.values()) {
-//     //     console.log(value); 
+//     //     console.log(value);
 //     //  }
-       
-     
+
 //       /*  for (var pair of formData.entries()) {
-//        console.log(pair[0]+ ', ' + pair[1]+ pair[2]+ pair[3]+ pair[4]+ pair[5]); 
+//        console.log(pair[0]+ ', ' + pair[1]+ pair[2]+ pair[3]+ pair[4]+ pair[5]);
 //     }*/
 //     /*  const blob = await new Blob([productJson], {
 //         type: "application/json",
@@ -665,7 +702,7 @@ export default withContext(AddProduct);
 //         (res) => { },
 //           (err) => { }
 //         ); */
-       
+
 //  /*     Math.random().toString(36).substring(2) + Date.now().toString(36); */
 
 //     /*   await axios({
@@ -691,7 +728,7 @@ export default withContext(AddProduct);
 //           kind,
 //           type,
 //           productHasColors, */}
-    
+
 //       // props.context.addProduct(
 //       //   { id,
 //       //     name,
@@ -705,29 +742,29 @@ export default withContext(AddProduct);
 //       //   () => setProductData(productData)
 //       // );
 //       setFlash({
-      
-//           status: "is-success", msg: "Product created successfully" 
-        
+
+//           status: "is-success", msg: "Product created successfully"
+
 //       });
 //     } else {
 //       setFlash({
-//         status: "is-danger", msg: "Please enter all required information" 
+//         status: "is-danger", msg: "Please enter all required information"
 //       });
 //     }
 //   };
 
 //  const handleChange = (e) => {
 //     setProductData({ [e.target.name]: e.target.value });
-    
+
 //     console.log(productData);
 //   };
-  
+
 //   const handleFile = (e) => {
 //     let file = e.target.files[0];
 //     const reader = new FileReader();
 //       reader.onload = (event) => {
 //         setImageURL(event.target.result);
- 
+
 //       };
 //     reader.readAsDataURL(file);
 //     setFile({ file: file ,imageName: file.imageName});
@@ -748,7 +785,7 @@ export default withContext(AddProduct);
 // let getColor = [...productData.productHasColors,ce.target.value];
 
 //     // getColor.push(ce.target.value);
-   
+
 //     if (
 //       productData.productHasColors.findIndex((x) => x.id === ce.target.value) !==
 //       -1
@@ -756,7 +793,7 @@ export default withContext(AddProduct);
 //       getColor = getColor.filter((x) => x !== ce.target.value);
 //     }
 //   setProductData({productHasColors: getColor });
-  
+
 //     console.log(productData.productHasColors)
 //   };
 
@@ -790,14 +827,13 @@ export default withContext(AddProduct);
 //              <input
 //                 type="file"
 //                 class="w-1/2 md:w-80 mt-4 focus:outline-none"
-//                 name="file" 
+//                 name="file"
 //                 id="image" multiple
 //                 onChange={(e) => {
 //                   handleFile(e);
 //                 }}
 //               />
-            
-           
+
 //             </div>
 //           </div>
 
@@ -862,7 +898,7 @@ export default withContext(AddProduct);
 //                 <div className=" ">
 //                   {kinds.map((k) => (
 //                     <div className="mx-2">
-//                       <input 
+//                       <input
 //                         key={k.kindId}
 //                         type="radio"
 //                         id={k.kindId}
@@ -919,21 +955,19 @@ export default withContext(AddProduct);
 //                         name="productHasColors"
 //                         value={c.colorId}
 //                         onChange={handleColor}
-//                       /> 
+//                       />
 //                <label
 //                       className="absolute   mx-10 ml-4 "
-//                       style={{ backgroundColor: c.colorCode 
+//                       style={{ backgroundColor: c.colorCode
 //                       }}
 //                     >
-                       
-                  
+
 //                       {/*  style={{backgroundColor : c.codeName, border: "solid red"
 //                        }}*/}
 
 //                       {/* border: colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
 //                       </label> </div>
-              
-               
+
 //                   ))}
 //                 </div>
 //               </div>

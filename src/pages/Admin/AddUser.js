@@ -21,8 +21,9 @@ class AddUser extends Component {
   componentDidMount() {
   //http://13.76.45.147:5000/
   //`${process.env.REACT_APP_API_URL}/allKinds`
+  let user = localStorage.getItem("user");
 
-    axios.get(`${process.env.REACT_APP_API_URL}/allGenders`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/admin/allGenders`,{ headers: {"Authorization" : `${user.token}`} }).then((res) => {
       this.setState({ genders: res.data });
     });
    
@@ -30,9 +31,12 @@ class AddUser extends Component {
 
   save = async (e) => {
     e.preventDefault();
-
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
+  
     const userId = await axios.get(
-      `${process.env.REACT_APP_API_URL}/max-accountId`
+      `${process.env.REACT_APP_API_URL}/admin/max-accountId`  
+      ,{ headers: {"Authorization" : `${user.token}`} }
     );
 
 
@@ -76,10 +80,15 @@ const id = userId.data + 1;
     /* url: `${process.env.REACT_APP_API_URL}/addUser/image`, */
     // {`http://13.76.45.147:5000/image/${user.image}`}
     //http://13.76.45.147:5000/
+    let user = localStorage.getItem("user");
+    user= JSON.parse(user);
         axios({ 
-        url: `${process.env.REACT_APP_API_URL}/addAccount`,
+        url: `${process.env.REACT_APP_API_URL}/admin/addAccount`,
         method: "POST",
-        data: formData
+        data: formData,
+        headers: {
+          'Authorization': user.token
+        }
         
       }).then(res=>this.props.history.replace("/Admin"))
        .catch(err=>err)

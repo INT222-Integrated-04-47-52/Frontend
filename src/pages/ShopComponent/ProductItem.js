@@ -20,10 +20,14 @@ export default function ProductItem(props) {
   useEffect(
     () => {
       // Update the document title using the browser API
-   
       const userLocal = localStorage.getItem("user");
-      setUser(userLocal);
-      console.log(user);
+      const user  = JSON.parse(userLocal)
+      setUser(user);
+      
+      console.log("user")
+      console.log(userLocal);
+
+      console.log(user.accessLevel)
     }
     
      ,[]
@@ -78,6 +82,7 @@ export default function ProductItem(props) {
             <div className="product__details__option font-semibold">
               <div className="product__details__option__color">
                 <div className="flex flex-row justify-left ">
+                
                   {product.productHasColors.map((c) => (
                     <div key={c.colors.colorId}>
                       <label
@@ -91,22 +96,25 @@ export default function ProductItem(props) {
                 </div>
               </div>
             </div>
+            
+              <button
+              className="button is-small w-6/12 mt-4 bg-black text-white   is-pulled-right"
+              onClick={() =>
+                props.addToCart({
+                  id: product.name,
+                  product,
+                  
+                })
+              }
+            >
+              Add to Closet
+            </button>
+              
+                { user && user.accessLevel<1 ? (
 
-            {user ? (
-              <div className="is-clearfix flex bl-12 justify-center mt-20">
-                <button
-                  className="button is-small bg-black text-white   is-pulled-right"
-                  onClick={() =>
-                    props.addToCart({
-                      id: product.name,
-                      product,
-                      amount: 1,
-                    })
-                  }
-                >
-                  Add to Closet
-                </button>
-                <button
+              <div className=" ">
+            
+                     <button
                   className="button is-small bg-red-600 ml-4 text-gray-400   
           is-pulled-right"
                   style={{ backgroundColor: "red", color: "white" }}
@@ -116,7 +124,7 @@ export default function ProductItem(props) {
                   {" "}
                   Remove
                 </button>
-            <div>    <button
+              <button
                   className="button is-small bg-green-600 ml-4 text-gray-400   
           is-pulled-right"
                   style={{ backgroundColor: "green", color: "white" }}
@@ -125,9 +133,8 @@ export default function ProductItem(props) {
                 >
                   {" "}
                   Edit
-                </button>
+                </button> 
             
-                </div>
               </div>
             ) : (
               <div></div>
