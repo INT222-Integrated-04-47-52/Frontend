@@ -269,6 +269,7 @@ class AddProduct extends Component {
         () => this.setState(initState)
       );
       this.setState({
+       
         flash: { status: "is-success", msg: "Product created successfully" },
       });
     } else {

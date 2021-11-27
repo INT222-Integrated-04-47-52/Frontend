@@ -24,10 +24,10 @@ export default function ProductItem(props) {
       const user  = JSON.parse(userLocal)
       setUser(user);
       
-      console.log("user")
-      console.log(userLocal);
+      // console.log("user")
+      // console.log(userLocal);
 
-      console.log(user.accessLevel)
+      // console.log(user.accessLevel)
     }
     
      ,[]
@@ -103,7 +103,7 @@ export default function ProductItem(props) {
                 props.addToCart({
                   id: product.name,
                   product,
-                  
+           
                 })
               }
             >

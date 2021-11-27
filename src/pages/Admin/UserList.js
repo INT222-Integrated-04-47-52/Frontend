@@ -3,7 +3,7 @@ import UserItem from './UserItem';
 import axios from "axios";
 
 
-export default class PersonList extends React.Component {
+export default class UserList extends React.Component {
   state = {
     persons: []
   }

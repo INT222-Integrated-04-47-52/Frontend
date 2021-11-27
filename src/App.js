@@ -16,7 +16,11 @@ import Context from "./Context";
 import UserList from "./pages/Admin/UserList";
 import AddUser from "./pages/Admin/AddUser";
 import EditProduct from "./pages/ShopComponent/EditProduct";
-import Account from "./pages/HomeComponent/Account";
+import Account from "./pages/User/Account";
+import EditAccount from  "./pages/User/EditAccount";
+import AccountList from "./pages/User/AccoutList";
+import ClosetList from "./pages/User/ClosetList";
+import ClosetListAdmin from "./pages/Admin/ClosetListAdmin";
 // import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware, compose } from 'redux';
@@ -38,31 +42,31 @@ export default class App extends Component {
 /*Cookies */
 // const createStoreWithMiddleware = compose(applyMiddleware(reduxThunk))(createStore);
 // const store = createStoreWithMiddleware(reducers);
-  // addToCart = (cartItem) => {
-  //   let cart = this.state.cart;
-  //   if (cart[cartItem.id]) {
-  //     cart[cartItem.id].amount += cartItem.amount;
-  //   } else {
-  //     cart[cartItem.id] = cartItem;
-  //   }
-  //   if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
-  //     cart[cartItem.id].amount = cart[cartItem.id].product.stock;
-  //   }
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-  //   this.setState({ cart });
-  // };
-  // removeFromCart = (cartItemId) => {
-  //   let cart = this.state.cart;
-  //   delete cart[cartItemId];
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-  //   this.setState({ cart });
-  // };
+  addToCart = (cartItem) => {
+    let cart = this.state.cart;
+    if (cart[cartItem.id]) {
+      cart[cartItem.id].amount += cartItem.amount;
+    } else {
+      cart[cartItem.id] = cartItem;
+    }
+    if (cart[cartItem.id].amount > cart[cartItem.id].product.stock) {
+      cart[cartItem.id].amount = cart[cartItem.id].product.stock;
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    this.setState({ cart });
+  };
+  removeFromCart = (cartItemId) => {
+    let cart = this.state.cart;
+    delete cart[cartItemId];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    this.setState({ cart });
+  };
 
-  // clearCart = () => {
-  //   let cart = {};
-  //   localStorage.removeItem("cart");
-  //   this.setState({ cart });
-  // };
+  clearCart = () => {
+    let cart = {};
+    localStorage.removeItem("cart");
+    this.setState({ cart });
+  };
   /* async login  (_email, _password) {
     const response = await axios
       .post("http://localhost:3001/login", { email: _email, password: _password })
@@ -110,14 +114,14 @@ export default class App extends Component {
   // }
   async componentDidMount() {
     let user = localStorage.getItem("user");
-    // let cart = localStorage.getItem("cart");
+    let cart = localStorage.getItem("cart");
 
     const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
     console.log(products);
     user = user ? JSON.parse(user) : null;
-    // cart = cart ? JSON.parse(cart) : {};
+    cart = cart ? JSON.parse(cart) : {};
     this.setState({ user, products: products.data
-      // , cart 
+      , cart 
     });
   }
   // login = async (email, password) => {
@@ -152,15 +156,17 @@ export default class App extends Component {
       return { status: 401, message: 'Unauthorized' }
     })
     console.log("account")
-console.log(res.data.account.email)
+// console.log(res.data.account.email)
 
     console.log(email)
     if(res.status === 200) {
       const  email  = res.data.account.email
       const user = {
+        accountId: res.data.account.accountId,
         email,
         token: "Bearer " + res.data.token,
         accessLevel: res.data.account.role === 'ADMIN' ? 0 : 1,
+        role: res.data.account.role
       
       }
       console.log("res.data")
@@ -204,22 +210,22 @@ console.log(res.data.account.email)
   //     return false;
   //   }
   // }
-  // checkout = () => {
-  //    if (!this.state.user) {
-  //     this.routerRef.current.history.push("/login");
-  //     return;
-  //   }
-  //   const cart = this.state.cart;
-  //   const products = this.state.products.map((p) => {
-  //     if (cart[p.name]) {
-  //       axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
-  //     }
-  //     return p;
-  //   });
+  checkout = () => {
+     if (!this.state.user) {
+      this.routerRef.current.history.push("/login");
+      return;
+    }
+    const cart = this.state.cart;
+    const products = this.state.products.map((p) => {
+      if (cart[p.name]) {
+        axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
+      }
+      return p;
+    });
 
-  //   this.setState({ products });
-  //   this.clearCart();
-  // };
+    this.setState({ products });
+    this.clearCart();
+  };
    logout = (e) => {
     e.preventDefault();
     this.setState({ user: null });
@@ -240,12 +246,12 @@ console.log(res.data.account.email)
       <Context.Provider
         value={{
           ...this.state,
-          // removeFromCart: this.removeFromCart,
-          // addToCart: this.addToCart,
+          removeFromCart: this.removeFromCart,
+          addToCart: this.addToCart,
           login: this.login,
           addProduct: this.addProduct,
-          // clearCart: this.clearCart,
-          // checkout: this.checkout,
+          clearCart: this.clearCart,
+          checkout: this.checkout,
         }}>
         <Router ref={this.routerRef}>
           <div className="App">
@@ -326,6 +332,18 @@ console.log(res.data.account.email)
                     Add Product
                   </NavLink>
           )}{" "}
+           {/* {this.state.user  && this.state.user.accessLevel <1 &&(
+                  <NavLink to="/Closet"     className="main-nav md:px-8 navbar-item"
+                  activeClassName="main-nav-active ">
+                    Closet
+                  </NavLink>
+          )}{" "} */}
+             {/* {this.state.user  && this.state.user.accessLevel > 0 && (
+                  <NavLink to="/Order"     className="main-nav md:px-8 navbar-item"
+                  activeClassName="main-nav-active ">
+                    Order
+                  </NavLink>
+          )}{" "} */}
               
              
                       
@@ -345,9 +363,9 @@ console.log(res.data.account.email)
                           className="main-nav md:px-8 navbar-item"
                           activeClassName="main-nav-active">
                           Closet
-                          {/* <span className="tag is-primary md:pl-2" style={{}}>
+                          <span className="tag is-primary md:pl-2" style={{}}>
                             {Object.keys(this.state.cart).length}
-                          </span> */}
+                          </span>
                         </NavLink>          )}{" "}
                       </div>
                       <div className="nav-item">
@@ -356,7 +374,9 @@ console.log(res.data.account.email)
                   activeClassName="main-nav-active ">
                     Account
                   </NavLink>
+
           )}{" "}</div>
+
 
                       <div className="nav-item">
                       {!this.state.user ? (
@@ -398,9 +418,18 @@ console.log(res.data.account.email)
               <Route path="/AddProduct" component={AddProduct} />
              )}{" "}
               {this.state.user && ( 
-              <Route path="/Account" component={Account} />
+              <Route path="/Account" component={AccountList} />
              )}{" "}
-            
+               {this.state.user 
+              //  && this.state.user.accessLevel === 1
+                &&( 
+              <Route path="/OrderUser" component={ClosetList} />
+             )}{" "}
+
+{this.state.user && this.state.user.accessLevel < 1 &&( 
+              <Route path="/OrderAdmin" component={ClosetListAdmin} />
+             )}{" "}
+
      {this.state.user && this.state.user.accessLevel < 1 && ( 
               <Route path="/Admin" component={UserList} />
              )}{" "}
@@ -408,6 +437,11 @@ console.log(res.data.account.email)
  {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/AddUser" component={AddUser} />
              )}{" "}
+
+              {this.state.user &&   ( 
+              <Route path="/EditAccount" component={EditAccount} />
+             )}{" "}
+
               {this.state.user && this.state.user.accessLevel < 1 &&  ( 
    <Route path="/AddProduct" component={Login} />
    )}{" "}

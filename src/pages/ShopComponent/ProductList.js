@@ -140,18 +140,7 @@ useEffect(()=>{
                   return product;
                 }
               })
-              // .map((product, index) => (
-              //   <ProductItem
-              //     product={product}
-              //     key={index}
-              //     addToCart={props.context.addToCart}
-              //     postDeleted={(e) => onPostDeleteHandler(e, product.productId)}
-              //   />
-              // )).filter((product)=>{
-              //   if(filterType=="all"||filterType == product.gender.genderName){
-              //     return product;
-              //   }
-              // })
+  
               .map((product, index) => (
                 <ProductItem
                   product={product}
