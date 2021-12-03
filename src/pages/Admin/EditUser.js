@@ -43,7 +43,6 @@ class EditUser extends Component {
     console.log(this.props.person.email);
     console.log(this.props.person.role);
     console.log("role")
-   
   }
 
   save = async (e) => {
