@@ -3,6 +3,7 @@ import axios from "axios";
 import EditAccount from "./EditAccount";
 import Order from "./ClosetList"
 import { Link } from 'react-router-dom'
+import image from '/Users/khorapingadpu/Documents/React-Project/Frontend/src/HTMLcomponents/img/PinNookNooch/Pin.jpg'
 export default function AccountItem(props) {
   const { person } = props;
   const [user, setUser] = useState(null);
@@ -48,7 +49,7 @@ export default function AccountItem(props) {
       {isInput && <EditAccount person={person} close={() => setIsIn(false)} />}
 
       <div class="bg-white  pb-6 w-full justify-left items-left overflow-hidden md:max-w-sm rounded-lg shadow-sm mx-auto">
-        <div class="relative h-40">
+      <div class="relative h-40">
           <img
             class="absolute h-full w-full object-cover"
             src="https://images.unsplash.com/photo-1448932133140-b4045783ed9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
@@ -57,7 +58,7 @@ export default function AccountItem(props) {
         <div class="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
           <img
             class="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
+            src={image}
           />
         </div>
         <div class="mt-16">

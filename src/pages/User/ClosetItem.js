@@ -47,10 +47,10 @@ export default function ClosetItem(props) {
      { isInput && 
      <EditUser  closet={closet} close={() => setIsIn(false)}/>}
   <tr class=" border-t border-l border-r hover:bg-orange-100 bg-white block md:table-row">
-                  <td class="p-3 px-5 block md:table-cell"> <span class="inline-block w-1/3 md:hidden font-bold">Name</span>{closet.closetId} </td>
-                    <td class="p-3 px-5 block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Email</span>  {closet.account.accountId}</td>
-                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Phone</span>{closet.product.productId}</td>
-                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Role</span>{closet.product.name}</td>
+                  <td class="p-3 px-5 block md:table-cell"> <span class="inline-block w-1/3 md:hidden font-bold">Name</span>{closet.account.fname} {" "} {closet.account.lname} </td>
+                    <td class="p-3 px-5 block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Email</span>  {closet.account.phone}</td>
+                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Phone</span>{closet.product.name}</td>
+                    <td class="p-3 px-5 block md:table-cell">  <span class="inline-block w-1/3 md:hidden font-bold">Role</span>{closet.pickUpDate}</td>
                     {/* <td class="p-3 px-5">
                         <select value="user.role" class="bg-transparent">
                             <option value="user">user</option>

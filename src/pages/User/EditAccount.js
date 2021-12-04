@@ -163,8 +163,8 @@ console.log(this.state.roleEnter)
                   style={{ paddingLeft: "32px", paddingTop: "40px" }}
                   className="section-title"
                 >
-                  <h2 className="pt-24 pl-24 m-1.5">Edit Product</h2>
-                  <p className="pl-24 m-1.5">แก้ไขข้อมูลผู้ใช้</p>
+                  <h2 className="pt-24 pl-24 m-1.5">Account</h2>
+                  <p className="pl-24 m-1.5">ข้อมูลผู้ใช้</p>
                 </div>
               </div>
               <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">

@@ -187,7 +187,7 @@ class EditProduct extends Component {
       if (this.state.file == null) {
         formData.append("editProduct", blob);
         axios({
-          url: `${process.env.REACT_APP_API_URL}/admin/editProduct/image`,
+          url: `${process.env.REACT_APP_API_URL}/admin/editProduct`,
           method: "PUT",
           data: formData,
           headers: {"Authorization" : `${user.token}`} ,
@@ -300,7 +300,7 @@ class EditProduct extends Component {
                   className="section-title"
                 >
                   <h2 className="pt-24 pl-24 m-1.5">Edit Product</h2>
-                  <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
+                  <p className="pl-24 m-1.5">แก้ไขรายการสินค้า</p>
                 </div>
               </div>
               <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">

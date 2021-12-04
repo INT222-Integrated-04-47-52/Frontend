@@ -35,8 +35,8 @@ export default class UserList extends React.Component {
                  
                   className="section-title "
                 >
-                  <h2 className="pt-24  m-1.5">Edit Product</h2>
-                  <p className=" m-1.5">แก้ไขข้อมูลผู้ใช้</p>
+                  <h2 className="pt-24  m-1.5">Account</h2>
+                  <p className=" m-1.5">ข้อมูลผู้ใช้</p>
                 
                 </div>
                 

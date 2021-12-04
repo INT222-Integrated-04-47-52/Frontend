@@ -34,8 +34,8 @@ export default class ClosetList extends React.Component {
                  
                   className="section-title "
                 >
-                  <h2 className="pt-24  m-1.5">Edit Product</h2>
-                  <p className=" m-1.5">แก้ไขข้อมูลผู้ใช้</p>
+                  <h2 className="pt-24  m-1.5">Product</h2>
+                  <p className=" m-1.5">ข้อมูลสินค้าที่สั่งตัด</p>
                 
                 </div>
                 
@@ -49,9 +49,9 @@ export default class ClosetList extends React.Component {
         <thead class="block md:table-header-group">
                 <tr class="border-b block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
                     <th class="text-left p-3 px-5 block md:table-cell">Name</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Email</th>
                     <th class="text-left p-3 px-5 block md:table-cell">Phone</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Role</th>
+                    <th class="text-left p-3 px-5 block md:table-cell">Product Name</th>
+                    <th class="text-left p-3 px-5 block md:table-cell">Pick up date</th>
                     <th></th>
                 </tr>
                 </thead>

@@ -142,8 +142,8 @@ console.log(formData)
                            </div> */}
  <div className="contact__text -mt-24">
                         <div style={{paddingLeft:"32px",paddingTop:"40px"}} className="section-title">
-                            <h2 className="pt-24 pl-24 m-1.5">Add user</h2>
-                            <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
+                            <h2 className="pt-24 pl-24 m-1.5">Add User</h2>
+                            <p className="pl-24 m-1.5">เพิ่มข้อมูลผู้ใช้</p>
                         </div>
                         </div>
         <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
