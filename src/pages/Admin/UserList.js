@@ -51,7 +51,8 @@ export default class UserList extends React.Component {
                 >
                   {" "}
                   Add user
-                </button></div></div>
+                </button>
+                </div></div>
         <div class="text-gray-900 bg-gray-100 text-left">
     
   

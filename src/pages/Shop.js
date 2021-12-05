@@ -1,5 +1,5 @@
 import React from 'react';
-import Filter from './ShopComponent/Filter';
+// import Filter from './ShopComponent/Filter';
 import ProductList from './ShopComponent/ProductList';
 
 function Shop(){

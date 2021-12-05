@@ -3,7 +3,7 @@ import axios from "axios";
 import EditAccount from "./EditAccount";
 import Order from "./ClosetList"
 import { Link } from 'react-router-dom'
-import image from '/Users/khorapingadpu/Documents/React-Project/Frontend/src/HTMLcomponents/img/PinNookNooch/Pin.jpg'
+import image from '../../HTMLcomponents/img/PinNookNooch/Pin.jpg'
 export default function AccountItem(props) {
   const { person } = props;
   const [user, setUser] = useState(null);
