@@ -140,7 +140,7 @@ class AddProduct extends Component {
       for (var loopColors of colors) {
         const hasColorsEach = { hasColorsId, colors: loopColors };
         HasColor.push(hasColorsEach);
-        hasColorsId = hasColorsId;
+        hasColorsId = hasColorsId+1;
         console.log(loopColors);
       }
       // const HasColors = {hasColorsEach };
