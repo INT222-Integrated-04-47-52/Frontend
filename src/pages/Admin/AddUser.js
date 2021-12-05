@@ -223,7 +223,15 @@ console.log(formData)
                           </option> */}
                           {console.log("dd")}
                         {console.log(role)}
-
+                        <option
+                      value=""
+                      disabled
+                      selected
+                      hidden
+                      className="text-gray-500"
+                    >
+                      Please select...
+                    </option>    
                       <option  id="role" name="role" value="ADMIN" >ADMIN</option>
                      <option  id="role" name="role" value="USER" >USER</option>
                  

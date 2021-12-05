@@ -216,11 +216,44 @@ export default class App extends Component {
       return;
     }
     const cart = this.state.cart;
+    
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
-        axios.put(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p });
+        console.log("p")
+        console.log(p)
+        let formData;
+        let user = localStorage.getItem("user");
+        user= JSON.parse(user);
+        axios({
+          url: `${process.env.REACT_APP_API_URL}/admin/addProduct/image`,
+          method: "POST",
+          data: formData,
+          headers: {"Authorization" : `${user.token}`} 
+        })
+          .then((res) => this.props.history.replace("/Shop"))
+          .catch((err) => 
+          this.setState({
+            flash: {
+              status: "is-danger",
+              msg: err.response.data.message,
+              
+            },
+          })
+          // alert(err.response.data.message)
+          
+          
+          
+          );
+  //  axios.post(`${process.env.REACT_APP_API_URL}/admin/addProduct/image`, { ...p },
+  //       { headers: {"Authorization" : `${user.token}`} });
       }
+      // if (cart[p.name]) {
+      //   axios.post(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p },
+      //   { headers: {"Authorization" : `${user.token}`} });
+      // }
+      console.log(p);
       return p;
+     
     });
 
     this.setState({ products });

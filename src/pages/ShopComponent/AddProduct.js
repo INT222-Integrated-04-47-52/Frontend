@@ -191,7 +191,20 @@ class AddProduct extends Component {
         headers: {"Authorization" : `${user.token}`} 
       })
         .then((res) => this.props.history.replace("/Shop"))
-        .catch((err) => err);
+        .catch((err) => 
+        this.setState({
+          flash: {
+            status: "is-danger",
+            msg: err.response.data.message,
+            
+          },
+        })
+        // alert(err.response.data.message)
+        
+        
+        
+        );
+
       console.log(formData);
       /* 
       formData.append("productId",id)
@@ -276,7 +289,8 @@ class AddProduct extends Component {
       this.setState({
         flash: {
           status: "is-danger",
-          msg: "Please enter all required information",
+          msg: "Something wrong",
+          
         },
       });
     }
