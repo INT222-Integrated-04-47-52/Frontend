@@ -28,6 +28,7 @@ export default function ClosetItem(props) {
   function deleteUser() {
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
+    
     axios
       .delete(`${process.env.REACT_APP_API_URL}/admin/delete/account/${closet.accountId}`
       ,{ headers: {"Authorization" : `${user.token}`}})

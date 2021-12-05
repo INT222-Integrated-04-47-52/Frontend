@@ -20,6 +20,7 @@ export default function AccountItem(props) {
     console.log(user);
     console.log("person")
     console.log(person);
+    
     axios
       .get(`${process.env.REACT_APP_API_URL}/login/${person.accountId}` ,{ headers: {"Authorization" : `${user.token}`} })
       .then((response) => {
