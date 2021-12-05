@@ -41,7 +41,17 @@ export default class UserList extends React.Component {
                 </div>
                 
               </div>
-           
+           <div className="right-0 absolute">       
+              <div className="flex justify justify-right right-0">
+        <button
+                 className=" mr-3 text-sm bg-blue-700 hover:bg-blue-900 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                  style={{ }}
+                  type="submit"
+                  onClick={() => this.nextPath('/AddUser') }
+                >
+                  {" "}
+                  Add user
+                </button></div></div>
         <div class="text-gray-900 bg-gray-100 text-left">
     
   
@@ -81,16 +91,7 @@ export default class UserList extends React.Component {
          
             </tbody>
         </table>
-        <div className="flex justify justify-center ">
-        <button
-                 className=" mr-3 text-sm bg-blue-700 hover:bg-blue-900 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                  style={{ }}
-                  type="submit"
-                  onClick={() => this.nextPath('/AddUser') }
-                >
-                  {" "}
-                  Add user
-                </button></div>
+
 </div>
 
 

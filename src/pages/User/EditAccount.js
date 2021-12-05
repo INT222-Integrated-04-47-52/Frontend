@@ -223,19 +223,15 @@ console.log(this.state.roleEnter)
                         onChange={this.handleChange}
                         required
                         placeholder="ระบุรหัสผ่าน"
-                      />
-
-                       
-
-                         <span className="font-semibold">Role: </span>
-                         <div className="">
+                      />  
+                      <span className="font-semibold">Role: </span>
+                      <div className="">
                              
                   <select
                     onChange={this.handleChange}
                     className="w-full h-10 border-2"
                     name="roleEnter"
-                    value={this.state.roleEnter}
-                  >
+                    value={this.state.roleEnter}>
                       {/* <option
                             id="role"
                             key={r.role}
@@ -249,7 +245,7 @@ console.log(this.state.roleEnter)
                         {console.log(this.state.roleEnter)}
 
                       <option  id="roleEnter" name="role" value="ADMIN"  defaultValue={this.state.roleEnter}>ADMIN</option>
-                     <option  id="roleEnter" name="role" value="USER"     >USER</option>
+                     <option  id="roleEnter" name="role" value="USER" >USER</option>
                  
                   
                   </select>

@@ -75,7 +75,7 @@ class EditProduct extends Component {
   }
 
   save = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
     const proId = await axios.get(
@@ -194,11 +194,18 @@ class EditProduct extends Component {
         })
           .then((res) => {
             if (res.data.status === 200) {
-              this.props.history.replace("/Shop");
+              // this.props.history.replace("/Shop");
             } else {
             }
           })
-          .catch((err) => err);
+          .catch((err) =>  
+          this.setState({
+            flash: {
+              status: "is-danger",
+              msg: err.response.data.message,
+              
+            },
+          }));
         console.log("formData");
         console.log(formData);
       } else {
@@ -212,7 +219,7 @@ class EditProduct extends Component {
         })
           .then((res) => {
             if (res.data.status === 200) {
-              this.props.history.replace("/Shop");
+              // this.props.history.replace("/Shop");
             } else {
             }
           })

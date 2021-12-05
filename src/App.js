@@ -216,12 +216,29 @@ export default class App extends Component {
       return;
     }
     const cart = this.state.cart;
-    
+    console.log(cart)
+console.log(cart)
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
+        let productJson = {
+          productId: p.id,
+          name: p.name,
+          image: p.imgName,
+          description: p.description,
+          kind: p.kind,
+          gender: p.gender,
+          type: p.type,
+          productHasColors: p.productHasColors,
+        };
         console.log("p")
         console.log(p)
-        let formData;
+        let formData = new FormData();
+        var blob = new Blob([JSON.stringify(productJson)], {
+          type: "application/json",
+        });
+        console.log(productJson);
+        formData.append("newProduct", blob);
+
         let user = localStorage.getItem("user");
         user= JSON.parse(user);
         axios({

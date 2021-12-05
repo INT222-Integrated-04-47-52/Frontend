@@ -96,7 +96,13 @@ console.log(this.state.roleEnter)
           } else {
           }
         })
-        .catch((err) => err);
+        .catch((err) =>  this.setState({
+          flash: {
+            status: "is-danger",
+            msg: err.response.data.message,
+            
+          },
+        }));
       console.log("formData");
       console.log(formData);
 

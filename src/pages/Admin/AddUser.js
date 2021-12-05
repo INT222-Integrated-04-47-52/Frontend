@@ -10,7 +10,8 @@ const initState = {
   phone:"",
   email:"",
   password:"",
-  role:""
+  role:"",
+ isPasswordShown: false
 };
 
 class AddUser extends Component {
@@ -29,13 +30,15 @@ class AddUser extends Component {
     });
    
   }
-
+  togglePasswordVisibility = () => {
+    const { isPasswordShown } = this.state;
+    this.setState({ isPasswordShown: !isPasswordShown });
+  };
   save = async (e) => {
     e.preventDefault();
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
-  
-    const userId = await axios.get(
+  const userId = await axios.get(
       `${process.env.REACT_APP_API_URL}/admin/max-accountId`  
       ,{ headers: {"Authorization" : `${user.token}`} }
     );
@@ -93,7 +96,13 @@ const id = userId.data + 1;
         }
         
       }).then(res=>this.props.history.replace("/Admin"))
-       .catch(err=>err)
+       .catch(err=> this.setState({
+        flash: {
+          status: "is-danger",
+          msg: err.response.data.message,
+          
+        },
+      }))
      
 console.log(formData)
 // for (var value of formData.values()) {
@@ -130,7 +139,7 @@ console.log(formData)
   render() {
     const { fname,lname,phone,email,password,role} = this.state;
     const { user } = this.props.context;
-
+    const { isPasswordShown } = this.state;
     return (
    /*!(user && user.accessLevel < 1) ? (*/
     //   <Redirect to="/" />
@@ -259,7 +268,7 @@ console.log(formData)
               <label htmlFor="type" className="font-semibold ">
                 รหัสผ่าน:
               </label>
-              <input
+              {/* <input
                 className="border p-2 w-full h-10"
                 type="text"
                 name="password"
@@ -267,7 +276,37 @@ console.log(formData)
                 onChange={this.handleChange}
                 required
                 placeholder="ระบุรหัสผ่าน"
-              />
+              /> */}
+              {/* <div></div>
+                <input 
+                  className="input  text-black" 
+                  type={isPasswordShown ? "text" : "password"}
+                  name="password" placeholder="*********"
+                  onChange={this.handleChange}
+                  required
+                  value={password}
+                  placeholder="ระบุรหัสผ่าน"
+                />
+   
+                  <div className="absolute item-right right-0 mt-2 mr-5">
+                      <i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
+                      onClick={this.togglePasswordVisibility}/>
+            </div> */}
+                 <div class="flex">
+                <input 
+                 required
+                  className="input   text-black" 
+                  value={password}
+                  type={isPasswordShown ? "text" : "password"}
+                  name="password" placeholder="*********"
+                  onChange={this.handleChange}
+                  placeholder="ระบุรหัสผ่าน"
+                />
+                 <div className="absolute item-right right-48 mt-2 mr-5">
+                   <i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
+                      onClick={this.togglePasswordVisibility}/>
+            </div>
+              </div>
             </div>
 
           
