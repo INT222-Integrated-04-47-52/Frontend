@@ -5,7 +5,7 @@ import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Drawer from 'react-drag-drawer';
-
+import image from '../../HTMLcomponents/img/PinNookNooch/Pin.jpg'
 const initState = {
   accountId: null,
   fname: "",
@@ -108,7 +108,7 @@ console.log(this.state.roleEnter)
       console.log(formData);
 
       this.setState({
-        flash: { status: "is-success", msg: "Product created successfully" },
+        flash: { status: "is-success", msg: "Edit user is successfully" },
       });
     } else {
       this.setState({
@@ -157,96 +157,118 @@ console.log(this.state.roleEnter)
               <span className="material-icons text-5xl  ">close</span>
             </div>
             <form onSubmit={this.save}>
-            <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+            <div class="min-h-screen p-6 bg-white flex items-center justify-center">
+ 
   <div class="container max-w-screen-lg mx-auto">
-    <div>
-     
-
-      <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-        <div className="contact__text">
-                <div
-                  style={{ paddingLeft: "32px", paddingTop: "40px" }}
+  <div className="contact__text">
+        <div
+                  style={{ }}
                   className="section-title"
                 >
                   <h2 className="">Edit User</h2>
                   <p className="">แก้ไขข้อมูลผู้ใช้</p>
                 </div>
               </div>
+    <div>
+    
+
+      <div class="bg-white rounded  p-4 px-4 md:p-8 mb-6 font-semibold">
+        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+        <div class="relative  mx-auto h-48 w-48  mt-8 border-white rounded-full overflow-hidden border-4">
+          <img class="object-cover w-full h-full"
+              src={image}/>
+        </div>
 
           <div class="lg:col-span-2">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
             <div class="md:col-span-2">
                 <label for="fname">Firstname</label>
                 <input type="text" name="fname" id="fname" 
-               
-                    value={fname}
+                  value={fname}   className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                     onChange={this.handleChange}
                     required
                     placeholder="ระบุชื่อจริง" />
               </div>
 
-              <div class="md:col-span-2">
+              <div class="md:col-span-2 font-semibold">
                 <label for="lname">Lastname</label>
-                <input type="text" name="lname" id="lname" 
-                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                 value="" placeholder="" />
+                <input
+                          className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                         type="text"
+                         name="lname"
+                         value={lname}
+                         onChange={this.handleChange}
+                         required
+                         placeholder="ระบุชื่อนามสกุล"
+                       />
+               
               </div>
-
+              <div class="md:col-span-2 font-semibold">
+                <label for="fname">เบอร์โทรศัพท์</label>
+                <input className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                type="text"
+                name="phone"
+                value={phone}
+                onChange={this.handleChange}
+                required
+                placeholder="ระบุเบอร์โทรศัพท์" />
+              </div>
               <div class="md:col-span-5">
                 <label for="email">Email Address</label>
-                <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="email@domain.com" />
-              </div>
-
+                <input
+                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                         type="text"
+                         name="email"
+                         value={email}
+                         onChange={this.handleChange}
+                         required
+                         placeholder="email@domain.com"
+                       />
              
-
+              </div>
               <div class="md:col-span-2">
-                <label for="country">Country / region</label>
-                <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                  <input name="country" id="country" placeholder="Country" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
-                  <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                    <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                  </button>
-                  <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                    <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                  </button>
-                </div>
-              </div>
+              <label for="email">Email Address</label>
+              <select
+                     onChange={this.handleChange}
+                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                     name="roleEnter"
+                     value={this.state.roleEnter}>
+                       {/* <option
+                             id="role"
+                             key={r.role}
+                             name="role"
+                             value={r.role}
+                             defaultValue={this.state.role}
+                           >
+                             {r.role}
+                           </option> */}
+                           {console.log("dd")}
+                         {console.log(this.state.roleEnter)}
 
-              <div class="md:col-span-2">
-                <label for="state">State / province</label>
-                <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                  <input name="state" id="state" placeholder="State" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
-                  <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                    <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                  </button>
-                  <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                    <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                  </button>
-                </div>
+                       <option  id="roleEnter" name="role" value="ADMIN"  defaultValue={this.state.roleEnter}>ADMIN</option>
+                      <option  id="roleEnter" name="role" value="USER"     >USER</option>
+                 
+                  
+                   </select>
+             
               </div>
+              
 
-              <div class="md:col-span-1">
-                <label for="zipcode">Zipcode</label>
-                <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
-              </div>
-
-              <div class="md:col-span-5">
-                <div class="inline-flex items-center">
-                  <input type="checkbox" name="billing_same" id="billing_same" class="form-checkbox" />
-                  <label for="billing_same" class="ml-2">My billing fname is different than above.</label>
-                </div>
-              </div>
-
+              <div class="md:col-span-5 font-semibold">
+           {this.state.flash && (
+                     <div className={`notification ${this.state.flash.status}`}>
+                       {this.state.flash.msg}
+                     </div>
+                   )}
+           </div>
               <div class="md:col-span-5 text-right">
+            
                 <div class="inline-flex items-end">
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                <button
+                       className="primary-btn flex my-4 mx-auto justify-center"
+                       type="submit"
+                       onClick={this.save}
+                     >Submit</button>
                 </div>
               </div>
 
@@ -339,22 +361,7 @@ console.log(this.state.roleEnter)
                     <br></br>
                   </div>
 
-                  {this.state.flash && (
-                    <div className={`notification ${this.state.flash.status}`}>
-                      {this.state.flash.msg}
-                    </div>
-                  )}
-                  <div className="field is-clearfix">
-                    {/* <Link to="/Shop">  */}{" "}
-                    <button
-                      className="primary-btn flex my-4 mx-auto justify-center"
-                      type="submit"
-                      onClick={this.save}
-                    >
-                      Submit
-                    </button>
-                    {/* </Link>  */}
-                  </div>
+               
                 </div>
               </div>
             </form>
