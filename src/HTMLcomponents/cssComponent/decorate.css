@@ -118,7 +118,7 @@ ol {
 -----------------------*/
 
 .section-title {
-
+	margin-bottom: 45px;
 	text-align: center;
 }
 
@@ -419,25 +419,14 @@ ol {
 	color:black;
 	font-weight: bold;
 }
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: #101010;
-}
-.main-nav{
 
+.main-nav{
+	padding-left: 50px;
 	color:black;
 	font-weight: bold;
 }
 .main-nav-active{
-	color: rgb(26, 87, 219);
-	text-decoration: underline;
-	width:100%;
-	height: 100%;
+	color: red;
 	list-style: none;
 	position: relative;
 }
@@ -702,7 +691,8 @@ ol {
 }
 
 .banner__item.banner__item--middle {
-	margin-top: 100px;
+	margin-top: -75px;
+
 }
 
 .banner__item.banner__item--middle .banner__item__pic {
@@ -1176,7 +1166,7 @@ ol {
 }
 
 .shop__sidebar__search {
-	margin-bottom: 10px;
+	margin-bottom: 45px;
 }
 
 .shop__sidebar__search form {
@@ -1187,7 +1177,7 @@ ol {
 	width: 100%;
 	font-size: 15px;
 	color: #b7b7b7;
-	padding-left: 40px;
+	padding-left: 20px;
 	border: 1px solid #e5e5e5;
 	height: 42px;
 }
@@ -1398,7 +1388,7 @@ ol {
 	color: #404040;
 	font-size: 13px;
 	font-weight: 700;
-	background: #2e70a3;
+	background: #f1f5f8;
 	padding: 5px 18px;
 	display: inline-block;
 	text-transform: uppercase;
@@ -1993,7 +1983,7 @@ ol {
 }
 
 .footer__widget {
-	margin-bottom: 5px;
+	margin-bottom: 30px;
 }
 
 .footer__widget h6 {
@@ -2002,7 +1992,7 @@ ol {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-
+	margin-bottom: 20px;
 }
 
 .footer__widget ul li {
@@ -3304,11 +3294,12 @@ text-align : left;
 
 .contact__text {
 	text-align: left;
+	margin-bottom: 40px;
 }
 
 .contact__text .section-title {
 	text-align: left;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 .contact__text .section-title h2 {
@@ -3456,7 +3447,7 @@ text-align : left;
 		right: 2px;
 	}
 	.banner__item.banner__item--middle {
-		margin-top: 0;
+		margin-top: 200px;
 	}
 	.banner__item.banner__item--last {
 		margin-top: 0;
@@ -3718,7 +3709,7 @@ text-align : left;
 		right: 0;
 	}
 	.banner__item.banner__item--middle {
-		margin-top: 0;
+		margin-top: 200px;
 	}
 	.banner__item.banner__item--last {
 		margin-top: 0;
@@ -3835,7 +3826,7 @@ text-align : left;
 		text-align: center;
 	}
 	.contact__text {
-		margin-bottom: 2px;
+		margin-bottom: 40px;
 	}
 	.hero__social {
 		margin-top: 180px;

@@ -305,7 +305,7 @@ console.log(formData)
                   onChange={this.handleChange}
                   placeholder="ระบุรหัสผ่าน"
                 />
-                 <div className="absolute item-right right-48 mt-2 mr-5">
+                 <div className="absolute item-right right-58 mt-2 mr-5">
                    <i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
                       onClick={this.togglePasswordVisibility}/>
             </div>

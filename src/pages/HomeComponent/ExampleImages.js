@@ -26,9 +26,10 @@ function ExampleImage(){
                 <div className="col-lg-4">
                     <div className="instagram__text">
                         <h2>Instagram</h2>
-                        <p>Lorem ipsum dolor sitc amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                        <h3>#Male_Fashion</h3>
+                        <p>
+                        GENDER-NEUTRAL TEXTILE LABEL; TO EVOKE A SENSE OF INDIVIDUALITY; EXPERIMENTAL, SIZE-FRIENDLY & TIMELESS. THESE PIECES ARE KEPT MINIMAL IN TERMS OF STYLE & ARE PERFECT FOR ALL SEASON & TRAVEL. IT FOLLOWS THE PRINCIPLES OF SLOW DESIGN & ZERO WASTE LEAVING NO CARBON FOOTPRINT & POSITIVE IMPACT TO THE ENVIRONMENT.HANDWOVEN WITH LOVE FROM ASSAM.
+                        </p>
+                        <h3>#Mongkoltorn</h3>
                     </div>
                 </div>
             </div>

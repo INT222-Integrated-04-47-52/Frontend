@@ -140,7 +140,7 @@ class AddProduct extends Component {
       for (var loopColors of colors) {
         const hasColorsEach = { hasColorsId, colors: loopColors };
         HasColor.push(hasColorsEach);
-        hasColorsId += hasColorsId+1;
+        hasColorsId = hasColorsId+1;
         console.log(loopColors);
       }
       // const HasColors = {hasColorsEach };
@@ -190,7 +190,7 @@ class AddProduct extends Component {
         data: formData,
         headers: {"Authorization" : `${user.token}`} 
       })
-        .then((res) => this.props.history.replace("/Shop")
+        .then((res) => this.props.history.go(0)
         )
         .catch((err) => 
         this.setState({
