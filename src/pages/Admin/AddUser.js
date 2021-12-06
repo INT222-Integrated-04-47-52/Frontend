@@ -4,6 +4,8 @@ import withContext from "./withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import imageUser from '../../HTMLcomponents/img/PinNookNooch/girlBlue.png'
+
 const initState = {
   fname: "",
   lname:"",
@@ -157,9 +159,10 @@ console.log(formData)
                         </div>
         <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="">
-            <div className="m-4 h-full">
+            <div className="m-4 h-full flex ">
               {/* <div className="user__details__pic__item pl-48"> */}
-              <div className="">{/* <img src={userImage}/> */}</div>
+              <div className="w-8/12 flex items-center ">
+                <img src={imageUser}/></div>
             
 
            

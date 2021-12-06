@@ -5,10 +5,10 @@ import banner2 from '../../HTMLcomponents/img/banner/banner-2.jpg'
 import banner3 from '../../HTMLcomponents/img/banner/banner-3.jpg'
 function Collection(){
     return( 
-<section class="banner span">
-        <div class="flex item-center justify-center">
-            <div class="grid grid-cols-1 gap-4">
-                <div class="p-5 object-contain">
+<section class="banner spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 offset-lg-4">
                     <div class="banner__item">
                         <div class="banner__item__pic">
                             <img src={banner1} alt=""/>
@@ -19,7 +19,7 @@ function Collection(){
                         </div>
                     </div>
                 </div>
-                <div class="p-5 object-contain">
+                <div class="col-lg-5">
                     <div class="banner__item banner__item--middle">
                         <div class="banner__item__pic">
                             <img src={banner2} alt=""/>
@@ -30,7 +30,7 @@ function Collection(){
                         </div>
                     </div>
                 </div>
-                <div class="p-5 object-contain">
+                <div class="col-lg-7">
                     <div class="banner__item banner__item--last">
                         <div class="banner__item__pic">
                             <img src={banner3} alt=""/>

@@ -140,7 +140,7 @@ class AddProduct extends Component {
       for (var loopColors of colors) {
         const hasColorsEach = { hasColorsId, colors: loopColors };
         HasColor.push(hasColorsEach);
-        hasColorsId = hasColorsId+1;
+        hasColorsId += hasColorsId+1;
         console.log(loopColors);
       }
       // const HasColors = {hasColorsEach };
@@ -314,15 +314,16 @@ class AddProduct extends Component {
     console.log(e.target.files[0].name);
   }
   handleColor = (ce) => {
-    let getColor = [...this.state.productHasColors, ce.target.value];
-
+    let getColor = [...this.state.productHasColors, parseInt(ce.target.value)];
     if (
-      this.state.productHasColors.findIndex((x) => x.id === ce.target.value) !==
-      -1
+      this.state.productHasColors.findIndex(
+        (x) => x === parseInt(ce.target.value)
+      ) !== -1
     ) {
-      getColor = getColor.filter((x) => x !== ce.target.value);
+      getColor = getColor.filter((x) => x !== parseInt(ce.target.value));
     }
     this.setState({ productHasColors: getColor });
+    console.log(this.state.productHasColors);
   };
   render() {
     const { name, description, gender, kind, type } = this.state;
