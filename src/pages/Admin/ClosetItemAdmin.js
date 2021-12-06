@@ -46,7 +46,7 @@ export default function ClosetItemAdmin(props) {
  
      { isInput && 
      <EditUser  closet={closet} close={() => setIsIn(false)}/>}
-  <tr class="space-x-4 rounded border-t border-l border-r block md:table-row bg-gray-600">
+  <tr class="space-x-4 rounded border-t border-l border-r block md:table-row bg-white">
                   <td class="p-3 px-5 block md:table-cell "> <span class="inline-block w-1/3 md:hidden font-bold">OrderClosetId</span>
                   {closet.closetId} <br></br>   
                    </td>
