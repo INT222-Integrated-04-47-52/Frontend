@@ -190,7 +190,8 @@ class AddProduct extends Component {
         data: formData,
         headers: {"Authorization" : `${user.token}`} 
       })
-        .then((res) => this.props.history.replace("/Shop"))
+        .then((res) => this.props.history.replace("/Shop")
+        )
         .catch((err) => 
         this.setState({
           flash: {
