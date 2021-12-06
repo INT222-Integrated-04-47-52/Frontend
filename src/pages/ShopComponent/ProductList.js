@@ -108,10 +108,10 @@ useEffect(()=>{
     
     </div>
       </div>
-      <div className="hero is-primary"></div>
-      <br />
-      <div className="container">
-        <div className="column columns is-multiline">
+ 
+
+<div class="relative min-h-screen flex flex-col items-center justify-center "> 
+    <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {products && products.length ? (
             products
               .filter((product) => {
@@ -158,6 +158,7 @@ useEffect(()=>{
           )}
         </div>
       </div>
+ 
     </div>
   );
 };
