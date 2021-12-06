@@ -5,7 +5,8 @@ import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Drawer from 'react-drag-drawer';
-import image from '../../HTMLcomponents/img/PinNookNooch/Pin.jpg'
+import imageAdmin from '../../HTMLcomponents/img/PinNookNooch/girlBlue.jpg'
+import imageUser from '../../HTMLcomponents/img/PinNookNooch/boyGreen.jpg'
 const initState = {
   accountId: null,
   fname: "",
@@ -175,8 +176,13 @@ console.log(this.state.roleEnter)
       <div class="bg-white rounded  p-4 px-4 md:p-8 mb-6 font-semibold">
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
         <div class="relative  mx-auto h-48 w-48  mt-8 border-white rounded-full overflow-hidden border-4">
-          <img class="object-cover w-full h-full"
-              src={image}/>
+        if({this.state.roleEnter=="ADMIN"}){ <img class="object-cover w-full h-full"
+              src={imageAdmin}/>}else{
+                
+<img class="object-cover w-full h-full"
+              src={imageUser}/>
+              }
+         
         </div>
 
           <div class="lg:col-span-2">

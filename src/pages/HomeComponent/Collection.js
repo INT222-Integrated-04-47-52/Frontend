@@ -6,9 +6,9 @@ import banner3 from '../../HTMLcomponents/img/banner/banner-3.jpg'
 function Collection(){
     return( 
 <section class="banner spad">
-        <div class="container">
+        <div class="container mx-auto">
             <div class="row">
-                <div class="col-lg-7 offset-lg-4">
+                <div class="col-lg-4 offset-lg-5 float-left">
                     <div class="banner__item">
                         <div class="banner__item__pic">
                             <img src={banner1} alt=""/>
@@ -19,7 +19,7 @@ function Collection(){
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5 ">
                     <div class="banner__item banner__item--middle">
                         <div class="banner__item__pic">
                             <img src={banner2} alt=""/>

@@ -136,7 +136,7 @@ class EditProduct extends Component {
       for (var loopColors of colors) {
         const hasColorsEach = { hasColorsId, colors: loopColors };
         HasColor.push(hasColorsEach);
-        hasColorsId += hasColorsId + 1;
+        hasColorsId = hasColorsId + 1;
         console.log(loopColors);
       }
       // const HasColors = {hasColorsEach };
@@ -187,7 +187,7 @@ class EditProduct extends Component {
       if (this.state.file == null) {
         formData.append("editProduct", blob);
         axios({
-          url: `${process.env.REACT_APP_API_URL}/admin/editProduct`,
+          url: `${process.env.REACT_APP_API_URL}/admin/editProduct/image`,
           method: "PUT",
           data: formData,
           headers: {"Authorization" : `${user.token}`} ,
