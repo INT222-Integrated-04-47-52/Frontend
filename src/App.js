@@ -435,7 +435,7 @@ console.log(cart)
                     Log In
                   </NavLink>
                 ) : (
-                  <NavLink to="/" onClick={this.logout} className="main-nav md:px-8 navbar-item"
+                  <NavLink to="/Home" onClick={this.logout} className="main-nav md:px-8 navbar-item"
                   activeClassName="main-nav-active">
                     Logout
                   </NavLink>

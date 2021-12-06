@@ -38,11 +38,11 @@ export default function ProductItem(props) {
       <div class="flex flex-col ">
         <div class="bg-white shadow-md  rounded-2xl p-4">
           <div class="flex-none lg:flex">
-            <div class=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
+            <div class="flex justify-center h-full w-full lg:h-60 lg:w-48 md:h-56 lg:mb-0 mb-3 ">
               <img
                 src={`${process.env.REACT_APP_API_URL}/image/${product.image}`}
                 alt={product.image}
-                className=" w-full  object-scale-down lg:object-cover  lg:h-48"
+                className=" w-full  object-scale-down lg:object-cover lg:h-60 md:h-56"
               />
             </div>
             <div class="flex-auto ml-3 justify-evenly py-2 text-left">
@@ -58,39 +58,46 @@ export default function ProductItem(props) {
                 </h4>{" "}
               </div>
 
-              <div class="flex py-4  text-sm text-black">
-                <div class="flex-1 inline-flex items-center">
-                  <div
-                    className="flex justify-left "
-                    style={{ textTransform: "capitalize" }}
-                  >
+              <div className="lg:flex lg:space-x-4 py-4  text-sm text-black">
+                
+                <div className="flex inline-flex items-center">
+                  
+                  <div className="flex justify-left " style={{ textTransform: "capitalize" }}>
                     <b></b>
                   </div>{" "}
                   <b className="mr-2"> Gender: </b> {product.gender.genderName}
-                </div>
-                <div class="flex-1 inline-flex items-center ">
+                  </div>
+
+                <div className="flex items-center lg:inline-flex">
                   <b className="mr-2"> Kind: </b>{" "}
-                  <p class=""> {product.kind.kindName}</p>
+                  <p className=""> {product.kind.kindName}</p>
                 </div>
-                <div class="flex-1 inline-flex items-center ">
+                
+                <div className="flex items-center lg:inline-flex">
                   <b className="mr-2"> Type: </b>{" "}
-                  <p class=""> {product.type.typeName}</p>
+                  <p className=""> {product.type.typeName}</p>
                 </div>
+              
               </div>
+              
               <div className="-mt-4 product__details__option ">
                 <div className="product__details__option__color">
-                  <div className="flex flex-row justify-left ">
+                  <div className="flex">
                     <p className="mr-2 font-black"> Color: </p>{" "}
+                    <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3">
                     {product.productHasColors.map((c) => (
                       <div key={c.colors.colorId}>
+                        
                         <label
                           className="mx-2"
                           style={{ backgroundColor: c.colors.colorCode }}
                         >
                           {" "}
                         </label>
+                        
                       </div>
                     ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -98,9 +105,10 @@ export default function ProductItem(props) {
               <div class="flex space-x-3 text-sm font-medium">
                 <div class="flex-auto flex space-x-3">
                 {user && user.accessLevel < 1 ? (
-                  <div className=" ">
+                  <div className="">
+                    
                     <button
-                      className="mb-2 md:mb-0 bg-red-500 hover:bg-red-800 px-5 py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
+                      className="w-20 mb-2 md:mb-0 bg-red-500 hover:bg-red-800  py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
                     
                       type="submit"
                       onClick={props.postDeleted}
@@ -108,8 +116,9 @@ export default function ProductItem(props) {
                       {" "}
                       Remove
                     </button>
+                   
                     <button
-                      className="mb-2 ml-2 md:mb-0 bg-green-600 hover:bg-green-800 px-5 py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
+                      className="w-20 mb-2 lg:ml-2 md:mb-0 bg-green-600 hover:bg-green-800  py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
                     
                       type="submit"
                       onClick={() => setIsIn(true)}
@@ -117,6 +126,7 @@ export default function ProductItem(props) {
                       {" "}
                       Edit
                     </button>
+                  
                   </div>
                 ) : (
                   <div></div>

@@ -197,7 +197,8 @@
          })
            .then((res) => {
              if (res.data.status === 200) {
-               this.props.history.replace("/Shop");
+              this.props.history.push('/Shop')
+              this.props.history.go(0)
              } else {
              }
            })
@@ -215,7 +216,8 @@
          })
            .then((res) => {
              if (res.data.status === 200) {
-               this.props.history.replace("/Shop");
+              this.props.history.push('/Shop')
+              this.props.history.go(0)
              } else {
              }
            })

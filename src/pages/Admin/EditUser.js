@@ -5,8 +5,8 @@ import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Drawer from 'react-drag-drawer';
-import imageAdmin from '../../HTMLcomponents/img/PinNookNooch/boyGreen.png'
-import imageUser from '../../HTMLcomponents/img/PinNookNooch/girlBlue.png'
+import imageAdmin from '../../HTMLcomponents/img/PinNookNooch/girlBlue.png'
+import imageUser from '../../HTMLcomponents/img/PinNookNooch/boyGreen.png'
 const initState = {
   accountId: null,
   fname: "",
@@ -92,13 +92,17 @@ console.log(this.state.roleEnter)
 
       })
         .then((res) => {
-          if (res.data.status === 200) {
-            this.props.history.replace("/Admin");
-            
-          } else {
-          }
-        })
-        .catch((err) =>  this.setState({
+            window.location.reload();
+          this.setState({
+            flash: {
+              status: "is-success", msg: "Product created successfully"
+            },
+          })
+        }
+        
+        )
+        .catch((err) =>  
+        this.setState({
           flash: {
             status: "is-danger",
             msg: err.response.data.message,

@@ -97,7 +97,9 @@ const id = userId.data + 1;
           'Authorization': user.token
         }
         
-      }).then(res=>this.props.history.replace("/Admin"))
+      }).then(res=>{   
+        this.props.history.push('/Admin')
+      this.props.history.go(0)})
        .catch(err=> this.setState({
         flash: {
           status: "is-danger",

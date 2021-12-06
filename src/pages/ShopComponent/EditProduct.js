@@ -181,7 +181,7 @@ class EditProduct extends Component {
       console.log("fileName");
       console.log(this.state.image);
 
-
+     
       let user = localStorage.getItem("user");
       user= JSON.parse(user);
       if (this.state.file == null) {
@@ -194,7 +194,8 @@ class EditProduct extends Component {
         })
           .then((res) => {
             if (res.data.status === 200) {
-              // this.props.history.replace("/Shop");
+              this.props.history.push('/Shop')
+              this.props.history.go(0)
             } else {
             }
           })
@@ -218,10 +219,14 @@ class EditProduct extends Component {
           data: formData,
         })
           .then((res) => {
-            if (res.data.status === 200) {
-              // this.props.history.replace("/Shop");
-            } else {
-            }
+          
+            window.location.reload();
+            this.setState({
+              flash: {
+                status: "is-success", msg: "Product created successfully"
+              },
+            })
+          
           })
           .catch((err) => err);
         console.log("formData");

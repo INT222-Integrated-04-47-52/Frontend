@@ -52,8 +52,9 @@ useEffect(()=>{
             <span className="icon_search"></span>
           </button>
         </form>
-<div className="justify-center my-4 flex flex-row space-x-24">
-        <div className="border-1 border-gray-300 px-4 py-2">
+
+<div className="justify-center my-4 lg:flex lg:flex-row md:flex md:flex-row lg:space-x-24 md:space-x-14 lg:space-x-8">
+      <div className="border-1 border-gray-300 px-4 py-2">
       <select  onChange={(e) => {
       setFilterGender(e.target.value);
       console.log("e" + e.target.value)
@@ -68,6 +69,7 @@ useEffect(()=>{
         </select>
         <span className="focus"></span>
     </div>
+
     <div className="border-1 border-gray-300 px-4 py-2">
       <select  onChange={(e) => {
       setFilterKind(e.target.value);
@@ -85,7 +87,8 @@ useEffect(()=>{
         </select>
         <span className="focus"></span>
     </div>
-        <div className="border-1 border-gray-300 px-4 py-2">
+      
+      <div className="border-1 border-gray-300 px-4 py-2">
       <select  onChange={(e) => {
       setFilterType(e.target.value);
       console.log("e" + e.target.value)
@@ -111,7 +114,7 @@ useEffect(()=>{
  
 
 <div class="relative min-h-screen flex flex-col items-center justify-center "> 
-    <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+    <div class="grid mt-8  gap-8 sm:gap- sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 ">
           {products && products.length ? (
             products
               .filter((product) => {

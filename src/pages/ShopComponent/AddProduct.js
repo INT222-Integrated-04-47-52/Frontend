@@ -65,6 +65,7 @@ class AddProduct extends Component {
 
   save = async (e) => {
     e.preventDefault();
+  
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
     const productId = await axios.get(
@@ -190,8 +191,23 @@ class AddProduct extends Component {
         data: formData,
         headers: {"Authorization" : `${user.token}`} 
       })
-        .then((res) => this.props.history.go(0)
-        )
+        .then((res) =>  {
+          
+          this.props.history.push('/Shop')
+          this.props.history.go(0)
+       
+        }
+
+        // this.setState({
+        //   flash: {
+        //     status: "is-success", msg: "Product created successfully"
+            
+        //   },  
+        // })
+      
+        //  &&
+        // this.props.history.go(0)
+        ) 
         .catch((err) => 
         this.setState({
           flash: {

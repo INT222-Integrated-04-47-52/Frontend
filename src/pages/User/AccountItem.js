@@ -4,6 +4,9 @@ import EditAccount from "./EditAccount";
 import Order from "./ClosetList"
 import { Link } from 'react-router-dom'
 import image from '../../HTMLcomponents/img/PinNookNooch/Pin.jpg'
+import imageAdmin from '../../HTMLcomponents/img/PinNookNooch/girlBlue.png'
+import imageUser from '../../HTMLcomponents/img/PinNookNooch/boyGreen.png'
+
 export default function AccountItem(props) {
   const { person } = props;
   const [user, setUser] = useState(null);
@@ -57,10 +60,19 @@ export default function AccountItem(props) {
           />
         </div>
         <div class="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-          <img
+          
+        {person.role=="ADMIN"?( 
+        <img  className="object-cover w-full h-full"
+              src={imageAdmin}/>) :
+             ( 
+<img  className="object-cover w-full h-full"
+              src={imageUser}/>
+    )}
+          
+          {/* <img
             class="object-cover w-full h-full"
             src={image}
-          />
+          /> */}
         </div>
         <div class="mt-16">
           <h1 class="text-lg text-center font-semibold">
