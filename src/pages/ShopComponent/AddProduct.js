@@ -306,7 +306,7 @@ class AddProduct extends Component {
       this.setState({
         flash: {
           status: "is-danger",
-          msg: "Something wrong",
+          msg: "Please enter all required information"
           
         },
       });
