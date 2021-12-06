@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "./static/css/main.f70b5a31.chunk.css",
-    "main.js": "./static/js/main.95cc8672.chunk.js",
-    "main.js.map": "./static/js/main.95cc8672.chunk.js.map",
+    "main.css": "./static/css/main.08c92a36.chunk.css",
+    "main.js": "./static/js/main.ca4706f7.chunk.js",
+    "main.js.map": "./static/js/main.ca4706f7.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.c0b9f11b.js",
     "runtime-main.js.map": "./static/js/runtime-main.c0b9f11b.js.map",
     "static/css/2.19c49f98.chunk.css": "./static/css/2.19c49f98.chunk.css",
@@ -12,18 +12,20 @@
     "static/js/3.c4f87209.chunk.js.map": "./static/js/3.c4f87209.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.19c49f98.chunk.css.map": "./static/css/2.19c49f98.chunk.css.map",
-    "static/css/main.f70b5a31.chunk.css.map": "./static/css/main.f70b5a31.chunk.css.map",
+    "static/css/main.08c92a36.chunk.css.map": "./static/css/main.08c92a36.chunk.css.map",
     "static/js/2.41b8e5be.chunk.js.LICENSE.txt": "./static/js/2.41b8e5be.chunk.js.LICENSE.txt",
-    "static/js/main.95cc8672.chunk.js.LICENSE.txt": "./static/js/main.95cc8672.chunk.js.LICENSE.txt",
+    "static/js/main.ca4706f7.chunk.js.LICENSE.txt": "./static/js/main.ca4706f7.chunk.js.LICENSE.txt",
     "static/media/elegant-icons.css": "./static/media/ElegantIcons.a3709f85.svg",
     "static/media/Nooch.7e02de34.JPG": "./static/media/Nooch.7e02de34.JPG",
     "static/media/Nook.403367dd.jpg": "./static/media/Nook.403367dd.jpg",
     "static/media/Pin.2ee2850e.jpg": "./static/media/Pin.2ee2850e.jpg",
-    "static/media/banner-1.45fe2b26.jpg": "./static/media/banner-1.45fe2b26.jpg",
-    "static/media/banner-2.09aec17e.jpg": "./static/media/banner-2.09aec17e.jpg",
-    "static/media/banner-3.902e072b.jpg": "./static/media/banner-3.902e072b.jpg",
+    "static/media/banner-1.324f79c5.jpg": "./static/media/banner-1.324f79c5.jpg",
+    "static/media/banner-2.65112107.jpg": "./static/media/banner-2.65112107.jpg",
+    "static/media/banner-3.69fbe1da.jpg": "./static/media/banner-3.69fbe1da.jpg",
+    "static/media/boyGreen.97c9a604.png": "./static/media/boyGreen.97c9a604.png",
     "static/media/font-awesome.min.css": "./static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/footer-logo.de220733.jpg": "./static/media/footer-logo.de220733.jpg",
+    "static/media/girlBlue.43f2d4ed.png": "./static/media/girlBlue.43f2d4ed.png",
     "static/media/hero-1.c081bcff.jpg": "./static/media/hero-1.c081bcff.jpg",
     "static/media/instagram-1.1802abc6.jpg": "./static/media/instagram-1.1802abc6.jpg",
     "static/media/instagram-2.11846e87.jpg": "./static/media/instagram-2.11846e87.jpg",
@@ -35,7 +37,7 @@
     "static/js/runtime-main.c0b9f11b.js",
     "static/css/2.19c49f98.chunk.css",
     "static/js/2.41b8e5be.chunk.js",
-    "static/css/main.f70b5a31.chunk.css",
-    "static/js/main.95cc8672.chunk.js"
+    "static/css/main.08c92a36.chunk.css",
+    "static/js/main.ca4706f7.chunk.js"
   ]
 }

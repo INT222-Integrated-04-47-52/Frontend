@@ -11,6 +11,7 @@ function Footer() {
               display: "block",
               marginLeft: "auto",
               marginRight: "auto",
+              height:"100%"
             }}
             src={footerLogo}
             alt=""
