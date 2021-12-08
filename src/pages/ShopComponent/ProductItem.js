@@ -116,6 +116,7 @@ export default function ProductItem(props) {
                     <div></div>
                   )}
                 </div>
+                {user && user.accessLevel == 1 ? (
                 <button
                   class="transition delay-150 duration-300 ease-in-out mb-2 md:mb-0 bg-gray-900 px-5 py-2 tracking-wider border text-white hover:opacity-75"
                   type="button"
@@ -129,7 +130,9 @@ export default function ProductItem(props) {
                 >
                   + Add to Closet
                 </button>
-
+    ) : (
+      <div></div>
+    )}
               </div>
             </div>
           </div>

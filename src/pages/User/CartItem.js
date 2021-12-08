@@ -14,7 +14,7 @@ const CartItem = (props) => {
   let [flash, showFlash] = useState({});
   let [cart, setCartClear] = useState({});
   let [selectColorId,setColorloop] = useState("");
-  let [color, setColorselect] = useState({});
+  let [colorSelect, setColorselect] = useState({});
   const onChangeShoulder = (event) => {
     setShoulderInput(event.target.value);
 
@@ -41,7 +41,7 @@ const CartItem = (props) => {
     setColorselect(event.target.value);
     console.log(event.target.value);
     console.log("colorHandle")
-    console.log(color)
+    console.log(colorSelect)
   };
   // const handleColor = (ce) => {
   //   let getColor = [...product.productHasColors, parseInt(ce.target.value)];
@@ -76,7 +76,16 @@ const CartItem = (props) => {
 
     // let user = localStorage.getItem("user");
     // user= JSON.parse(user);
-
+    // var colorIds = colorSelect;
+    // console.log(colorIds)
+    // var colorObject = product.productHasColors.colors.map((im) =>
+    // colorIds.find((cf) => cf === im.colorId)
+    // );
+    var colorIds = product.productHasColors.map((g) => parseInt(g));
+    var colorObject = colorIds.map((im) =>
+      this.state.colors.find((cf) => cf.colorId === im)
+    );
+    console.log(colorObject)
     if (
       product.name != null &&
       product.description != null &&
@@ -97,18 +106,18 @@ const CartItem = (props) => {
       // console.log(thisuser)
       const a = getUser.data;
       const closet_Id = maxClosetId.data;
-      var colorIds = color.map((g) => parseInt(g));
-      var colorObject = 
-      // product.productHasColors.colors.map((c)=>
-      // // this.state.colors.find((cf) => cf.colorId === im)
-      // // if(c.colorId==color ){
-      // //   let colo
-      // // } 
+      // var colorIds = colorSelect.map((g) => parseInt(g));
+      // var colorObject = 
+      //  product.productHasColors.colors.map((c)=>
+      //  this.state.colors.find((cf) => cf.colorId === im)
+      //  if(c.colorId==color ){
+      //   let colo
+      //  } 
       // )
-      colorIds.map((im) =>
-        product.productHasColors.colors.find((cf) => cf.colorId === im)
-      );
-      console.log(colorObject)
+      // colorIds.map((im) =>
+      //   product.productHasColors.colors.find((cf) => cf.colorId === im)
+      // );
+
       let productJson = {
         closetId: closet_Id + 1,
         account: {
@@ -275,7 +284,7 @@ const CartItem = (props) => {
                               value={c.colors.colorId}
                               checked={
                                 // c.colors
-                                 color == c.colors.colorId 
+                                 colorSelect == c.colors.colorId 
                               // product.productHasColors.indexOf(
                               //   c.colors.colorId
                               //   ) !== -1
