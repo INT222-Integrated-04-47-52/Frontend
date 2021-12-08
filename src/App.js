@@ -36,6 +36,8 @@ export default class App extends Component {
       user: {},
       cart: {},
       products: []
+      ,closetId:null
+    
     };
     this.routerRef = React.createRef();
   }
@@ -117,7 +119,7 @@ export default class App extends Component {
     let cart = localStorage.getItem("cart");
 
     const products = await axios.get(`${process.env.REACT_APP_API_URL}/allProducts`);
-    console.log(products);
+
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
     this.setState({ user, products: products.data
@@ -155,10 +157,10 @@ export default class App extends Component {
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })
-    console.log("account")
-// console.log(res.data.account.email)
+ 
 
-    console.log(email)
+
+   
     if(res.status === 200) {
       const  email  = res.data.account.email
       const user = {
@@ -169,12 +171,10 @@ export default class App extends Component {
         role: res.data.account.role
       
       }
-      console.log("res.data")
-      console.log(res.data)
+
       this.setState({ user });
       localStorage.setItem("user", JSON.stringify(user));
-      console.log("user")
-      console.log(user);
+
       return true;
     } else {
       return false;
@@ -188,7 +188,7 @@ export default class App extends Component {
   //   ).catch((res) => {
   //     return { status: 401, message: 'Unauthorized' }
   //   })
-  //   console.log(email);
+
   //   if(res.status === 200) {
   //     const { email } = jwt_decode(res.data.accessToken)
   //     const user = {
@@ -200,63 +200,114 @@ export default class App extends Component {
 
   //     this.setState({ user });
   //     const userLocal = localStorage.getItem("user");
-  //    console.log("dddd"+userLocal)
-  //     console.log(user);
-  //     console.log(user);
-  //     console.log(user.accessLevel);
+
   //     localStorage.setItem("user", JSON.stringify(user));
   //     return true;
   //   } else {
   //     return false;
   //   }
   // }
-  checkout = () => {
+ checkout = async () => {
+  let user = localStorage.getItem("user");
+  user= JSON.parse(user);
+  const getUser = await axios.get(
+    `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
+    ,{ headers: {"Authorization" : `${user.token}`} }
+  );
+  const maxClosetId = await axios.get(
+    `${process.env.REACT_APP_API_URL}/max-closetId`
+    ,{ headers: {"Authorization" : `${user.token}`} }
+  );
      if (!this.state.user) {
       this.routerRef.current.history.push("/login");
       return;
     }
+
+    console.log(this.state.user)
     const cart = this.state.cart;
-    console.log(cart)
-console.log(cart)
+    // let user = localStorage.getItem("user");
+    // user= JSON.parse(user);
     const products = this.state.products.map((p) => {
       if (cart[p.name]) {
+  //  let thisuser  ;
+    // axios.get(
+    //       `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
+    //       ,{ headers: {"Authorization" : `${this.state.user.token}`} }
+    //     ).then((response) => {
+    //       this.setState({ getUser: response.data });
+    //      })
+      
+   
+        // console.log("getUser")
+        // console.log(thisuser)
+        const a = getUser.data;
+        const closet_Id = maxClosetId.data;
         let productJson = {
-          productId: p.id,
+       closetId: closet_Id+1,
+        account:{
+          accountId:this.state.user.accountId,
+         fname: a.fname,
+          lname: a.lname,
+          phone: a.phone,
+          email: this.state.user.email,
+          role: this.state.user.role
+        },
+          product: {
+          productId: p.productId,
           name: p.name,
-          image: p.imgName,
+          image: p.image,
           description: p.description,
           kind: p.kind,
           gender: p.gender,
           type: p.type,
           productHasColors: p.productHasColors,
-        };
-        console.log("p")
-        console.log(p)
+        }, color: {
+          colorId: 100006,
+          colorName: "Blue",
+          colorCode: "#6C8AF6"
+      },
+      size: [
+          {
+              sizeId: 700001,
+              sizeName: "Shoulder",
+              proportion: 30.0
+          },
+          {
+              sizeId: 700002,
+              sizeName: "Bust",
+              proportion: 48.0
+          },
+          {
+              sizeId: 700003,
+              sizeName: "Waist",
+              proportion: 30.0
+          },
+          {
+              sizeId: 700004,
+              sizeName: "Hips",
+              proportion: 30.0
+          }
+      ],
+      pickUpDate: "2021-11-29"
+      };
+  
         let formData = new FormData();
         var blob = new Blob([JSON.stringify(productJson)], {
           type: "application/json",
         });
+        console.log("productJson")
         console.log(productJson);
-        formData.append("newProduct", blob);
-
-        let user = localStorage.getItem("user");
-        user= JSON.parse(user);
-        axios({
-          url: `${process.env.REACT_APP_API_URL}/admin/addProduct/image`,
+        formData.append("newCloset", blob);
+  axios({
+          url: `${process.env.REACT_APP_API_URL}/user/addCloset`,
           method: "POST",
           data: formData,
           headers: {"Authorization" : `${user.token}`} 
         })
-          .then((res) => this.props.history.replace("/Shop"))
+          .then((res) => "success")
           .catch((err) => 
-          this.setState({
-            flash: {
-              status: "is-danger",
-              msg: err.response.data.message,
-              
-            },
-          })
-          // alert(err.response.data.message)
+         
+        console.log(err)
           
           
           
@@ -268,7 +319,6 @@ console.log(cart)
       //   axios.post(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p },
       //   { headers: {"Authorization" : `${user.token}`} });
       // }
-      console.log(p);
       return p;
      
     });

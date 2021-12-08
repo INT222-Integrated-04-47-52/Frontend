@@ -44,16 +44,13 @@ export default class ClosetListAdmin extends React.Component {
         <div class="text-gray-900 bg-gray-100 text-left">
     
   
-        <table class="min-w-full border-collapse block md:table text-md bg-white shadow-md rounded mb-4">
+        <table class=" min-w-full border-collapse block md:table text-md bg-white mb-4">
        
-        <thead class="block md:table-header-group">
+        <thead class=" block md:table-header-group ">
                 <tr class="border-b block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-                    <th class="text-left p-3 px-5 block md:table-cell">Order Id</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Customer</th>
+                    <th class="text-left p-3 px-5 block md:table-cell">Order</th>
+                    <th class="text-left p-3 px-5 block md:table-cell">Account</th>
                     <th class="text-left p-3 px-5 block md:table-cell">Product</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Kind</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Gender</th>
-                    <th class="text-left p-3 px-5 block md:table-cell">Type</th>
                     <th class="text-left p-3 px-5 block md:table-cell">Image</th>
                     
                     <th></th>

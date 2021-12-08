@@ -17,6 +17,18 @@ const CartItem = props => {
     setDateInput(event.target.value);
     console.log(event.target.value)
   };
+ const handleColor = (ce) => {
+    let getColor = [...this.state.productHasColors, parseInt(ce.target.value)];
+    if (
+      this.state.productHasColors.findIndex(
+        (x) => x === parseInt(ce.target.value)
+      ) !== -1
+    ) {
+      getColor = getColor.filter((x) => x !== parseInt(ce.target.value));
+    }
+    this.setState({ productHasColors: getColor });
+    console.log(this.state.productHasColors);
+  };
 // const productJSON = {
 //   productId: product.productId,
 //   name: product.name,
@@ -62,6 +74,36 @@ const CartItem = props => {
          <label className="mx-2"  style={{backgroundColor : c.colors.colorCode}}> </label>
           </div>
        )}
+           <div className="grid grid-cols-1 md:grid-cols-6">
+                        {product.productHasColors.map((c) => (
+                          <div className="mx-2 my-1">
+                            {" "}
+                            <input
+                              className="absolute mr-12 px-2 mt-2 -ml-1"
+                              key={c.colorId}
+                              type="checkbox"
+                              id={c.colorId}
+                              name="productHasColors"
+                              value={c.colorId}
+                              checked={
+                                product.productHasColors.indexOf(
+                                  c.colorId
+                                ) !== -1
+                              }
+                              onChange={this.handleColor}
+                            />
+                            <label
+                              className="absolute   mx-10 ml-4 "
+                              style={{ backgroundColor: c.colorCode }}
+                            >
+                              {/*  style={{backgroundColor : c.codeName, border: "solid red"
+                       }}*/}
+
+                              {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
+                            </label>{" "}
+                          </div>
+                        ))}
+                      </div>
           {/* <input
                   className="border p-2 w-full h-10"
                   type="text"

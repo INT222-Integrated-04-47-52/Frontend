@@ -226,7 +226,6 @@ class EditProduct extends Component {
                 status: "is-success", msg: "Product created successfully"
               },
             })
-          
           })
           .catch((err) => err);
         console.log("formData");
