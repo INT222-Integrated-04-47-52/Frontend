@@ -141,7 +141,7 @@ const CartItem = (props) => {
           type: product.type,
           productHasColors: product.productHasColors,
         },
-        color: colorObject,
+        color: colorObject.colors,
         size: [
           {
             sizeId: 700001,
@@ -182,14 +182,15 @@ const CartItem = (props) => {
       })
         .then((res) =>
         props.clearCart(cartKey),
-        alert("Order Product is successfully"),
+        // alert("Order Product is successfully"),
         // window.location.reload()
-          // showFlash({
-          //   flash: {
-          //     status: "is-success",
-          //     msg: "Order product is successful",
-          //   },
-          // })
+        // console.log(res),
+          showFlash({
+            flash: {
+              status: "is-success",
+              msg: "Order product is successful",
+            },
+          })
         )
         .catch((err) =>
 
