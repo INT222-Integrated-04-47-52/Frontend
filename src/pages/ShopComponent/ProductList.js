@@ -63,7 +63,7 @@ const ProductList = (props) => {
 
               className="custom-select"
               aria-label="Filter By Gender">
-              <option value="all">--------- Filter By Gender ---------</option>
+              <option value="all">------ Filter By Gender -------</option>
               <option value="Men">Men</option>
               <option value="Women">Women</option>
             </select>
@@ -79,7 +79,7 @@ const ProductList = (props) => {
 
               className="custom-select"
               aria-label="Filter By Kind">
-              <option value="all">----------- Filter By Kind -----------</option>
+              <option value="all">-------- Filter By Kind --------</option>
               <option value="shirt">shirt</option>
               <option value="pants">pants</option>
               <option value="skirt">skirt</option>
@@ -97,7 +97,7 @@ const ProductList = (props) => {
 
               className="custom-select"
               aria-label="Filter By Type">
-              <option value="all">----------- Filter By Type -----------</option>
+              <option value="all">-------- Filter By Type --------</option>
               <option value="plain silk">plain silk</option>
               <option value="thai silk">thai silk</option>
               <option value="three baskets of silk">three baskets of silk</option>

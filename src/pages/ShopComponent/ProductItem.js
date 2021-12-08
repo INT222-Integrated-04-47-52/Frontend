@@ -61,26 +61,20 @@ export default function ProductItem(props) {
               <div className="lg:flex lg:space-x-4 py-4  text-sm text-black">
 
                 <div className="flex inline-flex items-center">
-
-                  <div className="flex justify-left " style={{ textTransform: "capitalize" }}>
-                    <b></b>
-                  </div>{" "}
                   <b className="mr-2"> Gender: </b> {product.gender.genderName}
                 </div>
 
                 <div className="flex items-center lg:inline-flex">{" "}
-                  <b className="mr-2"> Kind: </b>
-                  <p > {product.kind.kindName}</p>
+                  <b className="mr-2"> Kind: </b>{product.kind.kindName}
                 </div>
 
                 <div className="flex items-center lg:inline-flex">{" "}
-                  <b className="mr-2"> Type: </b>
-                  <p > {product.type.typeName}</p>
+                  <b className="mr-2"> Type: </b>{product.type.typeName}
                 </div>
 
               </div>
 
-              <div className="-mt-4 product__details__option ">
+              <div className="-mt-2 product__details__option ">
                 <div className="product__details__option__color">
                   <div className="flex">
                     <p className="mr-2 font-black"> Color: </p>{" "}
@@ -106,14 +100,14 @@ export default function ProductItem(props) {
                 <div class="flex-auto flex space-x-3">
                   {user && user.accessLevel < 1 ? (
                     <div className="">
-                      <button 
-                      className="transition delay-150 duration-300 ease-in-out w-20 mb-2 border md:mb-0 bg-gray-100  py-2 tracking-wider text-black hover:bg-gray-200"
+                      <button
+                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 border md:mb-0 bg-red-400  py-2 tracking-wider text-black hover:bg-red-200"
                         type="submit"
                         onClick={props.postDeleted}>{" "}
                         Remove
                       </button>
                       <button
-                        className="transition delay-150 duration-300 ease-in-out w-20 mb-2 lg:ml-2 md:mb-0 bg-gray-100 border py-2 tracking-wider text-black hover:bg-gray-200"
+                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 lg:ml-2 md:mb-0 bg-gray-200 border py-2 tracking-wider text-black hover:bg-gray-50"
                         type="submit"
                         onClick={() => setIsIn(true)}>{" "}
                         Edit
