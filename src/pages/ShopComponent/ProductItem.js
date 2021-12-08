@@ -35,7 +35,7 @@ export default function ProductItem(props) {
       )}
 
       <div class="flex flex-col ">
-        <div class="bg-white shadow-md  rounded-2xl p-4">
+        <div class="bg-gray-50 p-4">
           <div class="flex-none lg:flex">
             <div class="flex justify-center h-full w-full lg:h-60 lg:w-48 md:h-56 lg:mb-0 mb-3 ">
               <img
@@ -58,44 +58,38 @@ export default function ProductItem(props) {
               </div>
 
               <div className="lg:flex lg:space-x-4 py-4  text-sm text-black">
-                
-                <div className="flex inline-flex items-center">
-                  
-                  <div className="flex justify-left " style={{ textTransform: "capitalize" }}>
-                    <b></b>
-                  </div>{" "}
-                  <b className="mr-2"> Gender: </b> {product.gender.genderName}
-                  </div>
 
-                <div className="flex items-center lg:inline-flex">
-                  <b className="mr-2"> Kind: </b>{" "}
-                  <p className=""> {product.kind.kindName}</p>
+                <div className="flex inline-flex items-center">
+                  <b className="mr-2"> Gender: </b> {product.gender.genderName}
                 </div>
-                
-                <div className="flex items-center lg:inline-flex">
-                  <b className="mr-2"> Type: </b>{" "}
-                  <p className=""> {product.type.typeName}</p>
+
+                <div className="flex items-center lg:inline-flex">{" "}
+                  <b className="mr-2"> Kind: </b>{product.kind.kindName}
                 </div>
-              
+
+                <div className="flex items-center lg:inline-flex">{" "}
+                  <b className="mr-2"> Type: </b>{product.type.typeName}
+                </div>
+
               </div>
-              
-              <div className="-mt-4 product__details__option ">
+
+              <div className="-mt-2 product__details__option ">
                 <div className="product__details__option__color">
                   <div className="flex">
                     <p className="mr-2 font-black"> Color: </p>{" "}
                     <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3">
-                    {product.productHasColors.map((c) => (
-                      <div key={c.colors.colorId}>
-                        
-                        <label
-                          className="mx-2"
-                          style={{ backgroundColor: c.colors.colorCode }}
-                        >
-                          {" "}
-                        </label>
-                        
-                      </div>
-                    ))}
+                      {product.productHasColors.map((c) => (
+                        <div key={c.colors.colorId}>
+
+                          <label
+                            className="mx-2"
+                            style={{ backgroundColor: c.colors.colorCode }}
+                          >
+                            {" "}
+                          </label>
+
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -103,36 +97,27 @@ export default function ProductItem(props) {
               <div class="flex p-4 pb-2 border-t border-gray-200 mt-4"></div>
               <div class="flex space-x-3 text-sm font-medium">
                 <div class="flex-auto flex space-x-3">
-                {user && user.accessLevel < 1 ? (
-                  <div className="">
-                    
-                    <button
-                      className="w-20 mb-2 md:mb-0 bg-red-500 hover:bg-red-800  py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
-                    
-                      type="submit"
-                      onClick={props.postDeleted}
-                    >
-                      {" "}
-                      Remove
-                    </button>
-                   
-                    <button
-                      className="w-20 mb-2 lg:ml-2 md:mb-0 bg-green-600 hover:bg-green-800  py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
-                    
-                      type="submit"
-                      onClick={() => setIsIn(true)}
-                    >
-                      {" "}
-                      Edit
-                    </button>
-                  
-                  </div>
-                ) : (
-                  <div></div>
-                )}
+                  {user && user.accessLevel < 1 ? (
+                    <div className="">
+                      <button
+                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 border md:mb-0 bg-red-400  py-2 tracking-wider text-black hover:bg-red-200"
+                        type="submit"
+                        onClick={props.postDeleted}>{" "}
+                        Remove
+                      </button>
+                      <button
+                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 lg:ml-2 md:mb-0 bg-gray-200 border py-2 tracking-wider text-black hover:bg-gray-50"
+                        type="submit"
+                        onClick={() => setIsIn(true)}>{" "}
+                        Edit
+                      </button>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
                 <button
-                  class="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded hover:bg-gray-800"
+                  class="transition delay-150 duration-300 ease-in-out mb-2 md:mb-0 bg-gray-900 px-5 py-2 tracking-wider border text-white hover:opacity-75"
                   type="button"
                   aria-label="like"
                   onClick={() =>
@@ -142,9 +127,9 @@ export default function ProductItem(props) {
                     })
                   }
                 >
-                  Add to Closet
+                  + Add to Closet
                 </button>
-               
+
               </div>
             </div>
           </div>
