@@ -207,125 +207,125 @@ export default class App extends Component {
   //     return false;
   //   }
   // }
- checkout = async () => {
-  let user = localStorage.getItem("user");
-  user= JSON.parse(user);
-  const getUser = await axios.get(
-    `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
-    ,{ headers: {"Authorization" : `${user.token}`} }
-  );
-  const maxClosetId = await axios.get(
-    `${process.env.REACT_APP_API_URL}/max-closetId`
-    ,{ headers: {"Authorization" : `${user.token}`} }
-  );
-     if (!this.state.user) {
-      this.routerRef.current.history.push("/login");
-      return;
-    }
+//  checkout = async () => {
+//   let user = localStorage.getItem("user");
+//   user= JSON.parse(user);
+//   const getUser = await axios.get(
+//     `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
+//     ,{ headers: {"Authorization" : `${user.token}`} }
+//   );
+//   const maxClosetId = await axios.get(
+//     `${process.env.REACT_APP_API_URL}/max-closetId`
+//     ,{ headers: {"Authorization" : `${user.token}`} }
+//   );
+//      if (!this.state.user) {
+//       this.routerRef.current.history.push("/login");
+//       return;
+//     }
 
-    console.log(this.state.user)
-    const cart = this.state.cart;
-    // let user = localStorage.getItem("user");
-    // user= JSON.parse(user);
-    const products = this.state.products.map((p) => {
-      if (cart[p.name]) {
-  //  let thisuser  ;
-    // axios.get(
-    //       `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
-    //       ,{ headers: {"Authorization" : `${this.state.user.token}`} }
-    //     ).then((response) => {
-    //       this.setState({ getUser: response.data });
-    //      })
+//     console.log(this.state.user)
+//     const cart = this.state.cart;
+//     // let user = localStorage.getItem("user");
+//     // user= JSON.parse(user);
+//     const products = this.state.products.map((p) => {
+//       if (cart[p.name]) {
+//   //  let thisuser  ;
+//     // axios.get(
+//     //       `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
+//     //       ,{ headers: {"Authorization" : `${this.state.user.token}`} }
+//     //     ).then((response) => {
+//     //       this.setState({ getUser: response.data });
+//     //      })
       
    
-        // console.log("getUser")
-        // console.log(thisuser)
-        const a = getUser.data;
-        const closet_Id = maxClosetId.data;
-        let productJson = {
-       closetId: closet_Id+1,
-        account:{
-          accountId:this.state.user.accountId,
-         fname: a.fname,
-          lname: a.lname,
-          phone: a.phone,
-          email: this.state.user.email,
-          role: this.state.user.role
-        },
-          product: {
-          productId: p.productId,
-          name: p.name,
-          image: p.image,
-          description: p.description,
-          kind: p.kind,
-          gender: p.gender,
-          type: p.type,
-          productHasColors: p.productHasColors,
-        }, color: {
-          colorId: 100006,
-          colorName: "Blue",
-          colorCode: "#6C8AF6"
-      },
-      size: [
-          {
-              sizeId: 700001,
-              sizeName: "Shoulder",
-              proportion: 30.0
-          },
-          {
-              sizeId: 700002,
-              sizeName: "Bust",
-              proportion: 48.0
-          },
-          {
-              sizeId: 700003,
-              sizeName: "Waist",
-              proportion: 30.0
-          },
-          {
-              sizeId: 700004,
-              sizeName: "Hips",
-              proportion: 30.0
-          }
-      ],
-      pickUpDate: "2021-11-29"
-      };
+//         // console.log("getUser")
+//         // console.log(thisuser)
+//         const a = getUser.data;
+//         const closet_Id = maxClosetId.data;
+//         let productJson = {
+//        closetId: closet_Id+1,
+//         account:{
+//           accountId:this.state.user.accountId,
+//          fname: a.fname,
+//           lname: a.lname,
+//           phone: a.phone,
+//           email: this.state.user.email,
+//           role: this.state.user.role
+//         },
+//           product: {
+//           productId: p.productId,
+//           name: p.name,
+//           image: p.image,
+//           description: p.description,
+//           kind: p.kind,
+//           gender: p.gender,
+//           type: p.type,
+//           productHasColors: p.productHasColors,
+//         }, color: {
+//           colorId: 100006,
+//           colorName: "Blue",
+//           colorCode: "#6C8AF6"
+//       },
+//       size: [
+//           {
+//               sizeId: 700001,
+//               sizeName: "Shoulder",
+//               proportion: 30.0
+//           },
+//           {
+//               sizeId: 700002,
+//               sizeName: "Bust",
+//               proportion: 48.0
+//           },
+//           {
+//               sizeId: 700003,
+//               sizeName: "Waist",
+//               proportion: 30.0
+//           },
+//           {
+//               sizeId: 700004,
+//               sizeName: "Hips",
+//               proportion: 30.0
+//           }
+//       ],
+//       pickUpDate: "2021-11-29"
+//       };
   
-        let formData = new FormData();
-        var blob = new Blob([JSON.stringify(productJson)], {
-          type: "application/json",
-        });
-        console.log("productJson")
-        console.log(productJson);
-        formData.append("newCloset", blob);
-  axios({
-          url: `${process.env.REACT_APP_API_URL}/user/addCloset`,
-          method: "POST",
-          data: formData,
-          headers: {"Authorization" : `${user.token}`} 
-        })
-          .then((res) => "success")
-          .catch((err) => 
+//         let formData = new FormData();
+//         var blob = new Blob([JSON.stringify(productJson)], {
+//           type: "application/json",
+//         });
+//         console.log("productJson")
+//         console.log(productJson);
+//         formData.append("newCloset", blob);
+//   axios({
+//           url: `${process.env.REACT_APP_API_URL}/user/addCloset`,
+//           method: "POST",
+//           data: formData,
+//           headers: {"Authorization" : `${user.token}`} 
+//         })
+//           .then((res) => "success")
+//           .catch((err) => 
          
-        console.log(err)
+//         console.log(err)
           
           
           
-          );
-  //  axios.post(`${process.env.REACT_APP_API_URL}/admin/addProduct/image`, { ...p },
-  //       { headers: {"Authorization" : `${user.token}`} });
-      }
-      // if (cart[p.name]) {
-      //   axios.post(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p },
-      //   { headers: {"Authorization" : `${user.token}`} });
-      // }
-      return p;
+//           );
+//   //  axios.post(`${process.env.REACT_APP_API_URL}/admin/addProduct/image`, { ...p },
+//   //       { headers: {"Authorization" : `${user.token}`} });
+//       }
+//       // if (cart[p.name]) {
+//       //   axios.post(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p },
+//       //   { headers: {"Authorization" : `${user.token}`} });
+//       // }
+//       return p;
      
-    });
+//     });
 
-    this.setState({ products });
-    this.clearCart();
-  };
+//     this.setState({ products });
+//     this.clearCart();
+//   };
    logout = (e) => {
     e.preventDefault();
     this.setState({ user: null });

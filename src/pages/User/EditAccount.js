@@ -117,19 +117,19 @@ class EditAccount extends Component {
             window.location.reload();
             this.setState({
               flash: {
-                status: "is-success", msg: "Product created successfully"
+                status: "is-success", msg: "Edit Account created successfully"
               },
             })
           })
           .catch((err) => err);
       }
 
-      console.log("formData");
-      console.log(formData);
+      // console.log("formData");
+      // console.log(formData);
 
-      this.setState({
-        flash: { status: "is-success", msg: "Product created successfully" },
-      });
+      // this.setState({
+      //   flash: { status: "is-success", msg: "Product created successfully" },
+      // });
     } else {
       this.setState({
         flash: {
@@ -148,7 +148,7 @@ class EditAccount extends Component {
   };
 
   render() {
-    const { fname, lname, phone, email, role, password } = this.state;
+    const { fname, lname, phone, email, password } = this.state;
     const { person } = this.props.context;
 
     return (
@@ -252,14 +252,14 @@ class EditAccount extends Component {
                                 placeholder="email@domain.com"
                               />
                             </div>
-                            <div class="md:col-span-2">
+                            {/* <div class="md:col-span-2">
                               <label for="email">Email Address</label>
                               <select
                                 onChange={this.handleChange}
                                 className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                                 name="roleEnter"
                                 value={this.state.roleEnter}
-                              >
+                              > */}
                                 {/* <option
                              id="role"
                              key={r.role}
@@ -269,7 +269,7 @@ class EditAccount extends Component {
                            >
                              {r.role}
                            </option> */}
-                                {console.log("dd")}
+                                {/* {console.log("dd")}
                                 {console.log(this.state.roleEnter)}
 
                                 <option
@@ -284,7 +284,7 @@ class EditAccount extends Component {
                                   USER
                                 </option>
                               </select>
-                            </div>
+                            </div> */}
 
                             <div class="md:col-span-5 font-semibold">
                               {this.state.flash && (

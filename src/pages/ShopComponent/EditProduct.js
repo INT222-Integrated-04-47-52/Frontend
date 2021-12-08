@@ -193,11 +193,7 @@ class EditProduct extends Component {
           headers: {"Authorization" : `${user.token}`} ,
         })
           .then((res) => {
-            if (res.data.status === 200) {
-              this.props.history.push('/Shop')
-              this.props.history.go(0)
-            } else {
-            }
+            window.location.reload();
           })
           .catch((err) =>  
           this.setState({
@@ -223,7 +219,7 @@ class EditProduct extends Component {
             window.location.reload();
             this.setState({
               flash: {
-                status: "is-success", msg: "Product created successfully"
+                status: "is-success", msg: "Edit product is successfully"
               },
             })
           })
@@ -237,7 +233,7 @@ class EditProduct extends Component {
       }
 
       this.setState({
-        flash: { status: "is-success", msg: "Product created successfully" },
+        flash: { status: "is-success", msg: "Edit product is successfully" },
       });
     } else {
       this.setState({

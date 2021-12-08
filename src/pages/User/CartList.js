@@ -113,7 +113,8 @@ const Cart = props => {
                 key={key}
                 cartItem={cart[key]}
                 removeFromCart={props.context.removeFromCart}
-              />
+            
+                />
             ))}
             <div className="column is-12 is-clearfix">
               <br />
@@ -124,12 +125,7 @@ const Cart = props => {
                 >
                   Clear closet
                 </button>{" "}
-                <button
-                  className="button is-success"
-                  onClick={props.context.checkout}
-                >
-                  Checkout
-                </button>
+               
               </div>
             </div>
           </div>

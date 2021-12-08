@@ -25,7 +25,6 @@ export default function ProductItem(props) {
 
     // console.log("user")
     // console.log(userLocal);
-
     // console.log(user.accessLevel)
   }, []);
 
