@@ -81,9 +81,12 @@ const CartItem = (props) => {
     // var colorObject = product.productHasColors.colors.map((im) =>
     // colorIds.find((cf) => cf === im.colorId)
     // );
-    var colorIds = product.productHasColors.map((g) => parseInt(g));
-    var colorObject = colorIds.map((im) =>
-      this.state.colors.find((cf) => cf.colorId === im)
+    // var colorIds = product.productHasColors.map((g) => parseInt(g));
+    // var colorObject = colorIds.map((im) =>
+    //   this.state.colors.find((cf) => cf.colorId === im)
+    // );
+    var colorObject = product.productHasColors.find(
+      (c) => c.colors.colorId === parseInt(colorSelect)
     );
     console.log(colorObject)
     if (
@@ -180,7 +183,7 @@ const CartItem = (props) => {
         .then((res) =>
         props.clearCart(cartKey),
         alert("Order Product is successfully"),
-        window.location.reload()
+        // window.location.reload()
           // showFlash({
           //   flash: {
           //     status: "is-success",
