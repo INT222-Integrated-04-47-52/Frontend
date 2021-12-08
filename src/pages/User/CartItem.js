@@ -99,7 +99,12 @@ const CartItem = (props) => {
       const closet_Id = maxClosetId.data;
       var colorIds = color.map((g) => parseInt(g));
       var colorObject = 
-      
+      // product.productHasColors.colors.map((c)=>
+      // // this.state.colors.find((cf) => cf.colorId === im)
+      // // if(c.colorId==color ){
+      // //   let colo
+      // // } 
+      // )
       colorIds.map((im) =>
         product.productHasColors.colors.find((cf) => cf.colorId === im)
       );
