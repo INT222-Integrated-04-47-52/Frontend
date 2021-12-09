@@ -13,6 +13,16 @@ export default class ClosetListAdmin extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
     console.log(e.target.value);
   };
+  onPostDeleteHandler = async (e, id) => {
+    let user = localStorage.getItem("user");
+    user = JSON.parse(user);
+    const res = await axios.delete(
+      `${process.env.REACT_APP_API_URL}/admin/delete/closet/${id}`
+      , { headers: { "Authorization": `${user.token}` } }
+    );
+    if (res) window.location.reload();
+    // alert("Delete product successfully")
+  };
   componentDidMount() {
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
@@ -66,7 +76,8 @@ export default class ClosetListAdmin extends React.Component {
               <ClosetItemAdmin
                 closet={closet}
                 key={index}
-               
+                postDeleted={(e) => 
+                this.onPostDeleteHandler(e, closet.closetId)}
               />
             ))
         ) : (

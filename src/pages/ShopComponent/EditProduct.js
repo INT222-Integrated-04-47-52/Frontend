@@ -127,7 +127,7 @@ class EditProduct extends Component {
     const colors = colorObject;
 
 
-    if (this.state.productId) {
+    if (this.state.productId!=null||this.state.name!=null) {
       const id = this.state.productId;
       // const id = productId.data;
       var hasColorsId = hasMaxColorsId.data + 1;

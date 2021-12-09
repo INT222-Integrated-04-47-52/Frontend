@@ -48,7 +48,8 @@ export default function ClosetItemAdmin(props) {
      <EditUser  closet={closet} close={() => setIsIn(false)}/>}
   <tr class="rounded-md border-t border-l border-r block md:table-row">
                    <td class=" pt-5 px-5 block md:table-cell bg-indigo-50 "><span class="inline-block w-1/3 md:hidden font-bold">Order</span><br></br>
-                    {closet.closetId}</td>
+                    {closet.closetId}
+                 </td>
                     <td class=" px-5 block md:table-cell "><span class="inline-block w-1/3 md:hidden font-bold">Account</span>  <br></br>
                     <span className="font-semibold">Name: </span>{closet.account.fname}{" "} {closet.account.lname}<br></br>
                     <span className="font-semibold">Phone: </span>{closet.account.phone}</td>
@@ -62,7 +63,19 @@ export default function ClosetItemAdmin(props) {
                 alt={closet.product.image}
                 className="h-20 object-scale-down lg:object-cover  lg:h-48"
               /></td>
+               <td class=" pt-5 px-5 block md:table-cell  "><span class="inline-block w-1/3 md:hidden font-bold">Order</span><br></br>
+               <br></br>
+                      <button
+                        className="transition mt-2  delay-150 duration-300 ease-in-out w-20 mb-2 border  border-1 md:mb-0    tracking-wider text-white bg-red-500 hover:bg-red-800 hover:text-white"
+                        type="submit"
+                        onClick={props.postDeleted}>{" "}
+                        Remove
+                      </button> 
+                 </td>
                  
+
+                 {/* */}
+
 
                     {/* <td class="p-3 px-5">
                         <select value="user.role" class="bg-transparent">
