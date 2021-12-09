@@ -211,7 +211,7 @@ const CartItem = (props) => {
                 
                   {product.productHasColors.map((c) => (
                     
-                     <div className="">
+                     <div className="mx-2">
                     <input  className="absolute mr-10 px-2 mt-2"
                               key={c.colors.colorId}
                               type="checkbox"
