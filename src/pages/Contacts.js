@@ -15,7 +15,7 @@ function Contacts() {
         {/* <div className="row"> */}
         <div className="">
           <div className="contact__text">
-            <div    style={{  paddingTop: "68px" }} className="section-title">
+            <div className="section-title">
               <h2>Contact Us</h2>
               <p>KMUTT | School of Information Technology</p>
             </div>

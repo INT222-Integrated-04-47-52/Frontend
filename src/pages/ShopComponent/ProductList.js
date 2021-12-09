@@ -37,7 +37,7 @@ const ProductList = (props) => {
   }, [])
   return (
     <div>
-      <div className="shop__sidebar__search pl-3 ">
+      <div className="shop__sidebar__search pl-3 pb-0">
 
         <form >
           <input

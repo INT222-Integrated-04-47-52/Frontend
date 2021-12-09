@@ -106,7 +106,7 @@ export default function ProductItem(props) {
                         Remove
                       </button>
                       <button
-                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 lg:ml-2 md:mb-0 bg-gray-200 border py-2 tracking-wider text-black hover:bg-gray-50"
+                        className="transition font-medium delay-150 duration-300 ease-in-out w-20 mb-2 ml-2 md:mb-0 bg-gray-200 border py-2 tracking-wider text-black hover:bg-gray-50"
                         type="submit"
                         onClick={() => setIsIn(true)}>{" "}
                         Edit

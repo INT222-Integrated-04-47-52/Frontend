@@ -349,18 +349,18 @@ class AddProduct extends Component {
       /*!(user && user.accessLevel < 1) ? (*/
       //   <Redirect to="/" />
       // ) : (
-      <div className="mx-5 container">
+      <div className="mx-0.5 container">
         <form onSubmit={this.save}>
           {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
                            </div> */}
-          <div className="contact__text -mt-8">
+          <div className="contact__text">
             <div
           
               className="section-title"
             >
-              <h2 className="pt-24 pl-24 m-1.5">Add Product</h2>
-              <p className="pl-24 m-1.5">เพิ่มรายการสินค้า</p>
+              <h2>Add Product</h2>
+              <p>เพิ่มรายการสินค้า</p>
             </div>
           </div>
           <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
@@ -508,7 +508,7 @@ class AddProduct extends Component {
                   <br />
 
                   {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
-                  <div className="grid grid-cols-1 md:grid-cols-6">
+                  <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3">
                     {this.state.colors.map((c) => (
                       <div className="mx-2 my-1">
                         {" "}

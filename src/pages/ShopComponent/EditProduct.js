@@ -301,13 +301,12 @@ class EditProduct extends Component {
               {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
                            </div> */}
-              <div className="contact__text -mt-24">
+              <div className="contact__text">
                 <div
-                  style={{ paddingTop: "40px" }}
-                  className="section-title"
-                >
-                  <h2 className="pt-24 pl-2 m-1.5">Edit Product</h2>
-                  <p className="pl-2 m-1.5">แก้ไขรายการสินค้า</p>
+                  style={{ paddingTop: "68px" }}
+                  className="section-title">
+                  <h2>Edit Product</h2>
+                  <p>แก้ไขรายการสินค้า</p>
                 </div>
               </div>
               <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">

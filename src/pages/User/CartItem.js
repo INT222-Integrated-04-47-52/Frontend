@@ -229,11 +229,12 @@ const CartItem = (props) => {
   // }
 
   return (
-    <div className=" column is-half">
+    <div className=" column is-half h-auto">
       {/* <div>Size value: {numInput}</div> */}
 
-      <div className="box h-48">
-        <div className="media">
+      {/* <div className="box h-auto"> */}
+      <div className="container w-full border-1 rounded-lg p-4 h-auto">
+        <div className="container md:w-56 lg:flex">
           <div className="media-left">
             <figure className="image is-64x64">
               <img
@@ -247,7 +248,7 @@ const CartItem = (props) => {
             </figure>
           </div>
 
-          <div className="media-content ">
+          <div className="text-left mt-10">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
               {/* <span className="tag is-primary bg-black"> <small className="bg-black">{`${amount} in closet`}</small></span> */}
@@ -269,8 +270,10 @@ const CartItem = (props) => {
                 </div>
                 </div> */}
 
-                <div className="product__details__option__color">
-                <div className="flex flex-row justify-left ">
+                <div className="product__details__option__color flex">
+                <div className="mb-2">Choose 1 color</div>
+      
+                <div className="mb-4 grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-1">
                 {/* <select
                         onChange={handleChange}
                         className="w-full h-10 border-2"
@@ -279,8 +282,8 @@ const CartItem = (props) => {
                       > */}
                   {product.productHasColors.map((c) => (
                     
-                     <div >
-                    <input  className="absolute mr-12 px-2 mt-2 -ml-1"
+                     <div className="">
+                    <input  className="absolute mr-10 px-2 mt-2"
                               key={c.colors.colorId}
                               type="checkbox"
                               id={c.colors.colorId}
@@ -296,8 +299,8 @@ const CartItem = (props) => {
                               onChange={handleChange}
                             />
                             {/* [selectColorId,setColorloop] = useState(""); */}
-  <label
-                        className="mx-4"
+                      <label
+                        className="mx-4 "
                         style={{ backgroundColor: c.colors.colorCode }}
                       >
                         {" "}
@@ -309,51 +312,64 @@ const CartItem = (props) => {
                 </div>
                 </div>
 
-                <div className="">
+                <div className="flex items-center mb-2">
                   Shoulder:
                   <input
-                    className="border p-2 w-full h-10"
+                    className="border mx-2 p-2 w-full h-7"
                     type="number"
                     value={shoulderInput}
                     onChange={onChangeShoulder}
                   />
+                  inch.
                 </div>
-                <div className="">
+                <div className="flex items-center mb-2">
                   Bust:
                   <input
-                    className="border p-2 w-full h-10"
+                    className="border mx-2 p-2 w-full h-7"
                     type="number"
                     value={bustInput}
                     onChange={onChangeBust}
                   />
+                  inch.
                 </div>
-                <div className="">
+                <div className="flex items-center mb-2">
                   Waist:
                   <input
-                    className="border p-2 w-full h-10"
+                    className="border mx-2 p-2 w-full h-7"
                     type="number"
                     value={waistInput}
                     onChange={onChangeWaist}
                   />
+                  inch.
                 </div>
-                <div className="">
+                <div className="flex items-center mb-2">
                   Hips:
                   <input
-                    className="border p-2 w-full h-10"
+                    className="border mx-2 p-2 w-full h-7"
                     type="number"
                     value={hipsInput}
                     onChange={onChangeHips}
                   />
+                  inch.
                 </div>
 
-                <div>Date value: {dateInput}</div>
+                <div className="flex items-center mb-2">
+                  Pick-Up date: {dateInput}
                 <input
                   type="date"
-                  className="border p-2 w-full h-10"
+                  className="border mx-2 p-2 w-44 h-7"
                   value={dateInput}
                   onChange={onChangeDate}
                 />
-             
+                </div>
+                <div>
+                <p>*กรุณาเลือกวันรับสินค้ามากกว่า 15 วันนับจากวันที่สั่งตัด</p>
+                </div>
+                
+                <div className="flex justify-center">
+                <button className="button is-success mt-5 mb-2" onClick={() => checkout()}>Checkout</button>
+                </div>
+
             </div>
           </div>
           <div
@@ -364,9 +380,7 @@ const CartItem = (props) => {
           </div>
         </div>
       </div>
-      <button className="mt-72 button is-success" onClick={() => checkout()}>
-        Checkout
-      </button>
+      
       <div className="md:col-span-5 font-semibold">
   
   {flash.flash && (
