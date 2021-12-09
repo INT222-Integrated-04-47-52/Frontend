@@ -479,16 +479,16 @@ export default class App extends Component {
 
 
                       <div className="nav-item">
-                      {!this.state.user? (
-                  <NavLink to="/LogIn" className="main-nav md:px-8 navbar-item"
-                  activeClassName="main-nav-active">
-                    Log In
-                  </NavLink>
+                      {this.state.user? (
+                   <NavLink to="/Home" onClick={this.logout} className="main-nav md:px-8 navbar-item"
+                   activeClassName="main-nav-active">
+                     Logout
+                   </NavLink>
                 ) : (
-                  <NavLink to="/Home" onClick={this.logout} className="main-nav md:px-8 navbar-item"
-                  activeClassName="main-nav-active">
-                    Logout
-                  </NavLink>
+                <NavLink to="/LogIn" className="main-nav md:px-8 navbar-item"
+                    activeClassName="main-nav-active">
+                      Log In
+                    </NavLink>
                 )} </div>
                       </div>
                    
