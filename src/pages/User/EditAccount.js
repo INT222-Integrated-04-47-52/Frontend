@@ -51,7 +51,7 @@ class EditAccount extends Component {
     e.preventDefault();
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
-    if ((user.role = "ADMIN")) {
+    if (user.role == "ADMIN") {
       const accId = await axios.get(
         `${process.env.REACT_APP_API_URL}/admin/account/${this.state.accountId}`,
         { headers: { Authorization: `${user.token}` } }
@@ -66,7 +66,8 @@ class EditAccount extends Component {
     }
     const { fname, lname, phone, email, role, password } = this.state;
 
-    if (this.state.accountId) {
+    if (this.state.accountId!=null||this.state.fname!=null||this.state.lname!=null
+      ||this.state.phone||this.state.email!=null) {
       const id = this.state.accountId;
       // const id = accountId.data;
       console.log("role" + role);
@@ -77,7 +78,6 @@ class EditAccount extends Component {
         lname: lname,
         phone: phone,
         email: email,
-        password: password,
         role: this.state.roleEnter,
       };
       console.log("accountJson");
@@ -100,12 +100,15 @@ class EditAccount extends Component {
           data: formData,
         })
           .then((res) => {
-         
-              this.props.history.push("/Account");
-              this.props.history.go(0)
-           
+            window.location.reload();
+            this.setState({
+              flash: {
+                status: "is-success", msg: "Edit Account created successfully"
+              },
+            })
           })
-          .catch((err) => err);
+          .catch((err) =>     
+          err);
       } else {
         axios({
           url: `${process.env.REACT_APP_API_URL}/admin/editAccount`,
@@ -121,7 +124,13 @@ class EditAccount extends Component {
               },
             })
           })
-          .catch((err) => err);
+          .catch((err) =>    
+           this.setState({
+            flash: {
+              status: "is-danger",
+              msg: "Please enter all required information",
+            },
+          }));
       }
 
       // console.log("formData");

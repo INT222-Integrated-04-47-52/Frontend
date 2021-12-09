@@ -479,7 +479,7 @@ export default class App extends Component {
 
 
                       <div className="nav-item">
-                      {!this.state.user ? (
+                      {!this.state.user? (
                   <NavLink to="/LogIn" className="main-nav md:px-8 navbar-item"
                   activeClassName="main-nav-active">
                     Log In
