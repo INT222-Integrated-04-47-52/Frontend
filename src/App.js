@@ -457,7 +457,7 @@ export default class App extends Component {
           )}{" "}</div>
 
                       <div className="nav-item">
-                      {this.state.user  &&(
+                      {this.state.user && this.state.user.accessLevel > 0 &&(
                         <NavLink
                           to="/Cart"
                           className="main-nav md:px-8 navbar-item"

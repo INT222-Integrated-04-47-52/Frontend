@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.cc2d938f.chunk.css",
-    "main.js": "./static/js/main.a50f07a1.chunk.js",
-    "main.js.map": "./static/js/main.a50f07a1.chunk.js.map",
+    "main.js": "./static/js/main.0f41fe72.chunk.js",
+    "main.js.map": "./static/js/main.0f41fe72.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.c0b9f11b.js",
     "runtime-main.js.map": "./static/js/runtime-main.c0b9f11b.js.map",
     "static/css/2.19c49f98.chunk.css": "./static/css/2.19c49f98.chunk.css",
@@ -14,7 +14,7 @@
     "static/css/2.19c49f98.chunk.css.map": "./static/css/2.19c49f98.chunk.css.map",
     "static/css/main.cc2d938f.chunk.css.map": "./static/css/main.cc2d938f.chunk.css.map",
     "static/js/2.c92d5321.chunk.js.LICENSE.txt": "./static/js/2.c92d5321.chunk.js.LICENSE.txt",
-    "static/js/main.a50f07a1.chunk.js.LICENSE.txt": "./static/js/main.a50f07a1.chunk.js.LICENSE.txt",
+    "static/js/main.0f41fe72.chunk.js.LICENSE.txt": "./static/js/main.0f41fe72.chunk.js.LICENSE.txt",
     "static/media/elegant-icons.css": "./static/media/ElegantIcons.941bf29b.woff",
     "static/media/Nooch.7e02de34.JPG": "./static/media/Nooch.7e02de34.JPG",
     "static/media/Nook.403367dd.jpg": "./static/media/Nook.403367dd.jpg",
@@ -40,6 +40,6 @@
     "static/css/2.19c49f98.chunk.css",
     "static/js/2.c92d5321.chunk.js",
     "static/css/main.cc2d938f.chunk.css",
-    "static/js/main.a50f07a1.chunk.js"
+    "static/js/main.0f41fe72.chunk.js"
   ]
 }

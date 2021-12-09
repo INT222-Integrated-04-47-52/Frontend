@@ -28,6 +28,8 @@ function Contacts() {
               <p>
                 Khorapin Gadpu <br />
                 Khorapin.pingadpu@mail.kmutt.ac.th
+                <br />
+                Frontend, UX/UI
               </p>
             </div>
             <div className="grid justify-items-center">
@@ -36,6 +38,8 @@ function Contacts() {
               <p>
                 Noochajee Phonbooncharoenchai <br />
                 Noochajee.nn@mail.kmutt.ac.th
+                <br />
+                Backend, UX/UI
               </p>
             </div>
             <div className="grid justify-items-center">
@@ -48,6 +52,8 @@ function Contacts() {
               <p>
                 Prapaporn Sila <br />
                 Prapaporn.1412@mail.kmutt.ac.th
+                <br />
+                DevOps, Database, UX/UI
               </p>
             </div>
           </div>
