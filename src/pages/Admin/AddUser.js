@@ -23,8 +23,7 @@ class AddUser extends Component {
   }
 
   componentDidMount() {
-    //http://13.76.45.147:5000/
-    //`${process.env.REACT_APP_API_URL}/allKinds`
+
     let user = localStorage.getItem("user");
 
     axios.get(`${process.env.REACT_APP_API_URL}/admin/allGenders`, { headers: { "Authorization": `${user.token}` } }).then((res) => {
@@ -49,21 +48,9 @@ class AddUser extends Component {
     const { fname, lname, phone, email, password, role } = this.state;
 
     if (fname && lname && phone && email && password && role
-      //  fname
-    ) {
-      // const id = userId.data + 1;
 
-      // let imgName = this.state.imageName;
-      // console.log(imgName);
-      // console.log("gender")
-      // console.log(genderObject)
-      // console.log(gender)
-      // console.log("kind")
-      // console.log(kindObject)
-      // console.log(kind)
-      // console.log("type")
-      // console.log(typeObject)
-      // console.log(type)
+    ) {
+     
       const id = userId.data + 1;
       let userJson = {
         accountId: id,
@@ -77,16 +64,14 @@ class AddUser extends Component {
 
 
       console.log(userJson)
-      //   console.log(file)
+
       let formData = new FormData();
       var blob = new Blob([JSON.stringify(userJson)], {
         type: "application/json",
       });
-      // console.log(userJson);
+
       formData.append("requestAccount", blob);
-      /* url: `${process.env.REACT_APP_API_URL}/addUser/image`, */
-      // {`http://13.76.45.147:5000/image/${user.image}`}
-      //http://13.76.45.147:5000/
+     
       let user = localStorage.getItem("user");
       user = JSON.parse(user);
       axios({
@@ -110,20 +95,7 @@ class AddUser extends Component {
         }))
 
       console.log(formData)
-      // for (var value of formData.values()) {
-      //   console.log(value); 
-      // }
-      // this.props.context.addUser(
-      //   { 
-      //     id,
-      //     fname,
-      //     lname,
-      //     phone,
-      //     email,
-      //     password,
-      //   },
-      //   () => this.setState(initState)
-      // );
+     
       this.setState({
 
         flash: { status: "is-success", msg: "user created successfully" },
@@ -146,14 +118,10 @@ class AddUser extends Component {
     const { user } = this.props.context;
     const { isPasswordShown } = this.state;
     return (
-      /*!(user && user.accessLevel < 1) ? (*/
-      //   <Redirect to="/" />
-      // ) : (
+      
       <div className="mx-5">
         <form onSubmit={this.save}>
-          {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
-                            <h1 className="font-bold mt-4 ml-28">Add user</h1>
-                           </div> */}
+       
           <div className=" container">
             <div className="contact__text ">
               <div className="section-title">
@@ -173,10 +141,10 @@ class AddUser extends Component {
                 </div>
               </div>
 
-              {/* <div className="user__details__text  pl-72 font-semibold"> */}
+         
               <div className="text-left space-y-4">
                 <div className="">
-                  {/* <div className="user__details__option text-left"> */}
+              
                   <span className="font-semibold">ชื่อจริง: </span>
                   <br />
 
@@ -192,7 +160,7 @@ class AddUser extends Component {
                 </div>
 
                 <div className="">
-                  {/* <div className="user__details__option text-left"> */}
+              
                   <span className="font-semibold">นามสกุล: </span>
                   <input
                     className="border p-2 w-full h-10"
@@ -206,7 +174,7 @@ class AddUser extends Component {
                 </div>
 
                 <div className="">
-                  {/* <div className="user__details__option text-left"> */}
+              
                   <span className="font-semibold">เบอร์โทรศัพท์: </span>
                   <div className=" ">
                     <input
@@ -228,15 +196,7 @@ class AddUser extends Component {
                     name="role"
                     value={role}
                   >
-                    {/* <option
-                            id="role"
-                            key={r.role}
-                            name="role"
-                            value={r.role}
-                            defaultValue={this.state.role}
-                          >
-                            {r.role}
-                          </option> */}
+                   
                     {console.log("dd")}
                     {console.log(role)}
                     <option
@@ -256,7 +216,7 @@ class AddUser extends Component {
                 </div>
 
                 <div className="">
-                  {/* <div className="user__details__option text-left"> */}
+                  
                   <span className="font-semibold">อีเมลล์: </span>
                   <div className="">
                     <input
@@ -272,34 +232,11 @@ class AddUser extends Component {
                 </div>
 
                 <div className="">
-                  {/* <div className="user__details__option text-left"> */}
+                 
                   <label htmlFor="type" className="font-semibold ">
                     รหัสผ่าน:
                   </label>
-                  {/* <input
-                className="border p-2 w-full h-10"
-                type="text"
-                name="password"
-                value={password}
-                onChange={this.handleChange}
-                required
-                placeholder="ระบุรหัสผ่าน"
-              /> */}
-                  {/* <div></div>
-                <input 
-                  className="input  text-black" 
-                  type={isPasswordShown ? "text" : "password"}
-                  name="password" placeholder="*********"
-                  onChange={this.handleChange}
-                  required
-                  value={password}
-                  placeholder="ระบุรหัสผ่าน"
-                />
-   
-                  <div className="absolute item-right right-0 mt-2 mr-5">
-                      <i className={`fa ${isPasswordShown ? "fa-eye-slash" : "fa-eye"} `}
-                      onClick={this.togglePasswordVisibility}/>
-            </div> */}
+                  
                   <div class="flex">
                     <input
                       required
@@ -325,7 +262,7 @@ class AddUser extends Component {
                   </div>
                 )}
                 <div className="field is-clearfix">
-                  {/* <Link to="/Shop">  */}{" "}
+                 {" "}
                   <button
                     className="primary-btn flex my-4 mx-auto justify-center"
                     type="submit"
@@ -333,7 +270,7 @@ class AddUser extends Component {
                   >
                     Submit
                   </button>
-                  {/* </Link>  */}
+             
                 </div>
               </div>
             </div>

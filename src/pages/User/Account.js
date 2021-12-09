@@ -23,9 +23,9 @@ export default class Account extends React.Component {
     let user = localStorage.getItem("user");
     
     user = JSON.parse(user)
-    // console.log(user.email)
+   
     console.log(this.state.persons)
-    // if(user.email == this.state.persons)
+
   axios.get(`${process.env.REACT_APP_API_URL}/admin/allAccounts`
     ,{ headers: {"Authorization" : `${user.token}`}})
       .then(res => {

@@ -13,7 +13,6 @@ export default function AccountItem(props) {
   const [isInput, setIsIn] = useState(false);
 
   useEffect(() => {
-    // Update the document title using the browser API
     const userLocal = localStorage.getItem("user");
 
     setUser(userLocal);
@@ -69,10 +68,7 @@ export default function AccountItem(props) {
               src={imageUser}/>
     )}
           
-          {/* <img
-            class="object-cover w-full h-full"
-            src={image}
-          /> */}
+         
         </div>
         <div class="mt-16">
           <h1 class="text-lg text-center font-semibold">
@@ -130,75 +126,15 @@ export default function AccountItem(props) {
 <div><Link to='/OrderUser'><button
     className="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 
     rounded focus:outline-none focus:shadow-outline"
-
-    type="submit"
-  
-  >
+    type="submit" >
     {" "}
     ออเดอร์
   </button>   </Link></div>
 )}
-
-      {/* <Link to="/Order">  
-                 
-        <button class="mr-3 text-sm bg-green-500 
-                      hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none 
-                      +focus:shadow-outline" >
-          ข้อมูลออเดอร์
-        </button>  </Link> */}
-      {/* <button
-          type="submit"
-          onClick={deleteUser}
-          class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-        >
-          Delete
-        </button> */}
+      
         </div>
       </div>
 
-      {/* <div class="mt-16">
-        <h1 class="text-lg text-center font-semibold">
-        {person.fname} {" "}{person.lname}
-        </h1>
-        <p class="text-sm text-gray-600 text-center">
-        {person.email}
-        </p>
-        <p class="text-sm text-gray-600 text-center">
-        {person.phone}
-        </p>
-      <div class=" flex flex-wrap justify-center mx-6 ">    
-        <div class="text-sm mr-2 text-center  my-1 uppercase tracking-wider border px-2 text-white 
-        rounded border-indigo-600 bg-indigo-600  cursor-default">
-        {person.role}
-        </div>
-      </div>
-      </div> 
-       <div class="pt-3 flex flex-wrap justify-center mx-6 border-t">
-        </div> */}
-
-      {/* <div className="flex justify justify-center ">
-        <button
-                 className=" mr-3 text-sm bg-blue-700 hover:bg-blue-900 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                  style={{ }}
-                  type="submit"
-                  onClick={() => this.nextPath('/AddUser') }
-                >
-                  {" "}
-                  Add user
-                </button>
-                </div>   */}
-      {/* <tr class=" border-t border-l border-r hover:bg-orange-100 bg-white block md:table-row">
-                  <td class="p-3 px-5 block md:table-cell">
-                       <span class="inline-block w-1/3 md:hidden font-bold">Name</span>{person.fname} {" "}{person.lname}</td>
-                    <td class="p-3 px-5 block md:table-cell">
-                        <span class="inline-block w-1/3 md:hidden font-bold">Email</span>  {person.email}</td>
-                    <td class="p-3 px-5 block md:table-cell">  
-                    <span class="inline-block w-1/3 md:hidden font-bold">Phone</span>{person.phone}</td>
-                    <td class="p-3 px-5 block md:table-cell">  
-                    <span class="inline-block w-1/3 md:hidden font-bold">Role</span>{person.role}</td>
-                
-                    <td class="p-3 px-5 flex justify-end">
-                           </tr> */}
     </>
   );
 }

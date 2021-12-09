@@ -17,7 +17,7 @@ const ProductList = (props) => {
       , { headers: { "Authorization": `${user.token}` } }
     );
     if (res) history.go(0);
-    // alert("Delete product successfully")
+ 
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,11 +26,6 @@ const ProductList = (props) => {
   const [filterGender, setFilterGender] = useState(["all"])
   const [filterKind, setFilterKind] = useState(["all"])
   console.log(products)
-  // const handleFilterChange = (e, filterType) => {
-  //   setFilterType(filterType);
-
-  // }
-
 
   useEffect(() => {
 

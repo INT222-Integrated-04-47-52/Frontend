@@ -21,7 +21,6 @@ export default class ClosetListAdmin extends React.Component {
       , { headers: { "Authorization": `${user.token}` } }
     );
     if (res) window.location.reload();
-    // alert("Delete product successfully")
   };
   componentDidMount() {
     let user = localStorage.getItem("user");
@@ -87,31 +86,11 @@ export default class ClosetListAdmin extends React.Component {
             </span>
           </div>
         )}
-      
-      
-         
             </tbody>
         </table>
-        {/* <div className="flex justify justify-center ">
-        <button
-                 className=" mr-3 text-sm bg-blue-700 hover:bg-blue-900 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                  style={{ }}
-                  type="submit"
-                  onClick={() => this.nextPath('/AddUser') }
-                >
-                  {" "}
-                  Add user
-                </button></div> */}
 </div>
-
-
-      
-    </div>
-
-
-    );
-    
-    
+</div>
+);    
 }
 }
 

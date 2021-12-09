@@ -2,7 +2,6 @@
 //แบบแก้ไขได้
 
  import "../../HTMLcomponents/cssComponent/decorate.css";
- // import { Link } from "react-router-dom";
  import React, { Component } from "react";
  import withContext from "../../withContext";
  import { Redirect } from "react-router-dom";
@@ -33,8 +32,6 @@
    }
 
    componentDidMount() {
-     //http://13.76.45.147:5000/
-     //`${process.env.REACT_APP_API_URL}/allKinds`
      let user = localStorage.getItem("user");
      user= JSON.parse(user);
      axios.get(`${process.env.REACT_APP_API_URL}/admin/allGenders`
@@ -78,7 +75,6 @@
    }
 
    save = async (e) => {
-     // e.preventDefault();
      let user = localStorage.getItem("user");
      user= JSON.parse(user);
      const proId = await axios.get(
@@ -119,8 +115,6 @@
      );
      console.log("typeObjectSet;");
      console.log(typeObject);
-
-     // e.preventDefault();
      console.log(this.state.genders);
 
      const { name, description } = this.state;
@@ -132,7 +126,6 @@
 
      if (this.state.productId) {
        const id = this.state.productId;
-       // const id = productId.data;
        var hasColorsId = hasMaxColorsId.data + 1;
        console.log(hasColorsId);
        const HasColor = [];
@@ -142,7 +135,6 @@
          hasColorsId += hasColorsId + 1;
          console.log(loopColors);
        }
-       // const HasColors = {hasColorsEach };
        const productHasColors = HasColor;
        console.log(productHasColors);
        let imgName = this.state.imageName;
@@ -276,9 +268,7 @@
      const { user } = this.props.context;
 
      return (
-       /*!(user && user.accessLevel < 1) ? (*/
-       //   <Redirect to="/" />
-       // ) : (
+      
        <div
          className="bg-black bg-opacity-50 "
          style={{
@@ -296,9 +286,7 @@
                <span className="material-icons text-5xl  ">close</span>
              </div>
              <form onSubmit={this.save}>
-               {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
-                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
-                            </div> */}
+              
                <div className="contact__text -mt-24">
                  <div
                    style={{ paddingTop: "40px" }}
@@ -311,7 +299,7 @@
                <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
                  <div className="">
                    <div className="m-4 h-full">
-                     {/* <div className="product__details__pic__item pl-48"> */}
+                     
                      <div className="">
                        <img
                          src={
@@ -325,14 +313,12 @@
                        รูปภาพสินค้า:{" "}
                      </label>
 
-
                    </div>
                  </div>
 
-                 {/* <div className="product__details__text  pl-72 font-semibold"> */}
                  <div className="text-left space-y-4">
                    <div className="">
-                     {/* <div className="product__details__option text-left"> */}
+                 
                      <span className="font-semibold">ชื่อสินค้า: </span>
                      <br />
                      {name}
@@ -340,93 +326,36 @@
                    </div>
 
                    <div className="">
-                     {/* <div className="product__details__option text-left"> */}
+                     
                      <span className="font-semibold">รายละเอียดสินค้า: </span>
                      <br></br>
                     {description}
                    </div>
 
                    <div className="">
-                     {/* <div className="product__details__option text-left"> */}
+                    
                      <span className="font-semibold">สไตล์: </span>
                   {this.props.product.gender.genderName}
-                     {/* <div className=" ">
-                       {this.state.genders.map((g) => (
-                         <div className="mx-2">
-                           {this.props.gender}
-                           <input
-                             key={g.genderId}
-                             type="radio"
-                             id={g.genderId}
-                             name="genderEnter"
-                             defaultChecked={this.state.genderEnter}
-                             value={g.genderId}
-                             onChange={this.handleChange}
-                           />
-                           {g.genderName}
-                         </div>
-                       ))}
-                     </div> */}
+                     
                    </div>
 
                    <div className="">
-                     {/* <div className="product__details__option text-left"> */}
+                    
                      <span className="font-semibold">ชนิดสินค้า: </span>
                      <div className="">
                        <div className=" ">
                        {this.props.product.kind.kindName}
-                         {/* {this.state.kinds.map((k) => (
-                           <div className="mx-2">
-                             <input
-                               key={k.kindId}
-                               type="radio"
-                               id={k.kindId}
-                               value={k.kindId}
-                               defaultChecked={this.state.kindEnter}
-                               name="kindEnter"
-                               onChange={this.handleChange}
-                             />
-                             {k.kindName}
-                           </div>
-                         ))} */}
+                         
                        </div>
                      </div>
                    </div>
 
                    <div className="">
-                     {/* <div className="product__details__option text-left"> */}
                      <label htmlFor="type" className="font-semibold ">
                        ประเภทสินค้า:
                      </label>
                      <div className="">
                      {this.props.product.type.typeName}
-                       {/* <select
-                         onChange={this.handleChange}
-                         className="w-full h-10 border-2"
-                         name="typeEnter"
-                         value={this.state.typeEnter}
-                       >
-                         <option
-                           value=""
-                           disabled
-                           selected
-                           hidden
-                           className="text-gray-500"
-                         >
-                           Please Choose...
-                         </option> */}
-                         {/* {this.state.types.map((t) => (
-                           <option
-                             id="typeEnter"
-                             key={t.typeId}
-                             name="type"
-                             value={t.typeId}
-                             defaultValue={this.state.typeEnter}
-                           >
-                             {t.typeName}
-                           </option>
-                         ))}{" "}
-                       </select> */}
                      </div>
                    </div>
 
@@ -435,9 +364,7 @@
                        <span>Color:</span>
                        <br />
 
-                       {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
                        <div className="grid grid-cols-1 md:grid-cols-6">
-                       {/* {console.log(this.props.product.productHasColors)} */}
                          {this.props.product.productHasColors.map((c) => (
                            <div className="mx-2 my-1">
                           <input
@@ -447,21 +374,14 @@
                                id={c.colors.colorId}
                                name="productHasColors"
                                value={c.colors.colorId}
-                               // checked={
-                               //   this.state.productHasColors.indexOf(
-                               //     c.colorId
-                               //   ) !== -1
-                               // }
+                              
                                onChange={this.handleColor}
                              />
                              <label
                                className="absolute   mx-10 ml-4 "
                                style={{ backgroundColor: c.colors.colorCode }}
                              >
-                               {/*  style={{backgroundColor : c.codeName, border: "solid red"
-                        }}*/}
-
-                               {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
+                              
                              </label>{" "}
                            </div>
                          ))}
@@ -475,7 +395,7 @@
                      </div>
                    )}
                    <div className="field is-clearfix">
-                     {/* <Link to="/Shop">  */}{" "}
+                    {" "}
                      <button
                        className="primary-btn flex my-4 mx-auto justify-center"
                        type="submit"
@@ -483,7 +403,7 @@
                      >
                        Submit
                      </button>
-                     {/* </Link>  */}
+                  
                    </div>
                  </div>
                </div>

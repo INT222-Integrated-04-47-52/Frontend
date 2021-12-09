@@ -6,26 +6,16 @@ export default function ProductItem(props) {
   const { product } = props;
   const [user, setUser] = useState(null);
   const [isInput, setIsIn] = useState(false);
-  // const [updatedAt, setUpdatedAt] = useState(null);
-  // const [isEdit , setIsEdit] = useState(false);
-  //   const todo = {
-  //     id: 10,
-  //     title: 'go to gym',
-  //     body: 'practicing sport is very important',
-  //     userId: 2,
-  // };
+
   function handleChange(event) {
     console.log(event.target.value);
   }
   useEffect(() => {
-    // Update the document title using the browser API
+
     const userLocal = localStorage.getItem("user");
     const user = JSON.parse(userLocal);
     setUser(user);
 
-    // console.log("user")
-    // console.log(userLocal);
-    // console.log(user.accessLevel)
   }, []);
 
   return (

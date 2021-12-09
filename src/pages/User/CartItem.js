@@ -43,19 +43,6 @@ const CartItem = (props) => {
     console.log("colorHandle")
     console.log(colorSelect)
   };
-  // const handleColor = (ce) => {
-  //   let getColor = [...product.productHasColors, parseInt(ce.target.value)];
-  //   if (
-  //     product.productHasColors.findIndex(
-  //       (x) => x === parseInt(ce.target.value)
-  //     ) !== -1
-  //   ) {
-  //     getColor = getColor.filter((x) => x !== parseInt(ce.target.value));
-  //   }
-  //   setColorInput({ productHasColors: getColor });
-  //   console.log(product.productHasColors);
-  // };
-
   const checkout = async () => {
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
@@ -70,21 +57,10 @@ const CartItem = (props) => {
     );
     
     if (user.accessLevel != 1 && !user.accessLevel != 0) {
-      console.log("Not pass"); // this.routerRef.current.history.push("/login");
+      console.log("Not pass"); 
       return;
     }
 
-    // let user = localStorage.getItem("user");
-    // user= JSON.parse(user);
-    // var colorIds = colorSelect;
-    // console.log(colorIds)
-    // var colorObject = product.productHasColors.colors.map((im) =>
-    // colorIds.find((cf) => cf === im.colorId)
-    // );
-    // var colorIds = product.productHasColors.map((g) => parseInt(g));
-    // var colorObject = colorIds.map((im) =>
-    //   this.state.colors.find((cf) => cf.colorId === im)
-    // );
     var colorObject = product.productHasColors.find(
       (c) => c.colors.colorId === parseInt(colorSelect)
     );
@@ -95,31 +71,12 @@ const CartItem = (props) => {
       product.kind != null &&
       product.gender != null &&
       product.type != null &&
-      product.productHasColors != null
+      colorObject!=null
     ) {
-      //  let thisuser  ;
-      // axios.get(
-      //       `${process.env.REACT_APP_API_URL}/user/account/${this.state.user.accountId}`
-      //       ,{ headers: {"Authorization" : `${this.state.user.token}`} }
-      //     ).then((response) => {
-      //       this.setState({ getUser: response.data });
-      //      })
-
-      // console.log("getUser")
-      // console.log(thisuser)
+      
       const a = getUser.data;
       const closet_Id = maxClosetId.data;
-      // var colorIds = colorSelect.map((g) => parseInt(g));
-      // var colorObject = 
-      //  product.productHasColors.colors.map((c)=>
-      //  this.state.colors.find((cf) => cf.colorId === im)
-      //  if(c.colorId==color ){
-      //   let colo
-      //  } 
-      // )
-      // colorIds.map((im) =>
-      //   product.productHasColors.colors.find((cf) => cf.colorId === im)
-      // );
+     
 
       let productJson = {
         closetId: closet_Id + 1,
@@ -173,66 +130,58 @@ const CartItem = (props) => {
       });
       console.log("productJson");
       console.log(productJson);
-      formData.append("newCloset", blob);
+      formData.append("newCloset",blob);
       axios({
         url: `${process.env.REACT_APP_API_URL}/user/addCloset`,
         method: "POST",
         data: formData,
         headers: { Authorization: `${user.token}` },
       })
-        .then((res) =>
-        props.clearCart(cartKey),
-        // alert("Order Product is successfully"),
-        // window.location.reload()
-        // console.log(res),
+        .then((res) =>{  
+          alert("Order Product is successfully")
           showFlash({
             flash: {
               status: "is-success",
               msg: "Order product is successful",
             },
           })
+          
+          let cart = {};
+          localStorage.removeItem("cart");
+          window.location.reload()
+          
+        }
+      
+         
         )
         .catch((err) =>
-
-          showFlash({
-            flash: {
-              status: "is-danger",
-              msg: "Please enter all required information",
-            },
-          })
+        showFlash({
+          flash: {
+            status: "is-danger",
+            msg: "Please enter all required information",
+          },
+        })
          
         );
       
       return product;
-      //  axios.post(`${process.env.REACT_APP_API_URL}/admin/addProduct/image`, { ...p },
-      //       { headers: {"Authorization" : `${user.token}`} });
+     
     } else {
+      showFlash({
+        flash: {
+          status: "is-danger",
+          msg: "Please enter all required information",
+        },
+      })
+
     }
-    // if (cart[p.name]) {
-    //   axios.post(`${process.env.REACT_APP_API_URL}/allProducts/${p.id}`, { ...p },
-    //   { headers: {"Authorization" : `${user.token}`} });
-    // }
-    // console.log(products)
-
-    // product = { products };
+    
   };
-  // const productJSON = {
-  //   productId: product.productId,
-  //   name: product.name,
-  //   image: product.image,
-  //   description: product.description,
-  //   kind: product.kind,
-  //   gender: product.gender,
-  //   type: product.type,
-  //   productHasColors: product.productHasColors,
-
-  // }
+ 
 
   return (
     <div className=" column is-half h-auto">
-      {/* <div>Size value: {numInput}</div> */}
-
-      {/* <div className="box h-auto"> */}
+     
       <div className="container w-full border-1 rounded-lg p-4 h-auto">
         <div className="container md:w-56 lg:flex">
           <div className="media-left">
@@ -242,44 +191,24 @@ const CartItem = (props) => {
                 src={`${process.env.REACT_APP_API_URL}/image/${product.image}`}
                 alt={product.image}
               />
-              {/*   
-              <img className="product__item__pic set-bg "  alt={product.image}/>
-        */}
+              
             </figure>
           </div>
 
           <div className="text-left mt-10">
             <b style={{ textTransform: "capitalize" }}>
               {product.name}{" "}
-              {/* <span className="tag is-primary bg-black"> <small className="bg-black">{`${amount} in closet`}</small></span> */}
+              
             </b>
             <div>{product.description}</div>
             <div className="product__details__option font-semibold">
-              {/* <div className="product__details__option__color">
-                <div className="flex flex-row justify-left ">
-                  {product.productHasColors.map((c) => (
-                    <div key={c.colors.colorId}>
-                      <label
-                        className="mx-2"
-                        style={{ backgroundColor: c.colors.colorCode }}
-                      >
-                        {" "}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-                </div> */}
+              
 
                 <div className="product__details__option__color flex">
                 <div className="mb-2">Choose 1 color</div>
       
                 <div className="mb-4 grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3 gap-1">
-                {/* <select
-                        onChange={handleChange}
-                        className="w-full h-10 border-2"
-                        name="typeEnter"
-                        value={color}
-                      > */}
+                
                   {product.productHasColors.map((c) => (
                     
                      <div className="">
@@ -290,15 +219,12 @@ const CartItem = (props) => {
                               name="color"
                               value={c.colors.colorId}
                               checked={
-                                // c.colors
+                                
                                  colorSelect == c.colors.colorId 
-                              // product.productHasColors.indexOf(
-                              //   c.colors.colorId
-                              //   ) !== -1
                               }
                               onChange={handleChange}
                             />
-                            {/* [selectColorId,setColorloop] = useState(""); */}
+                          
                       <label
                         className="mx-4 "
                         style={{ backgroundColor: c.colors.colorCode }}
@@ -308,7 +234,7 @@ const CartItem = (props) => {
                        
                     </div>
                   ))}
-                   {/* </select> */}
+                  
                 </div>
                 </div>
 

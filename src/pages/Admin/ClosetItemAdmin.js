@@ -8,7 +8,7 @@ export default function ClosetItemAdmin(props) {
   const [isInput, setIsIn] = useState(false);
 
   useEffect(() => {
-    // Update the document title using the browser API
+
     const userLocal = localStorage.getItem("user");
     
     setUser(userLocal);
@@ -71,25 +71,8 @@ export default function ClosetItemAdmin(props) {
                         onClick={props.postDeleted}>{" "}
                         Remove
                       </button> 
-                 </td>
-                 
-
-                 {/* */}
-
-
-                    {/* <td class="p-3 px-5">
-                        <select value="user.role" class="bg-transparent">
-                            <option value="user">user</option>
-                            <option value="admin">admin</option>
-                        </select>
-                    </td> */}
-                    <td class="p-3 px-5 flex justify-end">
-
-                      {/* <button   type="submit" onClick={()=> setIsIn(false)} disabled={!isInput} class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Submit</button>
-
-             
-                    <button type="submit"    onClick={deleteUser} class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
-                     */}
+                 </td>   
+                    <td class="p-3 px-5 flex justify-end">       
                     </td>
                     </tr>
                      

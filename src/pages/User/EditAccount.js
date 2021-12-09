@@ -1,5 +1,4 @@
 import "../../HTMLcomponents/cssComponent/decorate.css";
-// import { Link } from "react-router-dom";
 import React, { Component, useState, useCallback } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
@@ -26,9 +25,7 @@ class EditAccount extends Component {
   }
 
   componentDidMount() {
-    //http://13.76.45.147:5000/
-    //`${process.env.REACT_APP_API_URL}/allKinds`
-
+    
     this.setState({
       accountId: this.props.person.accountId,
       fname: this.props.person.fname,
@@ -69,7 +66,6 @@ class EditAccount extends Component {
     if (this.state.accountId!=null||this.state.fname!=null||this.state.lname!=null
       ||this.state.phone||this.state.email!=null) {
       const id = this.state.accountId;
-      // const id = accountId.data;
       console.log("role" + role);
       console.log("password" + password);
       let accountJson = {
@@ -133,12 +129,6 @@ class EditAccount extends Component {
           }));
       }
 
-      // console.log("formData");
-      // console.log(formData);
-
-      // this.setState({
-      //   flash: { status: "is-success", msg: "Product created successfully" },
-      // });
     } else {
       this.setState({
         flash: {
@@ -161,10 +151,7 @@ class EditAccount extends Component {
     const { person } = this.props.context;
 
     return (
-      /*!(user && user.accessLevel < 1) ? (*/
-      //   <Redirect to="/" />
-      // ) : (
-
+    
       <div
         className="bg-black bg-opacity-50 "
         style={{
@@ -261,39 +248,7 @@ class EditAccount extends Component {
                                 placeholder="email@domain.com"
                               />
                             </div>
-                            {/* <div class="md:col-span-2">
-                              <label for="email">Email Address</label>
-                              <select
-                                onChange={this.handleChange}
-                                className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                                name="roleEnter"
-                                value={this.state.roleEnter}
-                              > */}
-                                {/* <option
-                             id="role"
-                             key={r.role}
-                             name="role"
-                             value={r.role}
-                             defaultValue={this.state.role}
-                           >
-                             {r.role}
-                           </option> */}
-                                {/* {console.log("dd")}
-                                {console.log(this.state.roleEnter)}
-
-                                <option
-                                  id="roleEnter"
-                                  name="role"
-                                  value="ADMIN"
-                                  defaultValue={this.state.roleEnter}
-                                >
-                                  ADMIN
-                                </option>
-                                <option id="roleEnter" name="role" value="USER">
-                                  USER
-                                </option>
-                              </select>
-                            </div> */}
+                           
 
                             <div class="md:col-span-5 font-semibold">
                               {this.state.flash && (

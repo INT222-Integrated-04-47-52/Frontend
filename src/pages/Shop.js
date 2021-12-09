@@ -1,5 +1,4 @@
 import React from 'react';
-// import Filter from './ShopComponent/Filter';
 import ProductList from './ShopComponent/ProductList';
 
 function Shop(){
@@ -13,9 +12,6 @@ function Shop(){
                             <p>รายการสินค้า</p>
                         </div>
                         </div>
-                   
-     
-            {/* <Filter /> */}
            
             <ProductList/>
           </div>

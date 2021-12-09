@@ -1,5 +1,4 @@
 import "../../HTMLcomponents/cssComponent/decorate.css";
-// import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import withContext from "../../withContext";
 import { Redirect } from "react-router-dom";
@@ -30,8 +29,6 @@ class EditProduct extends Component {
   }
 
   componentDidMount() {
-    //http://13.76.45.147:5000/
-    //`${process.env.REACT_APP_API_URL}/allKinds`
     let user = localStorage.getItem("user");
     user= JSON.parse(user);
     axios.get(`${process.env.REACT_APP_API_URL}/admin/allGenders`
@@ -117,7 +114,6 @@ class EditProduct extends Component {
     console.log("typeObjectSet;");
     console.log(typeObject);
 
-    // e.preventDefault();
     console.log(this.state.genders);
 
     const { name, description } = this.state;
@@ -129,7 +125,6 @@ class EditProduct extends Component {
 
     if (this.state.productId!=null||this.state.name!=null) {
       const id = this.state.productId;
-      // const id = productId.data;
       var hasColorsId = hasMaxColorsId.data + 1;
       console.log(hasColorsId);
       const HasColor = [];
@@ -139,7 +134,7 @@ class EditProduct extends Component {
         hasColorsId = hasColorsId + 1;
         console.log(loopColors);
       }
-      // const HasColors = {hasColorsEach };
+  
       const productHasColors = HasColor;
       console.log(productHasColors);
       let imgName = this.state.imageName;
@@ -278,9 +273,6 @@ class EditProduct extends Component {
     const { user } = this.props.context;
 
     return (
-      /*!(user && user.accessLevel < 1) ? (*/
-      //   <Redirect to="/" />
-      // ) : (
       <div
         className="bg-black bg-opacity-50 "
         style={{
@@ -298,9 +290,7 @@ class EditProduct extends Component {
               <span className="material-icons text-5xl  ">close</span>
             </button>
             <form onSubmit={this.save}>
-              {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
-                            <h1 className="font-bold mt-4 ml-28">Add Product</h1>
-                           </div> */}
+              
               <div className="contact__text">
                 <div
                   style={{ paddingTop: "68px" }}
@@ -312,7 +302,7 @@ class EditProduct extends Component {
               <div className="flex place-items-center grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="">
                   <div className="m-4 h-full">
-                    {/* <div className="product__details__pic__item pl-48"> */}
+           
                     <div className="">
                       <img
                         src={
@@ -339,10 +329,9 @@ class EditProduct extends Component {
                   </div>
                 </div>
 
-                {/* <div className="product__details__text  pl-72 font-semibold"> */}
                 <div className="text-left space-y-4">
                   <div className="">
-                    {/* <div className="product__details__option text-left"> */}
+                   
                     <span className="font-semibold">ชื่อสินค้า: </span>
                     <br />
 
@@ -358,7 +347,7 @@ class EditProduct extends Component {
                   </div>
 
                   <div className="">
-                    {/* <div className="product__details__option text-left"> */}
+              
                     <span className="font-semibold">รายละเอียดสินค้า: </span>
                     <textarea
                       type="text"
@@ -373,7 +362,7 @@ class EditProduct extends Component {
                   </div>
 
                   <div className="">
-                    {/* <div className="product__details__option text-left"> */}
+     
                     <span className="font-semibold">สไตล์: </span>
                     <div className=" ">
                       {this.state.genders.map((g) => (
@@ -394,7 +383,7 @@ class EditProduct extends Component {
                   </div>
 
                   <div className="">
-                    {/* <div className="product__details__option text-left"> */}
+         
                     <span className="font-semibold">ชนิดสินค้า: </span>
                     <div className="">
                       <div className=" ">
@@ -417,7 +406,7 @@ class EditProduct extends Component {
                   </div>
 
                   <div className="">
-                    {/* <div className="product__details__option text-left"> */}
+                 
                     <label htmlFor="type" className="font-semibold ">
                       ประเภทสินค้า:
                     </label>
@@ -457,7 +446,7 @@ class EditProduct extends Component {
                       <span>Color:</span>
                       <br />
 
-                      {/*className={{'border-red-600': this.state.colors.map(c => c.id).includes(color.id)}} */}
+      
                       <div className="grid lg:grid-cols-6 md:grid-cols-5 grid-cols-3">
                         {this.state.colors.map((c) => (
                           <div className="mx-2 my-1">
@@ -480,10 +469,7 @@ class EditProduct extends Component {
                               className="absolute   mx-10 ml-4 "
                               style={{ backgroundColor: c.colorCode }}
                             >
-                              {/*  style={{backgroundColor : c.codeName, border: "solid red"
-                       }}*/}
-
-                              {/* border: this.state.colors.map(ci => ci.id).includes(c.colorCode)?"solid red": "" */}
+                             
                             </label>{" "}
                           </div>
                         ))}
@@ -497,7 +483,7 @@ class EditProduct extends Component {
                     </div>
                   )}
                   <div className="field is-clearfix">
-                    {/* <Link to="/Shop">  */}{" "}
+                  {" "}
                     <button
                       className="flex my-5 mx-auto justify-center transition delay-150 duration-300 ease-in-out mb-2 md:mb-0 bg-gray-900 px-5 py-2 tracking-wider border text-white hover:opacity-75"
                       type="submit"
@@ -505,7 +491,7 @@ class EditProduct extends Component {
                     >
                       Submit
                     </button>
-                    {/* </Link>  */}
+              
                   </div>
                 </div>
               </div>

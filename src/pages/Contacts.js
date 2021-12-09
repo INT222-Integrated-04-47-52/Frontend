@@ -3,16 +3,12 @@ import React from "react";
 import Pin from "../HTMLcomponents/img/PinNookNooch/Pin.jpg";
 import Nook from "../HTMLcomponents/img/PinNookNooch/Nook.jpg";
 import Nooch from "../HTMLcomponents/img/PinNookNooch/Nooch.JPG";
-// const mystyle = {
-//     paddingTop:"20px",
-//     color: "black",
-//     fontWeight: "bold"
-//   };
+
 function Contacts() {
   return (
     <section className=" ">
       <div className=" container">
-        {/* <div className="row"> */}
+      
         <div className="">
           <div className="contact__text">
             <div className="section-title">
@@ -58,7 +54,6 @@ function Contacts() {
             </div>
           </div>
         </div>
-        {/* </div> */}
       </div>
     </section>
   );

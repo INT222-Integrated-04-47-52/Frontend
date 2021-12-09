@@ -19,54 +19,7 @@ function Collection(){
                         </div>
                     </div>
                 </div>
-                {/* <div class="col-lg-5 offset-lg-3">
-                    <div class="banner__item">
-                        <div class="banner__item__pic">
-                            <img src={banner2} alt=""/>
-                        </div>
-                        <div class="banner__item__text">
-                            <h2>Clothing Collections 2030</h2>
-                            <li> <Link to="/Shop">Shop now</Link></li>
-                        </div>
-                    </div>
-                </div> */}
-                {/* <div class=" col-lg-7 offset-lg-3 mt-48 " style={{marginTop : "50px"}}>
-                    <div class="banner__item grid grid-cols-2">
-                        <div class="banner__item__pic">
-                            <img src={banner2} alt=""/>
-                        </div>
-                        <div 
-                        class="absolute right-0 banner__item__text banner__item--last text-right">
-                            <h2>Silk Spring 2030</h2>
-                           <li> <Link to="/Shop">Shop now</Link></li>
-                        </div>
-                    </div>
-                    
-                </div>  */}
-                {/* <div class=" col-lg-5 offset-lg-3">
-                    <div class="banner__item banner__item--middle">
-                        <div class="banner__item__pic">
-                            <img src={banner2} alt=""/>
-                        </div>
-                        <div class="banner__item__text">
-                            <h2>Material</h2>
-                            <li> <Link to="/Shop">Shop now</Link></li>
-                        </div>
-                    </div>
-                </div> */}
                 
-                    {/* <div class="col-lg-5 ">
-                    <div class="banner__item banner__item--middle">
-                        <div class="banner__item__pic">
-                            <img src={banner2} alt=""/>
-                        </div>
-                        
-                    </div>
-                    <div class="banner__item__text">
-                            <h2>Accessories</h2>
-                            <li> <Link to="/Shop">Shop now</Link></li>
-                        </div>
-                </div> */}
                 <div class=" col-lg-7 offset-lg-3">
                     <div class="banner__item banner__item--last">
                        
