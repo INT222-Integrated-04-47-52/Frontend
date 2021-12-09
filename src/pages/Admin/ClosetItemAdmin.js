@@ -61,7 +61,7 @@ export default function ClosetItemAdmin(props) {
                     <td class=" px-5 block md:table-cell "> <span class="inline-block w-1/3 md:hidden font-bold">image</span>   
                     <img src={`${process.env.REACT_APP_API_URL}/image/${closet.product.image}`}
                 alt={closet.product.image}
-                className="h-20 object-scale-down lg:object-cover  lg:h-48"
+                className="h-20 object-scale-down lg:object-cover lg:h-48"
               /></td>
                <td class=" pt-5 px-5 block md:table-cell  "><span class="inline-block w-1/3 md:hidden font-bold">Order</span><br></br>
                <br></br>

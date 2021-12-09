@@ -349,7 +349,7 @@ class AddProduct extends Component {
       /*!(user && user.accessLevel < 1) ? (*/
       //   <Redirect to="/" />
       // ) : (
-      <div className="mx-0.5 container">
+      <div className=" container">
         <form onSubmit={this.save}>
           {/* <div style={{paddingLeft:"32px"}} className="text-left  font-black  text-5xl">
                             <h1 className="font-bold mt-4 ml-28">Add Product</h1>
