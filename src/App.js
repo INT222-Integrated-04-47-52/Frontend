@@ -262,7 +262,7 @@ export default class App extends Component {
 
                       <div className="nav-item">
                       {this.state.user? (
-                   <NavLink to="/Home" onClick={this.logout} className="main-nav md:px-8 navbar-item"
+                   <NavLink to="/" onClick={this.logout} className="main-nav md:px-8 navbar-item"
                    activeClassName="main-nav-active">
                      Logout
                    </NavLink>
@@ -296,24 +296,30 @@ export default class App extends Component {
               <Route path="/Shop" component={Shop} />
               <Route path="/Contacts" component={Contacts} />
               <Route path="/Tailor" component={Tailor} />
-
-              {this.state.user  && this.state.user.accessLevel < 1 ? ( 
-              <Route path="/AddProduct" component={AddProduct} />
-             ):(
-              <Route path="*" component={BlankPage} />
-
-             )}
-
-              {this.state.user ? ( 
               <Route path="/Account" component={AccountList} />
-             ):(
-              <Route path="*" component={BlankPage} />
-             )}
+         
+              
 
-               {this.state.user 
-                ?( 
+              {/* {this.state.user  && this.state.user.accessLevel < 1 ? (  */}
+              {/* <Route path="/AddProduct" component={AddProduct} /> */}
+             {/* ):( */}
+              
+{/* 
+             )} */}
+
+
               <Route path="/OrderUser" component={ClosetList} />
-              ):(  <Route path="*" component={BlankPage} />)}
+            
+          <Route path="/EditAccount" component={EditAccount} />
+            
+
+               {/* {this.state.user  &&( 
+              <Route path="/OrderUser" component={ClosetList} />
+              )
+              // :( 
+              //    <Route path="*" component={BlankPage} />
+              //    )
+                 } */}
 
 {this.state.user && this.state.user.accessLevel < 1 ?( 
               <Route path="/OrderAdmin" component={ClosetListAdmin} />
@@ -329,16 +335,20 @@ export default class App extends Component {
               <Route path="/AddUser" component={AddUser} />
               ):(  <Route path="*" component={BlankPage} />
              )}
+{this.state.user  && this.state.user.accessLevel < 1 ? ( 
+              <Route path="/AddProduct" component={AddProduct} />
+             ):(
+              <Route path="*" component={BlankPage} />
 
-              {this.state.user ?   ( 
-              <Route path="/EditAccount" component={EditAccount} />
-              ):(  <Route path="*" component={BlankPage} />
              )}
-
-              {this.state.user && this.state.user.accessLevel < 1 ?  ( 
+             
+          
+              
+            
+ {/* {this.state.user && this.state.user.accessLevel < 1 ?  ( 
    <Route path="/AddProduct" component={Login} />
    ):(  <Route path="*" component={BlankPage} />
-   )}{" "}
+   )}{" "} */}
       {this.state.user && this.state.user.accessLevel < 1 ?  ( 
               <Route path="/AddSize" component={AddSize} />
               ):(  <Route path="*" component={BlankPage} />
@@ -348,6 +358,8 @@ export default class App extends Component {
               ):(  
               <Route path="*" component={BlankPage} />
               )}
+              
+              <Route path="*" component={BlankPage} />
             </Switch>
             <Footer />
           </div>

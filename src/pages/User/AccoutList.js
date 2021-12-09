@@ -18,14 +18,15 @@ export default class AccountList extends React.Component {
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
     console.log(user)
-    if (user.role === "ADMIN") {
+    if (user.role == "ADMIN") {
       axios.get(`${process.env.REACT_APP_API_URL}/admin/account/${user.accountId}`
         , { headers: { "Authorization": `${user.token}` } })
         .then(res => {
           const persons = res.data;
           this.setState({ persons });
         })
-    } else {
+    } 
+    if (user.role == "USER") {
       axios.get(`${process.env.REACT_APP_API_URL}/user/account/${user.accountId}`
         , { headers: { "Authorization": `${user.token}` } })
         .then(res => {
