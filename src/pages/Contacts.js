@@ -15,7 +15,7 @@ function Contacts() {
         {/* <div className="row"> */}
         <div className="">
           <div className="contact__text">
-            <div    style={{  paddingTop: "68px" }} className="section-title">
+            <div className="section-title">
               <h2>Contact Us</h2>
               <p>KMUTT | School of Information Technology</p>
             </div>
@@ -28,6 +28,8 @@ function Contacts() {
               <p>
                 Khorapin Gadpu <br />
                 Khorapin.pingadpu@mail.kmutt.ac.th
+                <br />
+                Frontend, UX/UI
               </p>
             </div>
             <div className="grid justify-items-center">
@@ -36,6 +38,8 @@ function Contacts() {
               <p>
                 Noochajee Phonbooncharoenchai <br />
                 Noochajee.nn@mail.kmutt.ac.th
+                <br />
+                Backend, UX/UI
               </p>
             </div>
             <div className="grid justify-items-center">
@@ -48,6 +52,8 @@ function Contacts() {
               <p>
                 Prapaporn Sila <br />
                 Prapaporn.1412@mail.kmutt.ac.th
+                <br />
+                DevOps, Database, UX/UI
               </p>
             </div>
           </div>

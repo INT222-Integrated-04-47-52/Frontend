@@ -37,7 +37,7 @@ const ProductList = (props) => {
   }, [])
   return (
     <div>
-      <div className="shop__sidebar__search pl-3 ">
+      <div className="shop__sidebar__search pl-3 pb-0">
 
         <form >
           <input
@@ -79,7 +79,7 @@ const ProductList = (props) => {
 
               className="custom-select"
               aria-label="Filter By Kind">
-              <option value="all">-------- Filter By Kind --------</option>
+              <option value="all">--------Filter By Kind --------</option>
               <option value="shirt">shirt</option>
               <option value="pants">pants</option>
               <option value="skirt">skirt</option>

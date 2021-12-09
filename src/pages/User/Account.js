@@ -50,7 +50,7 @@ export default class Account extends React.Component {
       <>
       <div className="container">
        
-      <div className="contact__text -mt-24">
+      <div className="contact__text">
               <div
                
                 className="section-title "
