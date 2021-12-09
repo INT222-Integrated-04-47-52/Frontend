@@ -113,7 +113,6 @@ const Cart = props => {
                 key={key}
                 cartItem={cart[key]}
                 removeFromCart={props.context.removeFromCart}
-            
                 />
             ))}
             <div className="column is-12 is-clearfix">
