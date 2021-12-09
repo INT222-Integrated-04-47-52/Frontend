@@ -21,6 +21,7 @@ import EditAccount from  "./pages/User/EditAccount";
 import AccountList from "./pages/User/AccoutList";
 import ClosetList from "./pages/User/ClosetList";
 import ClosetListAdmin from "./pages/Admin/ClosetListAdmin";
+import BlankPage from "./pages/BlankPage";
 // import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware, compose } from 'redux';
@@ -457,7 +458,7 @@ export default class App extends Component {
           )}{" "}</div>
 
                       <div className="nav-item">
-                      {this.state.user  &&(
+                      {this.state.user && this.state.user.accessLevel > 0 && (
                         <NavLink
                           to="/Cart"
                           className="main-nav md:px-8 navbar-item"
@@ -514,43 +515,46 @@ export default class App extends Component {
               <Route path="/Shop" component={Shop} />
               <Route path="/Contacts" component={Contacts} />
               <Route path="/Tailor" component={Tailor} />
-              {this.state.user  && this.state.user.accessLevel < 1 && ( 
+              {this.state.user  && this.state.user.accessLevel < 1 ? ( 
               <Route path="/AddProduct" component={AddProduct} />
-             )}{" "}
+             ):(
+              <Route path="*" component={BlankPage} />
+
+             )}
               {this.state.user && ( 
               <Route path="/Account" component={AccountList} />
-             )}{" "}
+             )}
                {this.state.user 
               //  && this.state.user.accessLevel === 1
                 &&( 
               <Route path="/OrderUser" component={ClosetList} />
-             )}{" "}
+             )}
 
 {this.state.user && this.state.user.accessLevel < 1 &&( 
               <Route path="/OrderAdmin" component={ClosetListAdmin} />
-             )}{" "}
+             )}
 
      {this.state.user && this.state.user.accessLevel < 1 && ( 
               <Route path="/Admin" component={UserList} />
-             )}{" "}
+             )}
 
  {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/AddUser" component={AddUser} />
-             )}{" "}
+             )}
 
               {this.state.user &&   ( 
               <Route path="/EditAccount" component={EditAccount} />
-             )}{" "}
+             )}
 
               {this.state.user && this.state.user.accessLevel < 1 &&  ( 
    <Route path="/AddProduct" component={Login} />
    )}{" "}
       {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/AddSize" component={AddSize} />
-              )}{" "}
+              )}
               {this.state.user && this.state.user.accessLevel < 1 &&  ( 
               <Route path="/EditProduct" component={EditProduct} />
-              )}{" "}
+              )}
             </Switch>
             <Footer />
           </div>

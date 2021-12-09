@@ -133,7 +133,8 @@ class AddProduct extends Component {
     {
       /*name=="" ||description==""||kind==""||gender==""||type=="" */
     }
-    if (name && description && kind && gender && type && file) {
+
+    if (name && description && kind && gender && type && file && colors.length > 0 ) {
       const id = productId.data + 1;
       var hasColorsId = hasMaxColorsId.data + 1;
       console.log(hasColorsId);

@@ -314,6 +314,7 @@ const CartItem = (props) => {
                   <input
                     className="border p-2 w-full h-10"
                     type="number"
+                    min="0"
                     value={shoulderInput}
                     onChange={onChangeShoulder}
                   />
@@ -323,6 +324,7 @@ const CartItem = (props) => {
                   <input
                     className="border p-2 w-full h-10"
                     type="number"
+                    min="0"
                     value={bustInput}
                     onChange={onChangeBust}
                   />
@@ -332,6 +334,7 @@ const CartItem = (props) => {
                   <input
                     className="border p-2 w-full h-10"
                     type="number"
+                    min="0"
                     value={waistInput}
                     onChange={onChangeWaist}
                   />
@@ -341,6 +344,7 @@ const CartItem = (props) => {
                   <input
                     className="border p-2 w-full h-10"
                     type="number"
+                    min="0"
                     value={hipsInput}
                     onChange={onChangeHips}
                   />
